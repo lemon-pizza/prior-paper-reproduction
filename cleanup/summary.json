@@ -1,0 +1,78 @@
+{
+  "targets": [
+    {
+      "path": "final_model",
+      "files": 357,
+      "bytes": 380129260,
+      "allocated_bytes": 401854464,
+      "status": "deleted"
+    },
+    {
+      "path": "public_code_replay",
+      "files": 416,
+      "bytes": 150498446,
+      "allocated_bytes": 151748608,
+      "status": "deleted"
+    },
+    {
+      "path": "author_code_reproduction_20261029",
+      "files": 426,
+      "bytes": 151381208,
+      "allocated_bytes": 152383488,
+      "status": "deleted"
+    },
+    {
+      "path": "additional_validation",
+      "files": 2,
+      "bytes": 28214,
+      "allocated_bytes": 32768,
+      "status": "deleted"
+    },
+    {
+      "path": "cleanup_log",
+      "files": 7,
+      "bytes": 1005538,
+      "allocated_bytes": 1069056,
+      "status": "deleted"
+    },
+    {
+      "path": "README.txt",
+      "files": 1,
+      "bytes": 465,
+      "allocated_bytes": 4096,
+      "status": "deleted"
+    },
+    {
+      "path": "checks/package_manifest.json",
+      "files": 1,
+      "bytes": 38820,
+      "allocated_bytes": 40960,
+      "status": "deleted"
+    },
+    {
+      "path": "checks/retained_model.json",
+      "files": 1,
+      "bytes": 82,
+      "allocated_bytes": 4096,
+      "status": "deleted"
+    },
+    {
+      "path": ".git",
+      "files": 20400,
+      "bytes": 9310010189,
+      "allocated_bytes": 9362980864,
+      "status": "deleted"
+    }
+  ],
+  "files": 21611,
+  "bytes": 9993092222,
+  "allocated_bytes": 10070118400,
+  "github_parent": "0c70801e40ca962ea7a7adb950b7e976125b4278",
+  "old_local_git_head": "908bbf6bc46a15bccd5dfb0f0be71e195fd5b108",
+  "note": "Metadata only: paths and sizes. No deleted file contents or backup archive are retained. Necessary baseline files were moved out before inventory.",
+  "completed": true,
+  "local_git_replaced_with_current_github_connection": true,
+  "new_local_git_parent": "0c70801e40ca962ea7a7adb950b7e976125b4278",
+  "retained_files_before_cleanup_report": 249,
+  "retained_bytes_before_cleanup_report": 49791310
+}

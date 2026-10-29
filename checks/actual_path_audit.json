@@ -1,0 +1,847 @@
+{
+  "passed": true,
+  "price_sha256": "7605eab6525ddb5db66965d1559a56b48375f11a14cd1040eaa12318a545939c",
+  "scope": "45 stored daily files date/finite inventory; independent raw-price plus saved stock-weight quantity/cash replay for three primary stockgross_d1 cost5 paths. No engine functions called; no model rerun or modification.",
+  "absolute_tolerance": 1e-10,
+  "timestamp_unit_normalization": "Parquet microseconds and CSV nanoseconds converted to nanoseconds before exact date comparison. Actual dates are unchanged.",
+  "expected_return_dates": {
+    "start": "2017-01-03",
+    "end": "2023-05-31",
+    "count": 1613
+  },
+  "daily_file_count": 45,
+  "primary_weight_file_count": 3,
+  "daily_file_checks": [
+    {
+      "file": "clean_stockgross_d1_B_c0.csv",
+      "rows": 1613,
+      "unique_dates": true,
+      "exact_expected_dates": true,
+      "all_numeric_values_finite": true,
+      "passed": true
+    },
+    {
+      "file": "clean_stockgross_d1_B_c10.csv",
+      "rows": 1613,
+      "unique_dates": true,
+      "exact_expected_dates": true,
+      "all_numeric_values_finite": true,
+      "passed": true
+    },
+    {
+      "file": "clean_stockgross_d1_B_c5.csv",
+      "rows": 1613,
+      "unique_dates": true,
+      "exact_expected_dates": true,
+      "all_numeric_values_finite": true,
+      "passed": true
+    },
+    {
+      "file": "clean_stockgross_d1_M_c0.csv",
+      "rows": 1613,
+      "unique_dates": true,
+      "exact_expected_dates": true,
+      "all_numeric_values_finite": true,
+      "passed": true
+    },
+    {
+      "file": "clean_stockgross_d1_M_c10.csv",
+      "rows": 1613,
+      "unique_dates": true,
+      "exact_expected_dates": true,
+      "all_numeric_values_finite": true,
+      "passed": true
+    },
+    {
+      "file": "clean_stockgross_d1_M_c5.csv",
+      "rows": 1613,
+      "unique_dates": true,
+      "exact_expected_dates": true,
+      "all_numeric_values_finite": true,
+      "passed": true
+    },
+    {
+      "file": "clean_stockgross_d1_U_c0.csv",
+      "rows": 1613,
+      "unique_dates": true,
+      "exact_expected_dates": true,
+      "all_numeric_values_finite": true,
+      "passed": true
+    },
+    {
+      "file": "clean_stockgross_d1_U_c10.csv",
+      "rows": 1613,
+      "unique_dates": true,
+      "exact_expected_dates": true,
+      "all_numeric_values_finite": true,
+      "passed": true
+    },
+    {
+      "file": "clean_stockgross_d1_U_c5.csv",
+      "rows": 1613,
+      "unique_dates": true,
+      "exact_expected_dates": true,
+      "all_numeric_values_finite": true,
+      "passed": true
+    },
+    {
+      "file": "pairgross_d0_B_c0.csv",
+      "rows": 1613,
+      "unique_dates": true,
+      "exact_expected_dates": true,
+      "all_numeric_values_finite": true,
+      "passed": true
+    },
+    {
+      "file": "pairgross_d0_B_c10.csv",
+      "rows": 1613,
+      "unique_dates": true,
+      "exact_expected_dates": true,
+      "all_numeric_values_finite": true,
+      "passed": true
+    },
+    {
+      "file": "pairgross_d0_B_c5.csv",
+      "rows": 1613,
+      "unique_dates": true,
+      "exact_expected_dates": true,
+      "all_numeric_values_finite": true,
+      "passed": true
+    },
+    {
+      "file": "pairgross_d0_M_c0.csv",
+      "rows": 1613,
+      "unique_dates": true,
+      "exact_expected_dates": true,
+      "all_numeric_values_finite": true,
+      "passed": true
+    },
+    {
+      "file": "pairgross_d0_M_c10.csv",
+      "rows": 1613,
+      "unique_dates": true,
+      "exact_expected_dates": true,
+      "all_numeric_values_finite": true,
+      "passed": true
+    },
+    {
+      "file": "pairgross_d0_M_c5.csv",
+      "rows": 1613,
+      "unique_dates": true,
+      "exact_expected_dates": true,
+      "all_numeric_values_finite": true,
+      "passed": true
+    },
+    {
+      "file": "pairgross_d0_U_c0.csv",
+      "rows": 1613,
+      "unique_dates": true,
+      "exact_expected_dates": true,
+      "all_numeric_values_finite": true,
+      "passed": true
+    },
+    {
+      "file": "pairgross_d0_U_c10.csv",
+      "rows": 1613,
+      "unique_dates": true,
+      "exact_expected_dates": true,
+      "all_numeric_values_finite": true,
+      "passed": true
+    },
+    {
+      "file": "pairgross_d0_U_c5.csv",
+      "rows": 1613,
+      "unique_dates": true,
+      "exact_expected_dates": true,
+      "all_numeric_values_finite": true,
+      "passed": true
+    },
+    {
+      "file": "pairgross_d1_B_c0.csv",
+      "rows": 1613,
+      "unique_dates": true,
+      "exact_expected_dates": true,
+      "all_numeric_values_finite": true,
+      "passed": true
+    },
+    {
+      "file": "pairgross_d1_B_c10.csv",
+      "rows": 1613,
+      "unique_dates": true,
+      "exact_expected_dates": true,
+      "all_numeric_values_finite": true,
+      "passed": true
+    },
+    {
+      "file": "pairgross_d1_B_c5.csv",
+      "rows": 1613,
+      "unique_dates": true,
+      "exact_expected_dates": true,
+      "all_numeric_values_finite": true,
+      "passed": true
+    },
+    {
+      "file": "pairgross_d1_M_c0.csv",
+      "rows": 1613,
+      "unique_dates": true,
+      "exact_expected_dates": true,
+      "all_numeric_values_finite": true,
+      "passed": true
+    },
+    {
+      "file": "pairgross_d1_M_c10.csv",
+      "rows": 1613,
+      "unique_dates": true,
+      "exact_expected_dates": true,
+      "all_numeric_values_finite": true,
+      "passed": true
+    },
+    {
+      "file": "pairgross_d1_M_c5.csv",
+      "rows": 1613,
+      "unique_dates": true,
+      "exact_expected_dates": true,
+      "all_numeric_values_finite": true,
+      "passed": true
+    },
+    {
+      "file": "pairgross_d1_U_c0.csv",
+      "rows": 1613,
+      "unique_dates": true,
+      "exact_expected_dates": true,
+      "all_numeric_values_finite": true,
+      "passed": true
+    },
+    {
+      "file": "pairgross_d1_U_c10.csv",
+      "rows": 1613,
+      "unique_dates": true,
+      "exact_expected_dates": true,
+      "all_numeric_values_finite": true,
+      "passed": true
+    },
+    {
+      "file": "pairgross_d1_U_c5.csv",
+      "rows": 1613,
+      "unique_dates": true,
+      "exact_expected_dates": true,
+      "all_numeric_values_finite": true,
+      "passed": true
+    },
+    {
+      "file": "stockgross_d0_B_c0.csv",
+      "rows": 1613,
+      "unique_dates": true,
+      "exact_expected_dates": true,
+      "all_numeric_values_finite": true,
+      "passed": true
+    },
+    {
+      "file": "stockgross_d0_B_c10.csv",
+      "rows": 1613,
+      "unique_dates": true,
+      "exact_expected_dates": true,
+      "all_numeric_values_finite": true,
+      "passed": true
+    },
+    {
+      "file": "stockgross_d0_B_c5.csv",
+      "rows": 1613,
+      "unique_dates": true,
+      "exact_expected_dates": true,
+      "all_numeric_values_finite": true,
+      "passed": true
+    },
+    {
+      "file": "stockgross_d0_M_c0.csv",
+      "rows": 1613,
+      "unique_dates": true,
+      "exact_expected_dates": true,
+      "all_numeric_values_finite": true,
+      "passed": true
+    },
+    {
+      "file": "stockgross_d0_M_c10.csv",
+      "rows": 1613,
+      "unique_dates": true,
+      "exact_expected_dates": true,
+      "all_numeric_values_finite": true,
+      "passed": true
+    },
+    {
+      "file": "stockgross_d0_M_c5.csv",
+      "rows": 1613,
+      "unique_dates": true,
+      "exact_expected_dates": true,
+      "all_numeric_values_finite": true,
+      "passed": true
+    },
+    {
+      "file": "stockgross_d0_U_c0.csv",
+      "rows": 1613,
+      "unique_dates": true,
+      "exact_expected_dates": true,
+      "all_numeric_values_finite": true,
+      "passed": true
+    },
+    {
+      "file": "stockgross_d0_U_c10.csv",
+      "rows": 1613,
+      "unique_dates": true,
+      "exact_expected_dates": true,
+      "all_numeric_values_finite": true,
+      "passed": true
+    },
+    {
+      "file": "stockgross_d0_U_c5.csv",
+      "rows": 1613,
+      "unique_dates": true,
+      "exact_expected_dates": true,
+      "all_numeric_values_finite": true,
+      "passed": true
+    },
+    {
+      "file": "stockgross_d1_B_c0.csv",
+      "rows": 1613,
+      "unique_dates": true,
+      "exact_expected_dates": true,
+      "all_numeric_values_finite": true,
+      "passed": true
+    },
+    {
+      "file": "stockgross_d1_B_c10.csv",
+      "rows": 1613,
+      "unique_dates": true,
+      "exact_expected_dates": true,
+      "all_numeric_values_finite": true,
+      "passed": true
+    },
+    {
+      "file": "stockgross_d1_B_c5.csv",
+      "rows": 1613,
+      "unique_dates": true,
+      "exact_expected_dates": true,
+      "all_numeric_values_finite": true,
+      "passed": true
+    },
+    {
+      "file": "stockgross_d1_M_c0.csv",
+      "rows": 1613,
+      "unique_dates": true,
+      "exact_expected_dates": true,
+      "all_numeric_values_finite": true,
+      "passed": true
+    },
+    {
+      "file": "stockgross_d1_M_c10.csv",
+      "rows": 1613,
+      "unique_dates": true,
+      "exact_expected_dates": true,
+      "all_numeric_values_finite": true,
+      "passed": true
+    },
+    {
+      "file": "stockgross_d1_M_c5.csv",
+      "rows": 1613,
+      "unique_dates": true,
+      "exact_expected_dates": true,
+      "all_numeric_values_finite": true,
+      "passed": true
+    },
+    {
+      "file": "stockgross_d1_U_c0.csv",
+      "rows": 1613,
+      "unique_dates": true,
+      "exact_expected_dates": true,
+      "all_numeric_values_finite": true,
+      "passed": true
+    },
+    {
+      "file": "stockgross_d1_U_c10.csv",
+      "rows": 1613,
+      "unique_dates": true,
+      "exact_expected_dates": true,
+      "all_numeric_values_finite": true,
+      "passed": true
+    },
+    {
+      "file": "stockgross_d1_U_c5.csv",
+      "rows": 1613,
+      "unique_dates": true,
+      "exact_expected_dates": true,
+      "all_numeric_values_finite": true,
+      "passed": true
+    }
+  ],
+  "primary_path_checks": [
+    {
+      "scenario": "stockgross_d1_M_c5",
+      "passed": true,
+      "max_absolute_errors": {
+        "start_nav": 2.1094237467877974e-15,
+        "end_nav": 2.1094237467877974e-15,
+        "return": 4.3281350725621337e-16,
+        "cash": 2.1094237467877974e-15,
+        "mark_pnl": 1.0007186052041206e-16,
+        "fee": 1.0004475546609992e-16,
+        "turnover": 4.440892098500626e-16,
+        "terminal_notional": 0.0,
+        "frozen_gross": 1.0408340855860843e-16,
+        "frozen_quantity": 2.710505431213761e-20,
+        "gross": 1.1102230246251565e-16,
+        "net": 9.8879238130678e-17,
+        "compound_nav": 3.186340080674199e-14
+      },
+      "rows": 1613,
+      "weight_shape": [
+        1613,
+        505
+      ],
+      "gross_1_days": 1612,
+      "gross_0_days": 1,
+      "other_gross_days": 0,
+      "gross_min": 0.0,
+      "gross_max": 1.0000000000000013,
+      "active_day_gross_mean": 1.0,
+      "net_exposure_mean": -0.06955846400452949,
+      "net_exposure_min": -0.5193564232045281,
+      "net_exposure_max": 0.4622416362590687,
+      "max_single_stock_absolute_weight": 0.32989820907537726,
+      "mean_daily_turnover": 0.5721989139606878,
+      "fees_paid_per_initial_NAV": 0.38882559085439683,
+      "final_nav": 0.7103878991477774,
+      "cumulative_return": -0.28961210085222255,
+      "final_cash": 0.7252229838739767,
+      "frozen_days": 1361,
+      "first_frozen_return_date": "2018-01-03",
+      "final_unquoted_holdings_count": 8,
+      "final_unquoted_gross_value_per_initial_NAV": 0.026424867524028624,
+      "final_unquoted_gross_fraction_of_final_NAV": 0.03719780074481763,
+      "final_unquoted_net_value_per_initial_NAV": -0.014835084726199231,
+      "final_observed_quantity_max": 0.0,
+      "final_terminal_notional": 0.6771666192871827,
+      "final_unquoted_positions": [
+        {
+          "asset": "ACN",
+          "quantity_per_initial_NAV": -4.5191968295356224e-05,
+          "last_observed_price": 140.7832489013672,
+          "last_observed_date": "2017-12-29",
+          "marked_value_per_initial_NAV": -0.00636227212086783,
+          "absolute_value_fraction_of_final_NAV": 0.008956053627180842
+        },
+        {
+          "asset": "CINF",
+          "quantity_per_initial_NAV": -0.00010425141697035617,
+          "last_observed_price": 64.88761901855469,
+          "last_observed_date": "2017-12-29",
+          "marked_value_per_initial_NAV": -0.006764626226516958,
+          "absolute_value_fraction_of_final_NAV": 0.009522440112834405
+        },
+        {
+          "asset": "CMS",
+          "quantity_per_initial_NAV": -3.502751824031739e-05,
+          "last_observed_price": 40.07643127441406,
+          "last_observed_date": "2017-12-29",
+          "marked_value_per_initial_NAV": -0.0014037779274713648,
+          "absolute_value_fraction_of_final_NAV": 0.0019760724093912893
+        },
+        {
+          "asset": "INTU",
+          "quantity_per_initial_NAV": 3.018616137132408e-05,
+          "last_observed_price": 151.39883422851562,
+          "last_observed_date": "2017-12-29",
+          "marked_value_per_initial_NAV": 0.0045701496414523165,
+          "absolute_value_fraction_of_final_NAV": 0.006433315723613723
+        },
+        {
+          "asset": "MMM",
+          "quantity_per_initial_NAV": -1.608785356651759e-05,
+          "last_observed_price": 190.4558563232422,
+          "last_observed_date": "2017-12-29",
+          "marked_value_per_initial_NAV": -0.0030640259274140338,
+          "absolute_value_fraction_of_final_NAV": 0.004313173029959853
+        },
+        {
+          "asset": "QCOM",
+          "quantity_per_initial_NAV": -1.9760501039987488e-05,
+          "last_observed_price": 54.936641693115234,
+          "last_observed_date": "2017-12-29",
+          "marked_value_per_initial_NAV": -0.0010855755653102236,
+          "absolute_value_fraction_of_final_NAV": 0.0015281447876752167
+        },
+        {
+          "asset": "TER",
+          "quantity_per_initial_NAV": -4.80406399541746e-05,
+          "last_observed_price": 40.584354400634766,
+          "last_observed_date": "2017-12-29",
+          "marked_value_per_initial_NAV": -0.0019496983575335164,
+          "absolute_value_fraction_of_final_NAV": 0.0027445545734555554
+        },
+        {
+          "asset": "TT",
+          "quantity_per_initial_NAV": 1.9486502739369194e-05,
+          "last_observed_price": 62.850772857666016,
+          "last_observed_date": "2017-12-29",
+          "marked_value_per_initial_NAV": 0.0012247417574623798,
+          "absolute_value_fraction_of_final_NAV": 0.0017240464807067393
+        }
+      ],
+      "illustrative_rows": [
+        {
+          "date": "2017-01-03",
+          "nav": 1.0,
+          "pnl": 0.0,
+          "fee": 0.0,
+          "turnover": 0.0
+        },
+        {
+          "date": "2017-01-04",
+          "nav": 1.0001145618426113,
+          "pnl": 0.000614561842611368,
+          "fee": 0.0005,
+          "turnover": 1.0
+        },
+        {
+          "date": "2023-05-31",
+          "nav": 0.7103878991477774,
+          "pnl": 0.0022118159848419114,
+          "fee": 0.00046263126480413383,
+          "turnover": 1.305690065713476
+        }
+      ],
+      "daily_sha256": "9d536a2d83c83e818a72e5adfc64aee215c683b421d091d3f5fa61e9c933d402",
+      "weights_sha256": "28ff6a7b581f2217becd56fdac451ff597d915c102ce4e388306b829c57927ae"
+    },
+    {
+      "scenario": "stockgross_d1_B_c5",
+      "passed": true,
+      "max_absolute_errors": {
+        "start_nav": 1.9984014443252818e-15,
+        "end_nav": 1.9984014443252818e-15,
+        "return": 5.39499001028787e-16,
+        "cash": 2.220446049250313e-15,
+        "mark_pnl": 9.996344030316351e-17,
+        "fee": 9.990923019453923e-17,
+        "turnover": 4.440892098500626e-16,
+        "terminal_notional": 0.0,
+        "frozen_gross": 1.1102230246251565e-16,
+        "frozen_quantity": 2.710505431213761e-20,
+        "gross": 1.1102230246251565e-16,
+        "net": 9.71445146547012e-17,
+        "compound_nav": 3.441691376337985e-14
+      },
+      "rows": 1613,
+      "weight_shape": [
+        1613,
+        505
+      ],
+      "gross_1_days": 1612,
+      "gross_0_days": 1,
+      "other_gross_days": 0,
+      "gross_min": 0.0,
+      "gross_max": 1.0000000000000009,
+      "active_day_gross_mean": 1.0,
+      "net_exposure_mean": -0.08480538910339794,
+      "net_exposure_min": -0.8569739935771654,
+      "net_exposure_max": 0.8568085094423218,
+      "max_single_stock_absolute_weight": 0.8655039651204396,
+      "mean_daily_turnover": 0.5594670513927703,
+      "fees_paid_per_initial_NAV": 0.3750182653871347,
+      "final_nav": 0.6867669833081211,
+      "cumulative_return": -0.31323301669187886,
+      "final_cash": 0.7010318586009545,
+      "frozen_days": 1361,
+      "first_frozen_return_date": "2018-01-03",
+      "final_unquoted_holdings_count": 9,
+      "final_unquoted_gross_value_per_initial_NAV": 0.0483737135666578,
+      "final_unquoted_gross_fraction_of_final_NAV": 0.07043686540323199,
+      "final_unquoted_net_value_per_initial_NAV": -0.01426487529283333,
+      "final_observed_quantity_max": 0.0,
+      "final_terminal_notional": 0.6336272167062333,
+      "final_unquoted_positions": [
+        {
+          "asset": "ACN",
+          "quantity_per_initial_NAV": -5.705021626706309e-05,
+          "last_observed_price": 140.7832489013672,
+          "last_observed_date": "2017-12-29",
+          "marked_value_per_initial_NAV": -0.00803171479660277,
+          "absolute_value_fraction_of_final_NAV": 0.011694963490985566
+        },
+        {
+          "asset": "CMS",
+          "quantity_per_initial_NAV": 4.421864252179397e-05,
+          "last_observed_price": 40.07643127441406,
+          "last_observed_date": "2017-12-29",
+          "marked_value_per_initial_NAV": 0.0017721253880725594,
+          "absolute_value_fraction_of_final_NAV": 0.0025803881536883484
+        },
+        {
+          "asset": "EXPD",
+          "quantity_per_initial_NAV": -4.26151632665079e-05,
+          "last_observed_price": 60.57682037353516,
+          "last_observed_date": "2017-12-29",
+          "marked_value_per_initial_NAV": -0.0025814910903841234,
+          "absolute_value_fraction_of_final_NAV": 0.003758903897722651
+        },
+        {
+          "asset": "INTU",
+          "quantity_per_initial_NAV": -5.010641059279352e-05,
+          "last_observed_price": 151.39883422851562,
+          "last_observed_date": "2017-12-29",
+          "marked_value_per_initial_NAV": -0.007586052151124285,
+          "absolute_value_fraction_of_final_NAV": 0.011046035024256209
+        },
+        {
+          "asset": "MMM",
+          "quantity_per_initial_NAV": 8.02406082116085e-05,
+          "last_observed_price": 190.4558563232422,
+          "last_observed_date": "2017-12-29",
+          "marked_value_per_initial_NAV": 0.015282293748839675,
+          "absolute_value_fraction_of_final_NAV": 0.02225251667636329
+        },
+        {
+          "asset": "PG",
+          "quantity_per_initial_NAV": -4.4225915668041435e-05,
+          "last_observed_price": 78.69432830810547,
+          "last_observed_date": "2017-12-29",
+          "marked_value_per_initial_NAV": -0.003480328727307438,
+          "absolute_value_fraction_of_final_NAV": 0.005067699542780689
+        },
+        {
+          "asset": "PTC",
+          "quantity_per_initial_NAV": -4.447599831398601e-05,
+          "last_observed_price": 60.77000045776367,
+          "last_observed_date": "2017-12-29",
+          "marked_value_per_initial_NAV": -0.0027028064379004263,
+          "absolute_value_fraction_of_final_NAV": 0.003935550927158943
+        },
+        {
+          "asset": "SBAC",
+          "quantity_per_initial_NAV": -2.2409454628375597e-05,
+          "last_observed_price": 158.05068969726562,
+          "last_observed_date": "2017-12-29",
+          "marked_value_per_initial_NAV": -0.0035418297597543443,
+          "absolute_value_fraction_of_final_NAV": 0.005157251070360915
+        },
+        {
+          "asset": "TER",
+          "quantity_per_initial_NAV": -8.365468705396172e-05,
+          "last_observed_price": 40.584354400634766,
+          "last_observed_date": "2017-12-29",
+          "marked_value_per_initial_NAV": -0.0033950714666721757,
+          "absolute_value_fraction_of_final_NAV": 0.004943556619915378
+        }
+      ],
+      "illustrative_rows": [
+        {
+          "date": "2017-01-03",
+          "nav": 1.0,
+          "pnl": 0.0,
+          "fee": 0.0,
+          "turnover": 0.0
+        },
+        {
+          "date": "2017-01-04",
+          "nav": 0.9998539408599971,
+          "pnl": 0.000353940859997137,
+          "fee": 0.0004999999999999999,
+          "turnover": 0.9999999999999998
+        },
+        {
+          "date": "2023-05-31",
+          "nav": 0.6867669833081211,
+          "pnl": 0.0012683521304326889,
+          "fee": 0.0005073215042439622,
+          "turnover": 1.479058606592534
+        }
+      ],
+      "daily_sha256": "6d692883c8dd5f7ce261150836c15423912e84d860e39f0468328a479aa6d1b1",
+      "weights_sha256": "effc9c64a92a2fc58861e109868f91242b6d8e3d5e556df0463256cc847b36cb"
+    },
+    {
+      "scenario": "stockgross_d1_U_c5",
+      "passed": true,
+      "max_absolute_errors": {
+        "start_nav": 2.3314683517128287e-15,
+        "end_nav": 2.3314683517128287e-15,
+        "return": 4.579127875492528e-16,
+        "cash": 2.220446049250313e-15,
+        "mark_pnl": 1.0018028073766061e-16,
+        "fee": 9.996344030316351e-17,
+        "turnover": 4.440892098500626e-16,
+        "terminal_notional": 1.1102230246251565e-16,
+        "frozen_gross": 1.0408340855860843e-16,
+        "frozen_quantity": 2.0328790734103208e-20,
+        "gross": 1.1102230246251565e-16,
+        "net": 9.71445146547012e-17,
+        "compound_nav": 3.108624468950438e-14
+      },
+      "rows": 1613,
+      "weight_shape": [
+        1613,
+        505
+      ],
+      "gross_1_days": 1612,
+      "gross_0_days": 1,
+      "other_gross_days": 0,
+      "gross_min": 0.0,
+      "gross_max": 1.0000000000000013,
+      "active_day_gross_mean": 1.0,
+      "net_exposure_mean": -0.05123404589927265,
+      "net_exposure_min": -0.7492414108575528,
+      "net_exposure_max": 0.7365634968787617,
+      "max_single_stock_absolute_weight": 0.40845885636922846,
+      "mean_daily_turnover": 0.5500261755195486,
+      "fees_paid_per_initial_NAV": 0.3910251773530056,
+      "final_nav": 0.7027156050590134,
+      "cumulative_return": -0.2972843949409866,
+      "final_cash": 0.6946357895074751,
+      "frozen_days": 1361,
+      "first_frozen_return_date": "2018-01-03",
+      "final_unquoted_holdings_count": 13,
+      "final_unquoted_gross_value_per_initial_NAV": 0.03901321520915399,
+      "final_unquoted_gross_fraction_of_final_NAV": 0.055517786894568384,
+      "final_unquoted_net_value_per_initial_NAV": 0.008079815551538342,
+      "final_observed_quantity_max": 0.0,
+      "final_terminal_notional": 0.6589204216764055,
+      "final_unquoted_positions": [
+        {
+          "asset": "ABMD",
+          "quantity_per_initial_NAV": 1.5816138459543092e-05,
+          "last_observed_price": 381.0199890136719,
+          "last_observed_date": "2022-12-23",
+          "marked_value_per_initial_NAV": 0.006026264902093822,
+          "absolute_value_fraction_of_final_NAV": 0.008575681056047904
+        },
+        {
+          "asset": "ACN",
+          "quantity_per_initial_NAV": -3.696867984260328e-05,
+          "last_observed_price": 140.7832489013672,
+          "last_observed_date": "2017-12-29",
+          "marked_value_per_initial_NAV": -0.005204570855836174,
+          "absolute_value_fraction_of_final_NAV": 0.007406368690786508
+        },
+        {
+          "asset": "ATVI",
+          "quantity_per_initial_NAV": 1.6402266155521413e-05,
+          "last_observed_price": 60.765132904052734,
+          "last_observed_date": "2017-12-29",
+          "marked_value_per_initial_NAV": 0.0009966858828679048,
+          "absolute_value_fraction_of_final_NAV": 0.0014183346373590267
+        },
+        {
+          "asset": "BAX",
+          "quantity_per_initial_NAV": -3.4263912777146836e-05,
+          "last_observed_price": 59.80071258544922,
+          "last_observed_date": "2017-12-29",
+          "marked_value_per_initial_NAV": -0.002049006400039059,
+          "absolute_value_fraction_of_final_NAV": 0.0029158401852581394
+        },
+        {
+          "asset": "CINF",
+          "quantity_per_initial_NAV": -8.874945719094554e-05,
+          "last_observed_price": 64.88761901855469,
+          "last_observed_date": "2017-12-29",
+          "marked_value_per_initial_NAV": -0.005758740966309603,
+          "absolute_value_fraction_of_final_NAV": 0.00819498090671544
+        },
+        {
+          "asset": "CMS",
+          "quantity_per_initial_NAV": 4.439403894719345e-05,
+          "last_observed_price": 40.07643127441406,
+          "last_observed_date": "2017-12-29",
+          "marked_value_per_initial_NAV": 0.0017791546508608594,
+          "absolute_value_fraction_of_final_NAV": 0.002531827439226211
+        },
+        {
+          "asset": "FIS",
+          "quantity_per_initial_NAV": 4.439920131753639e-05,
+          "last_observed_price": 86.40916442871094,
+          "last_observed_date": "2017-12-29",
+          "marked_value_per_initial_NAV": 0.0038364978871504416,
+          "absolute_value_fraction_of_final_NAV": 0.005459531365933244
+        },
+        {
+          "asset": "MMM",
+          "quantity_per_initial_NAV": 3.1206128805459624e-05,
+          "last_observed_price": 190.4558563232422,
+          "last_observed_date": "2017-12-29",
+          "marked_value_per_initial_NAV": 0.005943389984177208,
+          "absolute_value_fraction_of_final_NAV": 0.008457745838272778
+        },
+        {
+          "asset": "MOS",
+          "quantity_per_initial_NAV": -4.413703538828474e-05,
+          "last_observed_price": 24.23526954650879,
+          "last_observed_date": "2017-12-29",
+          "marked_value_per_initial_NAV": -0.001069672949618878,
+          "absolute_value_fraction_of_final_NAV": 0.0015221989406782105
+        },
+        {
+          "asset": "PTC",
+          "quantity_per_initial_NAV": 3.8723929140658626e-05,
+          "last_observed_price": 60.77000045776367,
+          "last_observed_date": "2017-12-29",
+          "marked_value_per_initial_NAV": 0.0023532531916042325,
+          "absolute_value_fraction_of_final_NAV": 0.0033487988236814642
+        },
+        {
+          "asset": "QCOM",
+          "quantity_per_initial_NAV": 4.455887773365826e-05,
+          "last_observed_price": 54.936641693115234,
+          "last_observed_date": "2017-12-29",
+          "marked_value_per_initial_NAV": 0.0024479151003013143,
+          "absolute_value_fraction_of_final_NAV": 0.003483507528050043
+        },
+        {
+          "asset": "TER",
+          "quantity_per_initial_NAV": 4.025043239022849e-06,
+          "last_observed_price": 40.584354400634766,
+          "last_observed_date": "2017-12-29",
+          "marked_value_per_initial_NAV": 0.00016335378129038217,
+          "absolute_value_fraction_of_final_NAV": 0.00023246072822968527
+        },
+        {
+          "asset": "TT",
+          "quantity_per_initial_NAV": -2.2031688618053543e-05,
+          "last_observed_price": 62.850772857666016,
+          "last_observed_date": "2017-12-29",
+          "marked_value_per_initial_NAV": -0.001384708657004109,
+          "absolute_value_fraction_of_final_NAV": 0.0019705107543297297
+        }
+      ],
+      "illustrative_rows": [
+        {
+          "date": "2017-01-03",
+          "nav": 1.0,
+          "pnl": 0.0,
+          "fee": 0.0,
+          "turnover": 0.0
+        },
+        {
+          "date": "2017-01-04",
+          "nav": 1.0041729876428094,
+          "pnl": 0.004672987642809331,
+          "fee": 0.0004999999999999999,
+          "turnover": 0.9999999999999998
+        },
+        {
+          "date": "2023-05-31",
+          "nav": 0.7027156050590134,
+          "pnl": -0.0007244976948439826,
+          "fee": 0.000451999452685513,
+          "turnover": 1.2842861889445765
+        }
+      ],
+      "daily_sha256": "19077f23c7da38fc7c603c21eea70b1554e2fe181ef8ebab4843fdf88b7d4f0f",
+      "weights_sha256": "6c968d82d35e8fd6f254fe4b765910efb811c8423f2bdda12a9dd673af1406f9"
+    }
+  ],
+  "remaining_accounting_scope_limits": [
+    "1-NAV gross is measured before execution fees; immediate post-fee gross can exceed 1 by the fee fraction.",
+    "Unquoted residual holdings remain at the last observed price, without an assured realizable exit price or settlement.",
+    "One-session delay applies to dollar weights computed at the signal close; subsequent execution does not preserve the exact signal-close beta-share quantity ratio.",
+    "Modeled stock-net turnover fees exclude market impact, bid-ask execution uncertainty, financing and short-borrow costs.",
+    "Recorded accounting validity does not establish statistical superiority or raw-price adjustment correctness."
+  ]
+}

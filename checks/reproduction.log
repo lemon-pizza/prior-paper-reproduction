@@ -1,0 +1,391 @@
+RUN selection.py --all --validate --workers 2
+WARNING: Logging before InitGoogleLogging() is written to STDERR
+W20261029 15:10:59.664990 1847717888 cpu_info.cc:239] IOError: sysctlbyname failed for 'hw.l1dcachesize'. Detail: [errno 1] Operation not permitted
+W20261029 15:10:59.665760 1847717888 cpu_info.cc:239] IOError: sysctlbyname failed for 'hw.l2cachesize'. Detail: [errno 1] Operation not permitted
+W20261029 15:10:59.665879 1847717888 cpu_info.cc:239] IOError: sysctlbyname failed for 'hw.l3cachesize'. Detail: [errno 1] Operation not permitted
+W20261029 15:10:59.665942 1847717888 cpu_info.cc:239] IOError: sysctlbyname failed for 'hw.optional.neon'. Detail: [errno 1] Operation not permitted
+{
+  "passed": true,
+  "small_graph_brute_force": [
+    {
+      "graph": 0,
+      "nodes": 4,
+      "edges": 4,
+      "brute_force_optimum": 10.0,
+      "M_objective": 10.0,
+      "K": 1,
+      "U_truncated": 1
+    },
+    {
+      "graph": 1,
+      "nodes": 8,
+      "edges": 28,
+      "brute_force_optimum": 32.5,
+      "M_objective": 32.5,
+      "K": 4,
+      "U_truncated": 0
+    },
+    {
+      "graph": 2,
+      "nodes": 8,
+      "edges": 28,
+      "brute_force_optimum": 27.25,
+      "M_objective": 27.25,
+      "K": 4,
+      "U_truncated": 0
+    },
+    {
+      "graph": 3,
+      "nodes": 8,
+      "edges": 28,
+      "brute_force_optimum": 32.5,
+      "M_objective": 32.5,
+      "K": 4,
+      "U_truncated": 0
+    },
+    {
+      "graph": 4,
+      "nodes": 8,
+      "edges": 28,
+      "brute_force_optimum": 28.5,
+      "M_objective": 28.5,
+      "K": 4,
+      "U_truncated": 0
+    },
+    {
+      "graph": 5,
+      "nodes": 8,
+      "edges": 28,
+      "brute_force_optimum": 35.5,
+      "M_objective": 35.5,
+      "K": 4,
+      "U_truncated": 0
+    },
+    {
+      "graph": 6,
+      "nodes": 8,
+      "edges": 28,
+      "brute_force_optimum": 30.5,
+      "M_objective": 30.5,
+      "K": 4,
+      "U_truncated": 0
+    },
+    {
+      "graph": 7,
+      "nodes": 8,
+      "edges": 28,
+      "brute_force_optimum": 29.875,
+      "M_objective": 29.875,
+      "K": 4,
+      "U_truncated": 0
+    },
+    {
+      "graph": 8,
+      "nodes": 8,
+      "edges": 28,
+      "brute_force_optimum": 29.125,
+      "M_objective": 29.125,
+      "K": 4,
+      "U_truncated": 0
+    }
+  ],
+  "independent_OLS_ADF_samples": [
+    {
+      "cutoff": "2016-12-30",
+      "samples": 56,
+      "max_t_error": 9.614531393253856e-14,
+      "max_p_error": 4.18554080283684e-14,
+      "max_beta_error": 2.4424906541753444e-15,
+      "lag_mismatches": 0,
+      "subset_names": [
+        "A",
+        "ABBV",
+        "AMCR",
+        "ANET",
+        "BDX",
+        "CDW",
+        "CVS",
+        "FLT",
+        "JBHT",
+        "MPWR",
+        "POOL",
+        "TFX"
+      ]
+    },
+    {
+      "cutoff": "2020-01-31",
+      "samples": 56,
+      "max_t_error": 4.884981308350689e-14,
+      "max_p_error": 2.2537527399890678e-14,
+      "max_beta_error": 1.7763568394002505e-15,
+      "lag_mismatches": 0,
+      "subset_names": [
+        "A",
+        "ABBV",
+        "AMCR",
+        "ANET",
+        "BIIB",
+        "CDW",
+        "DAL",
+        "GD",
+        "JCI",
+        "MPWR",
+        "POOL",
+        "TMO"
+      ]
+    },
+    {
+      "cutoff": "2023-04-28",
+      "samples": 56,
+      "max_t_error": 1.9539925233402755e-14,
+      "max_p_error": 4.052314039881821e-15,
+      "max_beta_error": 3.9968028886505635e-15,
+      "lag_mismatches": 0,
+      "subset_names": [
+        "A",
+        "ABBV",
+        "AMCR",
+        "ANET",
+        "BK",
+        "CDW",
+        "DAL",
+        "FTNT",
+        "JBHT",
+        "MPWR",
+        "MRNA",
+        "POOL",
+        "TMUS"
+      ]
+    }
+  ],
+  "exact_direction_tie_alphabetical": true,
+  "scope": "nine exhaustive small graphs; independent OLS+statsmodels for168 sampled directed pairs"
+}
+{"cutoff": "2016-12-30", "eligible_n": 461, "K": 230, "undirected_edges": 106030, "adf_seconds": 16.244268915965222, "weighted_matching_seconds": 0.34336587507277727, "total_seconds": 20.066344582941383}
+{"cutoff": "2017-01-31", "eligible_n": 461, "K": 230, "undirected_edges": 106030, "adf_seconds": 16.15912762505468, "weighted_matching_seconds": 0.3226421670988202, "total_seconds": 19.99305312510114}
+{"cutoff": "2017-02-28", "eligible_n": 461, "K": 230, "undirected_edges": 106030, "adf_seconds": 16.464984457939863, "weighted_matching_seconds": 0.33929666702169925, "total_seconds": 20.33684154099319}
+{"cutoff": "2017-03-31", "eligible_n": 461, "K": 230, "undirected_edges": 106030, "adf_seconds": 16.483647166984156, "weighted_matching_seconds": 0.35374579194467515, "total_seconds": 20.336994541925378}
+{"cutoff": "2017-04-28", "eligible_n": 462, "K": 231, "undirected_edges": 106491, "adf_seconds": 16.967188292066567, "weighted_matching_seconds": 0.24845162499696016, "total_seconds": 18.440616208012216}
+{"cutoff": "2017-06-30", "eligible_n": 463, "K": 231, "undirected_edges": 106953, "adf_seconds": 17.023733124951832, "weighted_matching_seconds": 0.3409867089940235, "total_seconds": 20.901506624999456}
+{"cutoff": "2017-05-31", "eligible_n": 462, "K": 231, "undirected_edges": 106491, "adf_seconds": 16.968517582979985, "weighted_matching_seconds": 0.25178329192567617, "total_seconds": 18.465728958020918}
+{"cutoff": "2017-08-31", "eligible_n": 466, "K": 233, "undirected_edges": 108345, "adf_seconds": 17.274310417007655, "weighted_matching_seconds": 0.2516230420442298, "total_seconds": 18.746501334011555}
+{"cutoff": "2017-07-31", "eligible_n": 465, "K": 232, "undirected_edges": 107880, "adf_seconds": 17.160085417097434, "weighted_matching_seconds": 0.3511521249311045, "total_seconds": 21.040582959074527}
+{"cutoff": "2017-09-29", "eligible_n": 466, "K": 233, "undirected_edges": 108345, "adf_seconds": 17.298829167033546, "weighted_matching_seconds": 0.2448312499327585, "total_seconds": 18.753918375005014}
+{"cutoff": "2017-10-31", "eligible_n": 467, "K": 233, "undirected_edges": 108811, "adf_seconds": 17.797809166950174, "weighted_matching_seconds": 0.35515841597225517, "total_seconds": 21.748866584035568}
+{"cutoff": "2017-12-29", "eligible_n": 467, "K": 233, "undirected_edges": 108811, "adf_seconds": 16.999138624989428, "weighted_matching_seconds": 0.38302137493155897, "total_seconds": 21.098736791987903}
+{"cutoff": "2017-11-30", "eligible_n": 467, "K": 233, "undirected_edges": 108811, "adf_seconds": 17.694567166967317, "weighted_matching_seconds": 0.3571518330136314, "total_seconds": 21.654211584012955}
+{"cutoff": "2018-01-31", "eligible_n": 446, "K": 223, "undirected_edges": 99235, "adf_seconds": 15.744621666963212, "weighted_matching_seconds": 0.2211520829005167, "total_seconds": 17.080638249986805}
+{"cutoff": "2018-02-28", "eligible_n": 446, "K": 223, "undirected_edges": 99235, "adf_seconds": 15.212381707970053, "weighted_matching_seconds": 0.23217933299019933, "total_seconds": 16.59694425005}
+{"cutoff": "2018-03-29", "eligible_n": 447, "K": 223, "undirected_edges": 99681, "adf_seconds": 15.362172874971293, "weighted_matching_seconds": 0.32521083299070597, "total_seconds": 18.987370374961756}
+{"cutoff": "2018-04-30", "eligible_n": 447, "K": 223, "undirected_edges": 99681, "adf_seconds": 15.36830424994696, "weighted_matching_seconds": 0.32181929203215986, "total_seconds": 18.93670379195828}
+{"cutoff": "2018-05-31", "eligible_n": 447, "K": 223, "undirected_edges": 99681, "adf_seconds": 15.094317667069845, "weighted_matching_seconds": 0.3356263330206275, "total_seconds": 18.686953459051438}
+{"cutoff": "2018-06-29", "eligible_n": 447, "K": 223, "undirected_edges": 99681, "adf_seconds": 15.233400624943897, "weighted_matching_seconds": 0.3356363750062883, "total_seconds": 18.869091916945763}
+{"cutoff": "2018-07-31", "eligible_n": 448, "K": 224, "undirected_edges": 100128, "adf_seconds": 15.12201495806221, "weighted_matching_seconds": 0.2717794590862468, "total_seconds": 16.580253250082023}
+{"cutoff": "2018-08-31", "eligible_n": 448, "K": 224, "undirected_edges": 100128, "adf_seconds": 15.551621582941152, "weighted_matching_seconds": 0.23239154100883752, "total_seconds": 16.942734458018094}
+{"cutoff": "2018-09-28", "eligible_n": 448, "K": 224, "undirected_edges": 100128, "adf_seconds": 15.35294108290691, "weighted_matching_seconds": 0.2467783329775557, "total_seconds": 16.823633416905068}
+{"cutoff": "2018-10-31", "eligible_n": 449, "K": 224, "undirected_edges": 100576, "adf_seconds": 15.916560834040865, "weighted_matching_seconds": 0.3140567500377074, "total_seconds": 19.50106450007297}
+{"cutoff": "2018-11-30", "eligible_n": 450, "K": 225, "undirected_edges": 101025, "adf_seconds": 15.503893374931067, "weighted_matching_seconds": 0.23258158296812326, "total_seconds": 16.913612208911218}
+{"cutoff": "2018-12-31", "eligible_n": 450, "K": 225, "undirected_edges": 101025, "adf_seconds": 16.083094708039425, "weighted_matching_seconds": 0.223284958046861, "total_seconds": 17.528896833071485}
+{"cutoff": "2019-01-31", "eligible_n": 450, "K": 225, "undirected_edges": 101025, "adf_seconds": 16.098498875042424, "weighted_matching_seconds": 0.22304383397568017, "total_seconds": 17.489599165972322}
+{"cutoff": "2019-02-28", "eligible_n": 450, "K": 225, "undirected_edges": 101025, "adf_seconds": 16.06219512503594, "weighted_matching_seconds": 0.22309137496631593, "total_seconds": 17.4301910410868}
+{"cutoff": "2019-03-29", "eligible_n": 450, "K": 225, "undirected_edges": 101025, "adf_seconds": 15.992290499969386, "weighted_matching_seconds": 0.22657266701571643, "total_seconds": 17.395244666957296}
+{"cutoff": "2019-04-30", "eligible_n": 450, "K": 225, "undirected_edges": 101025, "adf_seconds": 16.305587291019037, "weighted_matching_seconds": 0.22497141594067216, "total_seconds": 17.66376304102596}
+{"cutoff": "2019-05-31", "eligible_n": 451, "K": 225, "undirected_edges": 101475, "adf_seconds": 16.18730954104103, "weighted_matching_seconds": 0.31273449992295355, "total_seconds": 19.99473662499804}
+{"cutoff": "2019-06-28", "eligible_n": 451, "K": 225, "undirected_edges": 101475, "adf_seconds": 15.871324582956731, "weighted_matching_seconds": 0.3268932499922812, "total_seconds": 19.459034540923312}
+{"cutoff": "2019-07-31", "eligible_n": 451, "K": 225, "undirected_edges": 101475, "adf_seconds": 15.455337207997218, "weighted_matching_seconds": 0.3173350840806961, "total_seconds": 19.199104042025283}
+{"cutoff": "2019-08-30", "eligible_n": 451, "K": 225, "undirected_edges": 101475, "adf_seconds": 15.758527916972525, "weighted_matching_seconds": 0.3305255409795791, "total_seconds": 19.41628924990073}
+{"cutoff": "2019-09-30", "eligible_n": 451, "K": 225, "undirected_edges": 101475, "adf_seconds": 15.438126166933216, "weighted_matching_seconds": 0.31967095797881484, "total_seconds": 19.13763729191851}
+{"cutoff": "2019-10-31", "eligible_n": 451, "K": 225, "undirected_edges": 101475, "adf_seconds": 15.954101208015345, "weighted_matching_seconds": 0.31353854201734066, "total_seconds": 19.51763925002888}
+{"cutoff": "2019-11-29", "eligible_n": 451, "K": 225, "undirected_edges": 101475, "adf_seconds": 15.782143209013157, "weighted_matching_seconds": 0.31760741700418293, "total_seconds": 19.557676375028677}
+{"cutoff": "2019-12-31", "eligible_n": 451, "K": 225, "undirected_edges": 101475, "adf_seconds": 15.654966666013934, "weighted_matching_seconds": 0.33492470800410956, "total_seconds": 19.334098082967103}
+{"cutoff": "2020-01-31", "eligible_n": 452, "K": 226, "undirected_edges": 101926, "adf_seconds": 15.412936291075312, "weighted_matching_seconds": 0.2263280829647556, "total_seconds": 17.240915125003085}
+{"cutoff": "2020-02-28", "eligible_n": 452, "K": 226, "undirected_edges": 101926, "adf_seconds": 17.287057250039652, "weighted_matching_seconds": 0.23769991705194116, "total_seconds": 18.697202083072625}
+{"cutoff": "2020-03-31", "eligible_n": 452, "K": 226, "undirected_edges": 101926, "adf_seconds": 20.0638673750218, "weighted_matching_seconds": 0.24428479198832065, "total_seconds": 21.585548417060636}
+{"cutoff": "2020-04-30", "eligible_n": 453, "K": 226, "undirected_edges": 102378, "adf_seconds": 19.680747334030457, "weighted_matching_seconds": 0.3259224999928847, "total_seconds": 23.8823483340675}
+{"cutoff": "2020-05-29", "eligible_n": 453, "K": 226, "undirected_edges": 102378, "adf_seconds": 19.263468708959408, "weighted_matching_seconds": 0.32346991600934416, "total_seconds": 23.058564500068314}
+{"cutoff": "2020-06-30", "eligible_n": 453, "K": 226, "undirected_edges": 102378, "adf_seconds": 19.72632304194849, "weighted_matching_seconds": 0.3337522919755429, "total_seconds": 23.353042249917053}
+{"cutoff": "2020-07-31", "eligible_n": 453, "K": 226, "undirected_edges": 102378, "adf_seconds": 19.35886529099662, "weighted_matching_seconds": 0.31840370898135006, "total_seconds": 23.041512832976878}
+{"cutoff": "2020-08-31", "eligible_n": 453, "K": 226, "undirected_edges": 102378, "adf_seconds": 19.272723166970536, "weighted_matching_seconds": 0.32304354198276997, "total_seconds": 22.890442166943103}
+{"cutoff": "2020-09-30", "eligible_n": 453, "K": 226, "undirected_edges": 102378, "adf_seconds": 19.367695041000843, "weighted_matching_seconds": 0.33106549992226064, "total_seconds": 23.170470166020095}
+{"cutoff": "2020-10-30", "eligible_n": 453, "K": 226, "undirected_edges": 102378, "adf_seconds": 19.481791916070506, "weighted_matching_seconds": 0.32967170898336917, "total_seconds": 23.168603666010313}
+{"cutoff": "2020-11-30", "eligible_n": 453, "K": 226, "undirected_edges": 102378, "adf_seconds": 18.868817540933378, "weighted_matching_seconds": 0.3263205410912633, "total_seconds": 22.66893954097759}
+{"cutoff": "2020-12-31", "eligible_n": 454, "K": 227, "undirected_edges": 102831, "adf_seconds": 19.218096167081967, "weighted_matching_seconds": 0.24583895795512944, "total_seconds": 20.62755641702097}
+{"cutoff": "2021-02-26", "eligible_n": 454, "K": 227, "undirected_edges": 102831, "adf_seconds": 19.314617416006513, "weighted_matching_seconds": 0.2428027499699965, "total_seconds": 20.725562332896516}
+{"cutoff": "2021-01-29", "eligible_n": 454, "K": 227, "undirected_edges": 102831, "adf_seconds": 19.13846933306195, "weighted_matching_seconds": 0.2523730000248179, "total_seconds": 20.625292083015665}
+{"cutoff": "2021-03-31", "eligible_n": 457, "K": 228, "undirected_edges": 104196, "adf_seconds": 19.118226999999024, "weighted_matching_seconds": 0.345673416974023, "total_seconds": 22.978594874963164}
+{"cutoff": "2021-04-30", "eligible_n": 457, "K": 228, "undirected_edges": 104196, "adf_seconds": 18.7877025839407, "weighted_matching_seconds": 0.34473958297166973, "total_seconds": 22.68975141691044}
+{"cutoff": "2021-05-28", "eligible_n": 458, "K": 229, "undirected_edges": 104653, "adf_seconds": 18.82263095898088, "weighted_matching_seconds": 0.28191337489988655, "total_seconds": 20.34902012499515}
+{"cutoff": "2021-06-30", "eligible_n": 458, "K": 229, "undirected_edges": 104653, "adf_seconds": 18.932157458039, "weighted_matching_seconds": 0.2532917920034379, "total_seconds": 20.39801420806907}
+{"cutoff": "2021-07-30", "eligible_n": 458, "K": 229, "undirected_edges": 104653, "adf_seconds": 18.80997579090763, "weighted_matching_seconds": 0.27774924994446337, "total_seconds": 20.405702457996085}
+{"cutoff": "2021-08-31", "eligible_n": 458, "K": 229, "undirected_edges": 104653, "adf_seconds": 19.22250683302991, "weighted_matching_seconds": 0.2519275000086054, "total_seconds": 20.643463624990545}
+{"cutoff": "2021-09-30", "eligible_n": 458, "K": 229, "undirected_edges": 104653, "adf_seconds": 18.850486042094417, "weighted_matching_seconds": 0.26464641699567437, "total_seconds": 20.42385679204017}
+{"cutoff": "2021-10-29", "eligible_n": 458, "K": 229, "undirected_edges": 104653, "adf_seconds": 19.48884733300656, "weighted_matching_seconds": 0.24250670801848173, "total_seconds": 20.90909766603727}
+{"cutoff": "2021-11-30", "eligible_n": 458, "K": 229, "undirected_edges": 104653, "adf_seconds": 19.158303041942418, "weighted_matching_seconds": 0.25294958311133087, "total_seconds": 20.714597666985355}
+{"cutoff": "2021-12-31", "eligible_n": 458, "K": 229, "undirected_edges": 104653, "adf_seconds": 19.116092332988046, "weighted_matching_seconds": 0.23593850003089756, "total_seconds": 20.522948917001486}
+{"cutoff": "2022-01-31", "eligible_n": 458, "K": 229, "undirected_edges": 104653, "adf_seconds": 18.885699667036533, "weighted_matching_seconds": 0.2593880830099806, "total_seconds": 20.44582712498959}
+{"cutoff": "2022-02-28", "eligible_n": 458, "K": 229, "undirected_edges": 104653, "adf_seconds": 19.22435291693546, "weighted_matching_seconds": 0.24812929204199463, "total_seconds": 20.65341249993071}
+{"cutoff": "2022-03-31", "eligible_n": 459, "K": 229, "undirected_edges": 105111, "adf_seconds": 17.945985917001963, "weighted_matching_seconds": 0.33640704094432294, "total_seconds": 22.018756208010018}
+{"cutoff": "2022-04-29", "eligible_n": 459, "K": 229, "undirected_edges": 105111, "adf_seconds": 16.827328124898486, "weighted_matching_seconds": 0.34943804203066975, "total_seconds": 20.61943408299703}
+{"cutoff": "2022-05-31", "eligible_n": 459, "K": 229, "undirected_edges": 105111, "adf_seconds": 16.439848667010665, "weighted_matching_seconds": 0.3360954999225214, "total_seconds": 20.51966537500266}
+{"cutoff": "2022-06-30", "eligible_n": 459, "K": 229, "undirected_edges": 105111, "adf_seconds": 16.377759666065685, "weighted_matching_seconds": 0.36283558304421604, "total_seconds": 20.179100041044876}
+{"cutoff": "2022-07-29", "eligible_n": 459, "K": 229, "undirected_edges": 105111, "adf_seconds": 16.168115124921314, "weighted_matching_seconds": 0.33863849996123463, "total_seconds": 20.213232041918673}
+{"cutoff": "2022-08-31", "eligible_n": 459, "K": 229, "undirected_edges": 105111, "adf_seconds": 16.400539249996655, "weighted_matching_seconds": 0.3513117909897119, "total_seconds": 20.198715916951187}
+{"cutoff": "2022-09-30", "eligible_n": 459, "K": 229, "undirected_edges": 105111, "adf_seconds": 16.029852875042707, "weighted_matching_seconds": 0.3264543330296874, "total_seconds": 20.084632667014375}
+{"cutoff": "2022-10-31", "eligible_n": 459, "K": 229, "undirected_edges": 105111, "adf_seconds": 16.00891837500967, "weighted_matching_seconds": 0.3585912080015987, "total_seconds": 19.958266667090356}
+{"cutoff": "2022-11-30", "eligible_n": 459, "K": 229, "undirected_edges": 105111, "adf_seconds": 15.793486207956448, "weighted_matching_seconds": 0.3479377500480041, "total_seconds": 19.89881050004624}
+{"cutoff": "2022-12-30", "eligible_n": 458, "K": 229, "undirected_edges": 104653, "adf_seconds": 16.303775375010446, "weighted_matching_seconds": 0.2614071670686826, "total_seconds": 17.768010125029832}
+{"cutoff": "2023-01-31", "eligible_n": 458, "K": 229, "undirected_edges": 104653, "adf_seconds": 15.957748917047866, "weighted_matching_seconds": 0.29564475000370294, "total_seconds": 17.697339667007327}
+{"cutoff": "2023-02-28", "eligible_n": 458, "K": 229, "undirected_edges": 104653, "adf_seconds": 16.384261792059988, "weighted_matching_seconds": 0.24881129199638963, "total_seconds": 17.824937249999493}
+{"cutoff": "2023-03-31", "eligible_n": 458, "K": 229, "undirected_edges": 104653, "adf_seconds": 15.980276665999554, "weighted_matching_seconds": 0.2857619170099497, "total_seconds": 17.565476416028105}
+{"cutoff": "2023-04-28", "eligible_n": 458, "K": 229, "undirected_edges": 104653, "adf_seconds": 14.178315250086598, "weighted_matching_seconds": 0.24255662504583597, "total_seconds": 15.617265000008047}
+RUN backtest.py 
+WARNING: Logging before InitGoogleLogging() is written to STDERR
+W20261029 15:11:02.270212 1849503744 cpu_info.cc:239] IOError: sysctlbyname failed for 'hw.l1dcachesize'. Detail: [errno 1] Operation not permitted
+W20261029 15:11:02.270368 1849503744 cpu_info.cc:239] IOError: sysctlbyname failed for 'hw.l2cachesize'. Detail: [errno 1] Operation not permitted
+W20261029 15:11:02.270423 1849503744 cpu_info.cc:239] IOError: sysctlbyname failed for 'hw.l3cachesize'. Detail: [errno 1] Operation not permitted
+W20261029 15:11:02.270473 1849503744 cpu_info.cc:239] IOError: sysctlbyname failed for 'hw.optional.neon'. Detail: [errno 1] Operation not permitted
+targets 2016-12-30 666
+targets 2017-01-31 692
+targets 2017-02-28 669
+targets 2017-03-31 669
+targets 2017-04-28 679
+targets 2017-05-31 681
+targets 2017-06-30 677
+targets 2017-07-31 681
+targets 2017-08-31 675
+targets 2017-09-29 674
+targets 2017-10-31 682
+targets 2017-11-30 687
+targets 2017-12-29 695
+targets 2018-01-31 658
+targets 2018-02-28 671
+targets 2018-03-29 650
+targets 2018-04-30 634
+targets 2018-05-31 642
+targets 2018-06-29 668
+targets 2018-07-31 684
+targets 2018-08-31 644
+targets 2018-09-28 634
+targets 2018-10-31 663
+targets 2018-11-30 651
+targets 2018-12-31 644
+targets 2019-01-31 650
+targets 2019-02-28 660
+targets 2019-03-29 672
+targets 2019-04-30 646
+targets 2019-05-31 637
+targets 2019-06-28 646
+targets 2019-07-31 620
+targets 2019-08-30 653
+targets 2019-09-30 710
+targets 2019-10-31 644
+targets 2019-11-29 668
+targets 2019-12-31 921
+targets 2020-01-31 673
+targets 2020-02-28 670
+targets 2020-03-31 651
+targets 2020-04-30 638
+targets 2020-05-29 641
+targets 2020-06-30 635
+targets 2020-07-31 640
+targets 2020-08-31 635
+targets 2020-09-30 642
+targets 2020-10-30 625
+targets 2020-11-30 636
+targets 2020-12-31 669
+targets 2021-01-29 667
+targets 2021-02-26 648
+targets 2021-03-31 668
+targets 2021-04-30 657
+targets 2021-05-28 660
+targets 2021-06-30 666
+targets 2021-07-30 672
+targets 2021-08-31 689
+targets 2021-09-30 705
+targets 2021-10-29 688
+targets 2021-11-30 710
+targets 2021-12-31 704
+targets 2022-01-31 754
+targets 2022-02-28 699
+targets 2022-03-31 691
+targets 2022-04-29 681
+targets 2022-05-31 671
+targets 2022-06-30 684
+targets 2022-07-29 664
+targets 2022-08-31 684
+targets 2022-09-30 664
+targets 2022-10-31 702
+targets 2022-11-30 662
+targets 2022-12-30 678
+targets 2023-01-31 674
+targets 2023-02-28 655
+targets 2023-03-31 659
+targets 2023-04-28 677
+stockgross_d0_M_c0 cumulative 0.2680500185300658 Sharpe 0.706386204687207
+stockgross_d0_M_c5 cumulative -0.2018379180139157 Sharpe -0.6207861071346125
+stockgross_d0_M_c10 cumulative -0.4951031088412584 Sharpe -1.9488814085030117
+pairgross_d0_M_c0 cumulative 0.2680500185300658 Sharpe 0.706386204687207
+pairgross_d0_M_c5 cumulative -0.2018379180139157 Sharpe -0.6207861071346125
+pairgross_d0_M_c10 cumulative -0.4951031088412584 Sharpe -1.9488814085030117
+stockgross_d0_B_c0 cumulative 0.29361860921271044 Sharpe 0.5301985757972364
+stockgross_d0_B_c5 cumulative -0.1796719715234203 Sharpe -0.33856172400222817
+stockgross_d0_B_c10 cumulative -0.4752825520123689 Sharpe -1.2079417423039864
+pairgross_d0_B_c0 cumulative 0.2573921263996084 Sharpe 0.5114253121648176
+pairgross_d0_B_c5 cumulative -0.1672108747264659 Sharpe -0.3431030548013788
+pairgross_d0_B_c10 cumulative -0.4451554348625538 Sharpe -1.1973927647763525
+stockgross_d0_U_c0 cumulative 0.11986108719357391 Sharpe 0.24371540199798217
+stockgross_d0_U_c5 cumulative -0.28245155903039576 Sharpe -0.5425209859364869
+stockgross_d0_U_c10 cumulative -0.5375379581046491 Sharpe -1.329875171933666
+pairgross_d0_U_c0 cumulative 0.11986108719357391 Sharpe 0.24371540199798217
+pairgross_d0_U_c5 cumulative -0.28245155903039576 Sharpe -0.5425209859364869
+pairgross_d0_U_c10 cumulative -0.5375379581046491 Sharpe -1.329875171933666
+stockgross_d1_M_c0 cumulative 0.12777069012724973 Sharpe 0.37749104756034446
+stockgross_d1_M_c5 cumulative -0.28961210085222344 Sharpe -0.9758546704858017
+stockgross_d1_M_c10 cumulative -0.5500338738914914 Sharpe -2.328970857521159
+pairgross_d1_M_c0 cumulative 0.12777069012724973 Sharpe 0.37749104756034446
+pairgross_d1_M_c5 cumulative -0.28961210085222344 Sharpe -0.9758546704858017
+pairgross_d1_M_c10 cumulative -0.5500338738914914 Sharpe -2.328970857521159
+stockgross_d1_B_c0 cumulative 0.0792421737858513 Sharpe 0.18531420669514634
+stockgross_d1_B_c5 cumulative -0.313233016691878 Sharpe -0.6758112820517693
+stockgross_d1_B_c10 cumulative -0.5583695826265009 Sharpe -1.5398800483806618
+pairgross_d1_B_c0 cumulative 0.0761799251274029 Sharpe 0.18848482489304227
+pairgross_d1_B_c5 cumulative -0.28570003280047807 Sharpe -0.6565685299296659
+pairgross_d1_B_c10 cumulative -0.5225380421623798 Sharpe -1.5034315682832748
+stockgross_d1_U_c0 cumulative 0.09497163551429755 Sharpe 0.2024429315552954
+stockgross_d1_U_c5 cumulative -0.2972843949409877 Sharpe -0.57176925301487
+stockgross_d1_U_c10 cumulative -0.546045180592312 Sharpe -1.3466839583652594
+pairgross_d1_U_c0 cumulative 0.09497163551429755 Sharpe 0.2024429315552954
+pairgross_d1_U_c5 cumulative -0.2972843949409877 Sharpe -0.57176925301487
+pairgross_d1_U_c10 cumulative -0.546045180592312 Sharpe -1.3466839583652594
+clean_stockgross_d1_M_c0 cumulative 0.09969701633496864 Sharpe 0.2992143046448765
+clean_stockgross_d1_M_c5 cumulative -0.3065185502584562 Sharpe -1.026067599980885
+clean_stockgross_d1_M_c10 cumulative -0.5600892620519684 Sharpe -2.351549235748707
+clean_stockgross_d1_B_c0 cumulative 0.03493573698566266 Sharpe 0.10595224583970578
+clean_stockgross_d1_B_c5 cumulative -0.3407320821000476 Sharpe -0.7440940255098374
+clean_stockgross_d1_B_c10 cumulative -0.5751326135730856 Sharpe -1.597479683040565
+clean_stockgross_d1_U_c0 cumulative 0.042081154771050455 Sharpe 0.11667181167742526
+clean_stockgross_d1_U_c5 cumulative -0.33184595163763686 Sharpe -0.6638830969333037
+clean_stockgross_d1_U_c10 cumulative -0.5690598751649798 Sharpe -1.4448580928423782
+COMPLETE 45 paths
+RUN verify.py 
+PASS test_beta_share_single_period
+PASS test_stock_netting_and_two_gross_definitions
+PASS test_frozen_quantity_reserve_and_reappearance
+PASS test_terminal_missing_quote_has_no_fictitious_trade
+PASS test_frozen_exposure_can_exceed_remaining_equity
+PASS test_cost_paths_reinvest_their_own_nav
+PASS test_no_signal_stays_cash_and_first_missing_quote_is_not_backfilled
+PASS test_close_to_close_execution_and_full_session_delay
+PASS test_month_target_signal_beta_price_lag_and_boundary
+WARNING: Logging before InitGoogleLogging() is written to STDERR
+W20261029 15:11:12.839187 1845833728 cpu_info.cc:239] IOError: sysctlbyname failed for 'hw.l1dcachesize'. Detail: [errno 1] Operation not permitted
+W20261029 15:11:12.839340 1845833728 cpu_info.cc:239] IOError: sysctlbyname failed for 'hw.l2cachesize'. Detail: [errno 1] Operation not permitted
+W20261029 15:11:12.839399 1845833728 cpu_info.cc:239] IOError: sysctlbyname failed for 'hw.l3cachesize'. Detail: [errno 1] Operation not permitted
+W20261029 15:11:12.839450 1845833728 cpu_info.cc:239] IOError: sysctlbyname failed for 'hw.optional.neon'. Detail: [errno 1] Operation not permitted
+PASS test_actual_selected_pairs_future_price_causality
+PASS actual_path_audit: 45 daily files, 3 independently reconciled primary paths
+RUN analyze.py --require-clean
+Completed joint date bootstrap L=21, reps=4000
+Completed joint date bootstrap L=5, reps=2000
+Completed joint date bootstrap L=63, reps=2000
+{"passed": true, "paths": 45, "checks": 325, "max_error": 5.6621374255882984e-14, "report": "/Volumes/SSD,External/project/sr/(26-2)quant-team 3/reports/validation.html"}

@@ -1,0 +1,157 @@
+{
+  "passed": true,
+  "small_graph_brute_force": [
+    {
+      "graph": 0,
+      "nodes": 4,
+      "edges": 4,
+      "brute_force_optimum": 10.0,
+      "M_objective": 10.0,
+      "K": 1,
+      "U_truncated": 1
+    },
+    {
+      "graph": 1,
+      "nodes": 8,
+      "edges": 28,
+      "brute_force_optimum": 32.5,
+      "M_objective": 32.5,
+      "K": 4,
+      "U_truncated": 0
+    },
+    {
+      "graph": 2,
+      "nodes": 8,
+      "edges": 28,
+      "brute_force_optimum": 27.25,
+      "M_objective": 27.25,
+      "K": 4,
+      "U_truncated": 0
+    },
+    {
+      "graph": 3,
+      "nodes": 8,
+      "edges": 28,
+      "brute_force_optimum": 32.5,
+      "M_objective": 32.5,
+      "K": 4,
+      "U_truncated": 0
+    },
+    {
+      "graph": 4,
+      "nodes": 8,
+      "edges": 28,
+      "brute_force_optimum": 28.5,
+      "M_objective": 28.5,
+      "K": 4,
+      "U_truncated": 0
+    },
+    {
+      "graph": 5,
+      "nodes": 8,
+      "edges": 28,
+      "brute_force_optimum": 35.5,
+      "M_objective": 35.5,
+      "K": 4,
+      "U_truncated": 0
+    },
+    {
+      "graph": 6,
+      "nodes": 8,
+      "edges": 28,
+      "brute_force_optimum": 30.5,
+      "M_objective": 30.5,
+      "K": 4,
+      "U_truncated": 0
+    },
+    {
+      "graph": 7,
+      "nodes": 8,
+      "edges": 28,
+      "brute_force_optimum": 29.875,
+      "M_objective": 29.875,
+      "K": 4,
+      "U_truncated": 0
+    },
+    {
+      "graph": 8,
+      "nodes": 8,
+      "edges": 28,
+      "brute_force_optimum": 29.125,
+      "M_objective": 29.125,
+      "K": 4,
+      "U_truncated": 0
+    }
+  ],
+  "independent_OLS_ADF_samples": [
+    {
+      "cutoff": "2016-12-30",
+      "samples": 56,
+      "max_t_error": 9.614531393253856e-14,
+      "max_p_error": 4.18554080283684e-14,
+      "max_beta_error": 2.4424906541753444e-15,
+      "lag_mismatches": 0,
+      "subset_names": [
+        "A",
+        "ABBV",
+        "AMCR",
+        "ANET",
+        "BDX",
+        "CDW",
+        "CVS",
+        "FLT",
+        "JBHT",
+        "MPWR",
+        "POOL",
+        "TFX"
+      ]
+    },
+    {
+      "cutoff": "2020-01-31",
+      "samples": 56,
+      "max_t_error": 4.884981308350689e-14,
+      "max_p_error": 2.2537527399890678e-14,
+      "max_beta_error": 1.7763568394002505e-15,
+      "lag_mismatches": 0,
+      "subset_names": [
+        "A",
+        "ABBV",
+        "AMCR",
+        "ANET",
+        "BIIB",
+        "CDW",
+        "DAL",
+        "GD",
+        "JCI",
+        "MPWR",
+        "POOL",
+        "TMO"
+      ]
+    },
+    {
+      "cutoff": "2023-04-28",
+      "samples": 56,
+      "max_t_error": 1.9539925233402755e-14,
+      "max_p_error": 4.052314039881821e-15,
+      "max_beta_error": 3.9968028886505635e-15,
+      "lag_mismatches": 0,
+      "subset_names": [
+        "A",
+        "ABBV",
+        "AMCR",
+        "ANET",
+        "BK",
+        "CDW",
+        "DAL",
+        "FTNT",
+        "JBHT",
+        "MPWR",
+        "MRNA",
+        "POOL",
+        "TMUS"
+      ]
+    }
+  ],
+  "exact_direction_tie_alphabetical": true,
+  "scope": "nine exhaustive small graphs; independent OLS+statsmodels for168 sampled directed pairs"
+}

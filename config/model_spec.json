@@ -1,0 +1,29 @@
+{
+  "status": "Fixed research baseline promoted after additional validation",
+  "scope": "Additional Q-strategy validation, not an exact replication of all paper tables",
+  "period": [
+    "2017-01-03",
+    "2023-05-31"
+  ],
+  "source": "data/prices.parquet.gz (505-column source, unchanged; see data/provenance.json)",
+  "universe": "At each month-end, only columns with 504 complete positive past observations; historical index membership remains unavailable",
+  "candidate": "All directed log-OLS residual ADF tests with default AIC. Collapse each unordered pair to the more negative t direction, alphabetic ties; this is a declared common orientation rule, not recovered author code.",
+  "M": "Maximum sum of negative ADF t over disjoint edges, maxcardinality=False",
+  "B": "Top K edges by negative ADF t, where K equals that month's M count",
+  "U": "Alphabetically deterministic unweighted maximum-cardinality matching, lexicographically truncate to K if necessary",
+  "signal": "Original public Q20 using rolling504 endpoint residual series; no Z invented",
+  "primary": "Q, stockgross=1, delay1, costs 0/5/10 basis points per traded dollar, each cost case with independent actual shares/cash/NAV",
+  "delay0": "Idealized execution at the same close used to compute the instruction; earns only next day's return",
+  "delay1": "Entire dollar-weight instruction including monthly selection delayed by one additional trading session; first day cash",
+  "budget": "Reserve absolute frozen holdings first; normalize tradable target stock net gross or pair pre-net gross to remaining 1-NAV budget",
+  "missing": "No signal imputation. Unquoted held quantities freeze, last-price mark, recovery jump recognized when a new price appears; only observed final holdings liquidated",
+  "statistics": "Joint-date moving-block bootstrap of M-B and M-U differences; 21 sessions/4000 draws primary, 5 and 63/2000 draws sensitivity; zero risk-free rate; 252 days",
+  "subperiods": "2017-2019, 2020-2023 and calendar years; these are retrospective robustness splits, not a fresh holdout",
+  "jump_diagnostic": "Exclude 2018-01-02 return row in statistics only; does not repair selection, signal or compounding paths",
+  "interpretation": "Comparison of full selection policies under common rules. Neither M-B nor M-U isolates a pure overlap-removal causal effect. One deterministic U is not a random-control distribution.",
+  "no_performance_tuning": true,
+  "primary_inference": "M minus B Sharpe difference at stockgross, delay1, 5bp; 95% joint-date 21-session moving-block interval. Other costs/rules/subperiods are robustness diagnostics; no selection of a winning rule.",
+  "known_discontinuity_sensitivity": "Before inspecting new returns, exclude both SRE and CPRT from the entire candidate graph and reselect all months. Primary stockgross/delay1 and all three fees only. Retrospective data-quality sensitivity, not a complete repair of corporate actions.",
+  "baseline_id": "matching_q_v1",
+  "specification_role": "Record of locked rules; model constants are implemented in src, not dynamically configured by editing this JSON."
+}
