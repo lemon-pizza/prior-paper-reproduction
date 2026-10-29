@@ -1,0 +1,44 @@
+{
+  "status": "passed",
+  "method": "Regenerated from retained prices and four current frozen ledgers; no old aggregates consumed",
+  "long_missing_threshold_trading_rows": 60,
+  "absolute_tolerance": 1e-10,
+  "original_missing_counts_and_definitions_match": true,
+  "original_daily_counts_csv_exact_comparison_passed": true,
+  "original_missing_runs_csv_exact_comparison_passed": true,
+  "original_price_return_comparison_csv_exact_comparison_passed": true,
+  "frozen_csv_bitwise_equality_not_claimed": true,
+  "frozen_checks": {
+    "MQ": {
+      "csv_vs_current_daily_max_percentage_point_error": 4.440892098500626e-16,
+      "terminal_weight_vs_original_summary_error": 1.3877787807814457e-17
+    },
+    "MZ": {
+      "csv_vs_current_daily_max_percentage_point_error": 0.0,
+      "terminal_weight_vs_original_summary_error": 0.0
+    },
+    "BQ": {
+      "csv_vs_current_daily_max_percentage_point_error": 4.440892098500626e-16,
+      "terminal_weight_vs_original_summary_error": 0.0
+    },
+    "BZ": {
+      "csv_vs_current_daily_max_percentage_point_error": 8.881784197001252e-16,
+      "terminal_weight_vs_original_summary_error": 2.0816681711721685e-17
+    }
+  },
+  "png_visual_review": "both regenerated PNGs viewed; Korean text and annotations legible, no clipping",
+  "obsolete_paths_in_code": false,
+  "matplotlib_cache": "TemporaryDirectory, cleaned on exit",
+  "source_sha256": "7605eab6525ddb5db66965d1559a56b48375f11a14cd1040eaa12318a545939c",
+  "outputs": [
+    "daily_missing_counts.csv",
+    "missing_runs.csv",
+    "missing_summary.json",
+    "price_return_comparison.csv",
+    "frozen_exposure_pct.csv",
+    "price_discontinuity.png",
+    "price_discontinuity.svg",
+    "missing_and_frozen.png",
+    "missing_and_frozen.svg"
+  ]
+}

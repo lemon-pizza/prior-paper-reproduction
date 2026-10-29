@@ -1,0 +1,79 @@
+{
+  "paper": "https://arxiv.org/html/2403.07998v1",
+  "start": "2017-01-03",
+  "end": "2023-05-31",
+  "trading_days": 1613,
+  "formation_prices": 504,
+  "ols": "log_y = alpha + beta * log_x; alphabetical orientation",
+  "adf": {
+    "regression": "c",
+    "maxlag": 1,
+    "autolag": null
+  },
+  "selection": {
+    "score": "negative ADF t",
+    "main_baseline_pairs": 250,
+    "monthly": true
+  },
+  "signals": {
+    "Q": "negative sign(q) * round(abs(q)); current-fit median/IQR",
+    "Z": "negative sign(z) if abs(z)>=2; current-fit regression std",
+    "signal_and_beta_lag": 1
+  },
+  "primary": "paper_daily; beta dollars versus one dollar; active gross normalized",
+  "equal_pair_sensitivity": "divide legs by 1+abs(beta), retain Q magnitude",
+  "controls": {
+    "degree_caps": [
+      1,
+      2,
+      4,
+      "unlimited"
+    ],
+    "K": "monthly original matching count",
+    "objective": "maximum total selection score with exactly K distinct edges",
+    "allocation": "equal dollars per signal unit",
+    "gross_budget_NAV": 1,
+    "frozen_reserve": true,
+    "unused_signal_budget": "cash",
+    "realized_volatility_targeting": false
+  },
+  "delay": "shift full target dollar weights one trading day including monthly selection; initial day cash",
+  "missing": "freeze quantities, forward-fill marks, residual ledger",
+  "costs": {
+    "fixed_daily": 3.968253968253968e-05,
+    "per_turnover": [
+      3.968253968253968e-05,
+      0.0005,
+      0.001
+    ]
+  },
+  "cash_interest": 0,
+  "risk_free": 0,
+  "annual_days": 252,
+  "variance_ddof": 1,
+  "bootstrap": {
+    "method": "joint-date circular moving block percentile",
+    "main_length": 21,
+    "main_reps": 4000,
+    "sensitivity_lengths": [
+      5,
+      63
+    ],
+    "sensitivity_reps": 2000,
+    "seed": 240307998
+  },
+  "covariance_bootstrap": {
+    "method": "joint circular month blocks; conditional within-month moments",
+    "block_months": 3,
+    "reps": 4000
+  },
+  "performance_tuning": false,
+  "implementation": "src/run.py; fixed model constants in source, this JSON is the specification record",
+  "terminal_cost": "Only assets with a finite positive observed final quote incur terminal turnover; missing quotes remain frozen.",
+  "paths": {
+    "prices": "data/prices.parquet.gz",
+    "selected_pairs": "data/selection",
+    "features": "data/features",
+    "outputs": "results"
+  }
+}

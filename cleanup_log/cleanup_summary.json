@@ -1,0 +1,52 @@
+{
+  "completed_at": "2026-10-29T10:10:37.792036",
+  "backup_created": false,
+  "deleted_top_level_items": 29,
+  "deleted_file_entries": 83640,
+  "deleted_logical_bytes": 16107301088,
+  "deleted_allocated_bytes": 16391741440,
+  "before_allocated_bytes": 25453887488,
+  "after_allocated_bytes": 9474367488,
+  "working_files_before_allocated_bytes": 16391745536,
+  "final_model": {
+    "files": 363,
+    "bytes": 389487728,
+    "allocated_bytes": 411226112
+  },
+  "git": {
+    "files": 19396,
+    "bytes": 9011346152,
+    "allocated_bytes": 9062141952
+  },
+  "net_reduction_allocated_bytes": 15979520000,
+  "retained_top_level": {
+    "cleanup_log": {
+      "files": 3,
+      "bytes": 941697,
+      "allocated_bytes": 991232
+    },
+    ".gitignore": {
+      "files": 1,
+      "bytes": 107,
+      "allocated_bytes": 4096
+    },
+    ".git": {
+      "files": 19396,
+      "bytes": 9011346152,
+      "allocated_bytes": 9062141952
+    },
+    "README.txt": {
+      "files": 1,
+      "bytes": 422,
+      "allocated_bytes": 4096
+    },
+    "final_model": {
+      "files": 363,
+      "bytes": 389487728,
+      "allocated_bytes": 411226112
+    }
+  },
+  "all_deletion_targets_absent": true,
+  "post_deletion_reproduction_passed": true,
+  "note": "Filesystem sizes use stat.st_blocks×512 and decimal GB. They describe directory allocation, not guaranteed SSD free-space increase on APFS. Git is existing read-only history, not a new backup."
+}

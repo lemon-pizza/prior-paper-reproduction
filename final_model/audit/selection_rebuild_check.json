@@ -1,0 +1,112 @@
+{
+  "check": "Single-month full selection rebuild from preserved raw prices",
+  "month": "2017-01",
+  "scope": "Only 2017-01: all candidate edges rebuilt in memory, M/B and C1/C2/C4/Cinf selected. No 77-month selection or backtest execution.",
+  "reference": "data/selection/2017-01.parquet",
+  "raw_data": "data/prices.parquet.gz",
+  "raw_sha256": "7605eab6525ddb5db66965d1559a56b48375f11a14cd1040eaa12318a545939c",
+  "started_kst": "2026-10-29T10:06:58.029221+09:00",
+  "finished_kst": "2026-10-29T10:07:31.946272+09:00",
+  "seconds": 33.98517912509851,
+  "temporary_outputs": "Created under /private/tmp with TemporaryDirectory and automatically removed after comparison.",
+  "reference_K": 230,
+  "rebuilt_K": 230,
+  "reference_n_candidates": 106030,
+  "rebuilt_n_candidates": 106030,
+  "matching_backend": "networkx",
+  "solver": {
+    "C2": {
+      "solver": "scipy.optimize.milp/HiGHS",
+      "status": 0,
+      "message": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+      "mip_gap": 0.0,
+      "objective_score": 1008.6323763931453,
+      "dual_upper_score": 1008.6323763931453,
+      "seconds": 6.618150042020716,
+      "n_binary_variables": 106030,
+      "optimal": true
+    },
+    "C4": {
+      "solver": "scipy.optimize.milp/HiGHS",
+      "status": 0,
+      "message": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+      "mip_gap": 0.0,
+      "objective_score": 1033.1531345988867,
+      "dual_upper_score": 1033.1531345988867,
+      "seconds": 6.446065875003114,
+      "n_binary_variables": 106030,
+      "optimal": true
+    }
+  },
+  "selected_rows_reference": 1400,
+  "selected_rows_rebuilt": 1400,
+  "unmatched_selected_rows": [],
+  "numeric_absolute_tolerance": 1e-10,
+  "max_absolute_errors": {
+    "beta": 2.220446049250313e-15,
+    "alpha": 1.4210854715202004e-14,
+    "t_stat": 3.2862601528904634e-14,
+    "p_value": 1.0824674490095276e-15,
+    "score": 3.2862601528904634e-14,
+    "formation_pair_vol_daily": 8.673617379884035e-18,
+    "formation_pair_vol_annual": 1.3877787807814457e-16,
+    "formation_residual_sigma": 1.249000902703301e-16
+  },
+  "groups": [
+    {
+      "cap": "C1",
+      "reference_count": 230,
+      "rebuilt_count": 230,
+      "same_selected_pairs": true,
+      "reference_objective": 929.8511637392778,
+      "rebuilt_objective": 929.8511637392778,
+      "objective_difference": 0.0
+    },
+    {
+      "cap": "C2",
+      "reference_count": 230,
+      "rebuilt_count": 230,
+      "same_selected_pairs": true,
+      "reference_objective": 1008.6323763931453,
+      "rebuilt_objective": 1008.6323763931453,
+      "objective_difference": 0.0
+    },
+    {
+      "cap": "C4",
+      "reference_count": 230,
+      "rebuilt_count": 230,
+      "same_selected_pairs": true,
+      "reference_objective": 1033.1531345988865,
+      "rebuilt_objective": 1033.1531345988865,
+      "objective_difference": 0.0
+    },
+    {
+      "cap": "Cinf",
+      "reference_count": 230,
+      "rebuilt_count": 230,
+      "same_selected_pairs": true,
+      "reference_objective": 1049.5941528009635,
+      "rebuilt_objective": 1049.5941528009635,
+      "objective_difference": 0.0
+    },
+    {
+      "cap": "M",
+      "reference_count": 230,
+      "rebuilt_count": 230,
+      "same_selected_pairs": true,
+      "reference_objective": 929.8511637392778,
+      "rebuilt_objective": 929.8511637392778,
+      "objective_difference": 0.0
+    },
+    {
+      "cap": "B",
+      "reference_count": 250,
+      "rebuilt_count": 250,
+      "same_selected_pairs": true,
+      "reference_objective": 1135.7058006776497,
+      "rebuilt_objective": 1135.7058006776497,
+      "objective_difference": 0.0
+    }
+  ],
+  "passed": true
+}

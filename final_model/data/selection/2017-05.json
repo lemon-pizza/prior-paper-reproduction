@@ -1,0 +1,32 @@
+{
+  "schema_version": 2,
+  "month": "2017-05",
+  "K": 231,
+  "n_candidates": 106491,
+  "solver": {
+    "C2": {
+      "solver": "scipy.optimize.milp/HiGHS",
+      "status": 0,
+      "message": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+      "mip_gap": 0.0,
+      "objective_score": 1007.630045996309,
+      "dual_upper_score": 1007.630045996309,
+      "seconds": 6.387589916936122,
+      "n_binary_variables": 106491,
+      "optimal": true
+    },
+    "C4": {
+      "solver": "scipy.optimize.milp/HiGHS",
+      "status": 0,
+      "message": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+      "mip_gap": 0.0,
+      "objective_score": 1037.508200584026,
+      "dual_upper_score": 1037.508200584026,
+      "seconds": 6.323912666994147,
+      "n_binary_variables": 106491,
+      "optimal": true
+    }
+  },
+  "C1_source": "cached maximum-weight matching, binary64-exact integer weights",
+  "Cinf_source": "top K by -ADF t statistic, deterministic x/y tie-break"
+}

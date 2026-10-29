@@ -1,0 +1,18 @@
+{
+  "daily_directory": "/Volumes/SSD,External/project/sr/(26-2)quant-team 3/final_model/results/daily",
+  "daily_files": 20,
+  "metrics_rows": 100,
+  "primary_joint_bootstrap": {
+    "length": 21,
+    "reps": 4000,
+    "seed": 240308019,
+    "method": "materialized ordered resampled arrays"
+  },
+  "cost_paths": [
+    "gross",
+    "net_fixed",
+    "net_turnover",
+    "net_5bp",
+    "net_10bp"
+  ]
+}
