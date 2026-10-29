@@ -1,0 +1,487 @@
+{
+  "created_at_utc": "2026-10-29T08:15:23.017414+00:00",
+  "source_repository": "https://github.com/jingmouren/kai-trading-bot-pair",
+  "source_commit": "aaac6d999d6b077304a887caff2aab514d7ea6a2",
+  "source_sha256": "1ec5807f13b9c0944833b79cf3aa1ae36700ef3c801dd9c024a44c00e08e07a3",
+  "price_sha256": "7605eab6525ddb5db66965d1559a56b48375f11a14cd1040eaa12318a545939c",
+  "trading_sha256": "cd5cd9c749f6ef2fce0f4f29017495ffedb9be6e5139e69f5e0bdab1afd9ee83",
+  "validator_sha256": "97a3935ffe8fb2e048def5a671a290cd2bb438caed9c30b3ecfe5a5809abdcaa",
+  "reference": "Independent sklearn trailing-504 daily log-OLS with constant column and intercept; temporary pair CSVs passed to unedited public Performance.run_trade. No production rolling_endpoint or make_pair_frame is used by these six independent cases.",
+  "sampling": "Fixed 16 oriented pairs across 3 intervals, including actual missing-price windows and negative beta estimates. Pair samples are independent of portfolio selection; this is not a selection validation.",
+  "pair_months": 48,
+  "independent_daily_regressions": 1730,
+  "missing_windows_preserved": 318,
+  "negative_beta_windows": 429,
+  "absolute_tolerance": 1e-10,
+  "checks": [
+    {
+      "start": "2017-12-29",
+      "end": "2018-01-31",
+      "sample_group": "group_a",
+      "pairs": [
+        [
+          "GPC",
+          "MMM"
+        ],
+        [
+          "CMS",
+          "SRE"
+        ],
+        [
+          "AAPL",
+          "MSFT"
+        ],
+        [
+          "XEL",
+          "CMS"
+        ],
+        [
+          "PFE",
+          "MCK"
+        ],
+        [
+          "NUE",
+          "MCD"
+        ],
+        [
+          "T",
+          "CPB"
+        ],
+        [
+          "YUM",
+          "BK"
+        ]
+      ],
+      "pair_count": 8,
+      "rows": 22,
+      "independent_daily_regressions": 281,
+      "missing_windows_preserved": 63,
+      "negative_beta_windows": 0,
+      "max_abs_return_error": 5.751475684601104e-15,
+      "date_values_equal_after_ns_normalization": true,
+      "source_index_dtype": "datetime64[ns]",
+      "vector_index_dtype": "datetime64[us]",
+      "nan_mask_equal": true,
+      "passed": true,
+      "vector_metadata": {
+        "start": "2017-12-29",
+        "end": "2018-01-31",
+        "pairs": 8,
+        "rows": 22,
+        "nan_returns": 0,
+        "infinite_returns": 0,
+        "exp_beta_overflow_elements": 0,
+        "infinite_pair_pnl_elements": 0,
+        "infinite_pair_capital_elements": 0,
+        "inclusive_endpoints": true,
+        "signal": "Q20 only; denominator Q25-Q75; round; shift1",
+        "allocation": "same-day beta shares versus one share; same-day gross capital denominator",
+        "missing_cache_completion": "Missing per-pair CSV generator supplied as 504-observation rolling log-OLS endpoint SPREAD/BETA; this is a reconstruction assumption, not recovered author code.",
+        "batch_size": 128
+      }
+    },
+    {
+      "start": "2017-12-29",
+      "end": "2018-01-31",
+      "sample_group": "group_b",
+      "pairs": [
+        [
+          "PAYX",
+          "LIN"
+        ],
+        [
+          "ULTA",
+          "IP"
+        ],
+        [
+          "CCI",
+          "SWK"
+        ],
+        [
+          "BA",
+          "MNST"
+        ],
+        [
+          "BRO",
+          "ITW"
+        ],
+        [
+          "JKHY",
+          "CVX"
+        ],
+        [
+          "HST",
+          "CCI"
+        ],
+        [
+          "OXY",
+          "AEE"
+        ]
+      ],
+      "pair_count": 8,
+      "rows": 22,
+      "independent_daily_regressions": 344,
+      "missing_windows_preserved": 0,
+      "negative_beta_windows": 43,
+      "max_abs_return_error": 9.2148511043888e-15,
+      "date_values_equal_after_ns_normalization": true,
+      "source_index_dtype": "datetime64[ns]",
+      "vector_index_dtype": "datetime64[us]",
+      "nan_mask_equal": true,
+      "passed": true,
+      "vector_metadata": {
+        "start": "2017-12-29",
+        "end": "2018-01-31",
+        "pairs": 8,
+        "rows": 22,
+        "nan_returns": 0,
+        "infinite_returns": 0,
+        "exp_beta_overflow_elements": 0,
+        "infinite_pair_pnl_elements": 0,
+        "infinite_pair_capital_elements": 0,
+        "inclusive_endpoints": true,
+        "signal": "Q20 only; denominator Q25-Q75; round; shift1",
+        "allocation": "same-day beta shares versus one share; same-day gross capital denominator",
+        "missing_cache_completion": "Missing per-pair CSV generator supplied as 504-observation rolling log-OLS endpoint SPREAD/BETA; this is a reconstruction assumption, not recovered author code.",
+        "batch_size": 128
+      }
+    },
+    {
+      "start": "2020-02-28",
+      "end": "2020-03-31",
+      "sample_group": "group_a",
+      "pairs": [
+        [
+          "GPC",
+          "MMM"
+        ],
+        [
+          "CMS",
+          "SRE"
+        ],
+        [
+          "AAPL",
+          "MSFT"
+        ],
+        [
+          "XEL",
+          "CMS"
+        ],
+        [
+          "PFE",
+          "MCK"
+        ],
+        [
+          "NUE",
+          "MCD"
+        ],
+        [
+          "T",
+          "CPB"
+        ],
+        [
+          "YUM",
+          "BK"
+        ]
+      ],
+      "pair_count": 8,
+      "rows": 23,
+      "independent_daily_regressions": 220,
+      "missing_windows_preserved": 132,
+      "negative_beta_windows": 132,
+      "max_abs_return_error": 2.240568841571644e-14,
+      "date_values_equal_after_ns_normalization": true,
+      "source_index_dtype": "datetime64[ns]",
+      "vector_index_dtype": "datetime64[us]",
+      "nan_mask_equal": true,
+      "passed": true,
+      "vector_metadata": {
+        "start": "2020-02-28",
+        "end": "2020-03-31",
+        "pairs": 8,
+        "rows": 23,
+        "nan_returns": 0,
+        "infinite_returns": 0,
+        "exp_beta_overflow_elements": 0,
+        "infinite_pair_pnl_elements": 0,
+        "infinite_pair_capital_elements": 0,
+        "inclusive_endpoints": true,
+        "signal": "Q20 only; denominator Q25-Q75; round; shift1",
+        "allocation": "same-day beta shares versus one share; same-day gross capital denominator",
+        "missing_cache_completion": "Missing per-pair CSV generator supplied as 504-observation rolling log-OLS endpoint SPREAD/BETA; this is a reconstruction assumption, not recovered author code.",
+        "batch_size": 128
+      }
+    },
+    {
+      "start": "2020-02-28",
+      "end": "2020-03-31",
+      "sample_group": "group_b",
+      "pairs": [
+        [
+          "PAYX",
+          "LIN"
+        ],
+        [
+          "ULTA",
+          "IP"
+        ],
+        [
+          "CCI",
+          "SWK"
+        ],
+        [
+          "BA",
+          "MNST"
+        ],
+        [
+          "BRO",
+          "ITW"
+        ],
+        [
+          "JKHY",
+          "CVX"
+        ],
+        [
+          "HST",
+          "CCI"
+        ],
+        [
+          "OXY",
+          "AEE"
+        ]
+      ],
+      "pair_count": 8,
+      "rows": 23,
+      "independent_daily_regressions": 352,
+      "missing_windows_preserved": 0,
+      "negative_beta_windows": 152,
+      "max_abs_return_error": 8.485226410392954e-14,
+      "date_values_equal_after_ns_normalization": true,
+      "source_index_dtype": "datetime64[ns]",
+      "vector_index_dtype": "datetime64[us]",
+      "nan_mask_equal": true,
+      "passed": true,
+      "vector_metadata": {
+        "start": "2020-02-28",
+        "end": "2020-03-31",
+        "pairs": 8,
+        "rows": 23,
+        "nan_returns": 0,
+        "infinite_returns": 0,
+        "exp_beta_overflow_elements": 0,
+        "infinite_pair_pnl_elements": 0,
+        "infinite_pair_capital_elements": 0,
+        "inclusive_endpoints": true,
+        "signal": "Q20 only; denominator Q25-Q75; round; shift1",
+        "allocation": "same-day beta shares versus one share; same-day gross capital denominator",
+        "missing_cache_completion": "Missing per-pair CSV generator supplied as 504-observation rolling log-OLS endpoint SPREAD/BETA; this is a reconstruction assumption, not recovered author code.",
+        "batch_size": 128
+      }
+    },
+    {
+      "start": "2023-03-31",
+      "end": "2023-04-28",
+      "sample_group": "group_a",
+      "pairs": [
+        [
+          "GPC",
+          "MMM"
+        ],
+        [
+          "CMS",
+          "SRE"
+        ],
+        [
+          "AAPL",
+          "MSFT"
+        ],
+        [
+          "XEL",
+          "CMS"
+        ],
+        [
+          "PFE",
+          "MCK"
+        ],
+        [
+          "NUE",
+          "MCD"
+        ],
+        [
+          "T",
+          "CPB"
+        ],
+        [
+          "YUM",
+          "BK"
+        ]
+      ],
+      "pair_count": 8,
+      "rows": 20,
+      "independent_daily_regressions": 205,
+      "missing_windows_preserved": 123,
+      "negative_beta_windows": 0,
+      "max_abs_return_error": 6.559423143537302e-14,
+      "date_values_equal_after_ns_normalization": true,
+      "source_index_dtype": "datetime64[ns]",
+      "vector_index_dtype": "datetime64[us]",
+      "nan_mask_equal": true,
+      "passed": true,
+      "vector_metadata": {
+        "start": "2023-03-31",
+        "end": "2023-04-28",
+        "pairs": 8,
+        "rows": 20,
+        "nan_returns": 0,
+        "infinite_returns": 0,
+        "exp_beta_overflow_elements": 0,
+        "infinite_pair_pnl_elements": 0,
+        "infinite_pair_capital_elements": 0,
+        "inclusive_endpoints": true,
+        "signal": "Q20 only; denominator Q25-Q75; round; shift1",
+        "allocation": "same-day beta shares versus one share; same-day gross capital denominator",
+        "missing_cache_completion": "Missing per-pair CSV generator supplied as 504-observation rolling log-OLS endpoint SPREAD/BETA; this is a reconstruction assumption, not recovered author code.",
+        "batch_size": 128
+      }
+    },
+    {
+      "start": "2023-03-31",
+      "end": "2023-04-28",
+      "sample_group": "group_b",
+      "pairs": [
+        [
+          "PAYX",
+          "LIN"
+        ],
+        [
+          "ULTA",
+          "IP"
+        ],
+        [
+          "CCI",
+          "SWK"
+        ],
+        [
+          "BA",
+          "MNST"
+        ],
+        [
+          "BRO",
+          "ITW"
+        ],
+        [
+          "JKHY",
+          "CVX"
+        ],
+        [
+          "HST",
+          "CCI"
+        ],
+        [
+          "OXY",
+          "AEE"
+        ]
+      ],
+      "pair_count": 8,
+      "rows": 20,
+      "independent_daily_regressions": 328,
+      "missing_windows_preserved": 0,
+      "negative_beta_windows": 102,
+      "max_abs_return_error": 3.388175157104101e-14,
+      "date_values_equal_after_ns_normalization": true,
+      "source_index_dtype": "datetime64[ns]",
+      "vector_index_dtype": "datetime64[us]",
+      "nan_mask_equal": true,
+      "passed": true,
+      "vector_metadata": {
+        "start": "2023-03-31",
+        "end": "2023-04-28",
+        "pairs": 8,
+        "rows": 20,
+        "nan_returns": 0,
+        "infinite_returns": 0,
+        "exp_beta_overflow_elements": 0,
+        "infinite_pair_pnl_elements": 0,
+        "infinite_pair_capital_elements": 0,
+        "inclusive_endpoints": true,
+        "signal": "Q20 only; denominator Q25-Q75; round; shift1",
+        "allocation": "same-day beta shares versus one share; same-day gross capital denominator",
+        "missing_cache_completion": "Missing per-pair CSV generator supplied as 504-observation rolling log-OLS endpoint SPREAD/BETA; this is a reconstruction assumption, not recovered author code.",
+        "batch_size": 128
+      }
+    }
+  ],
+  "max_abs_return_error": 8.485226410392954e-14,
+  "shared_input_arithmetic_check": {
+    "start": "2017-12-29",
+    "end": "2018-01-31",
+    "pairs": [
+      [
+        "GPC",
+        "MMM"
+      ],
+      [
+        "CMS",
+        "SRE"
+      ],
+      [
+        "AAPL",
+        "MSFT"
+      ]
+    ],
+    "rows": 22,
+    "passed": true,
+    "absolute_tolerance": 1e-10,
+    "max_return_difference": 7.077671781985373e-16,
+    "nan_mask_equal": true,
+    "original_simple_report": {
+      "SHARPE": -5.626506928345461,
+      "SORTINO": -7.117977833553047,
+      "CUMULATIVE_RETURN": -0.03620620587743806,
+      "SIMPLE_RETURN": -0.036501254541490794
+    },
+    "vector_metadata": {
+      "start": "2017-12-29",
+      "end": "2018-01-31",
+      "pairs": 3,
+      "rows": 22,
+      "nan_returns": 7,
+      "infinite_returns": 0,
+      "exp_beta_overflow_elements": 0,
+      "infinite_pair_pnl_elements": 0,
+      "infinite_pair_capital_elements": 0,
+      "inclusive_endpoints": true,
+      "signal": "Q20 only; denominator Q25-Q75; round; shift1",
+      "allocation": "same-day beta shares versus one share; same-day gross capital denominator",
+      "missing_cache_completion": "Missing per-pair CSV generator supplied as 504-observation rolling log-OLS endpoint SPREAD/BETA; this is a reconstruction assumption, not recovered author code.",
+      "batch_size": 128
+    },
+    "environment_HOME_unchanged": true,
+    "source_file_unmodified": "/Volumes/SSD,External/project/sr/(26-2)quant-team 3/source/performance.py",
+    "shims": [
+      "tools.fetch_optimal_pairs returns supplied oriented pairs",
+      "utils exposes pd,np,Tuple and local HOME; original utils side effects are not executed",
+      "multiprocess maps to stdlib only if absent"
+    ],
+    "temporary_pair_CSVs": "automatically removed",
+    "scope": "Original arithmetic equivalence conditional on the shared completion input."
+  },
+  "environment_HOME_unchanged": true,
+  "temporary_pair_csvs": "Automatically removed; operating-system default temporary directory.",
+  "versions": {
+    "numpy": "2.3.5",
+    "pandas": "2.3.3",
+    "sklearn": "1.7.2"
+  },
+  "thread_environment": {
+    "OPENBLAS_NUM_THREADS": "1",
+    "VECLIB_MAXIMUM_THREADS": "1"
+  },
+  "limitations": [
+    "The daily pair CSV writer is absent. Rolling-504 endpoint OLS is a declared completion assumption, not recovered author code.",
+    "Same-day beta and capital, same-day month-end selection, and duplicated inclusive month ends remain original source behavior. Numerical equivalence does not establish an ex-ante backtest.",
+    "The public active run_trade uses Q only. Neither a Z strategy nor transaction costs are invented.",
+    "These are bounded independent samples, not an exhaustive proof of all pair-day arithmetic or original author cache equivalence."
+  ],
+  "passed": true
+}

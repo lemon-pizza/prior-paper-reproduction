@@ -1,0 +1,9 @@
+{
+  "created_at": "2026-10-29T07:55:50.505015+00:00",
+  "previous_model": "matching_q_v1",
+  "previous_commit": "ecf77d9b013dc7205359d243a44611440f931ef7",
+  "target_repo": "https://github.com/lemon-pizza/prior-paper-reproduction",
+  "original_code_commit": "aaac6d999d6b077304a887caff2aab514d7ea6a2",
+  "price_sha256": "7605eab6525ddb5db66965d1559a56b48375f11a14cd1040eaa12318a545939c",
+  "previous_selection_or_trading_cache_copied": false
+}

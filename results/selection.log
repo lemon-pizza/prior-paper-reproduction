@@ -1,0 +1,102 @@
+WARNING: Logging before InitGoogleLogging() is written to STDERR
+W20261029 16:57:53.205401 1802350592 cpu_info.cc:239] IOError: sysctlbyname failed for 'hw.l1dcachesize'. Detail: [errno 1] Operation not permitted
+W20261029 16:57:53.206053 1802350592 cpu_info.cc:239] IOError: sysctlbyname failed for 'hw.l2cachesize'. Detail: [errno 1] Operation not permitted
+W20261029 16:57:53.206137 1802350592 cpu_info.cc:239] IOError: sysctlbyname failed for 'hw.l3cachesize'. Detail: [errno 1] Operation not permitted
+W20261029 16:57:53.206197 1802350592 cpu_info.cc:239] IOError: sysctlbyname failed for 'hw.optional.neon'. Detail: [errno 1] Operation not permitted
+WARNING: Logging before InitGoogleLogging() is written to STDERR
+W20261029 16:57:54.458899 1802678272 cpu_info.cc:239] IOError: sysctlbyname failed for 'hw.l1dcachesize'. Detail: [errno 1] Operation not permitted
+W20261029 16:57:54.459084 1802678272 cpu_info.cc:239] IOError: sysctlbyname failed for 'hw.l2cachesize'. Detail: [errno 1] Operation not permitted
+W20261029 16:57:54.459177 1802678272 cpu_info.cc:239] IOError: sysctlbyname failed for 'hw.l3cachesize'. Detail: [errno 1] Operation not permitted
+W20261029 16:57:54.459267 1802678272 cpu_info.cc:239] IOError: sysctlbyname failed for 'hw.optional.neon'. Detail: [errno 1] Operation not permitted
+WARNING: Logging before InitGoogleLogging() is written to STDERR
+W20261029 16:57:54.463603 1840427008 cpu_info.cc:239] IOError: sysctlbyname failed for 'hw.l1dcachesize'. Detail: [errno 1] Operation not permitted
+WARNING: Logging before InitGoogleLogging() is written to STDERR
+W20261029 16:57:54.463699 1833283584 cpu_info.cc:239] IOError: sysctlbyname failed for 'hw.l1dcachesize'. Detail: [errno 1] Operation not permitted
+W20261029 16:57:54.463778 1840427008 cpu_info.cc:239] IOError: sysctlbyname failed for 'hw.l2cachesize'. Detail: [errno 1] Operation not permitted
+W20261029 16:57:54.463826 1833283584 cpu_info.cc:239] IOError: sysctlbyname failed for 'hw.l2cachesize'. Detail: [errno 1] Operation not permitted
+W20261029 16:57:54.463913 1840427008 cpu_info.cc:239] IOError: sysctlbyname failed for 'hw.l3cachesize'. Detail: [errno 1] Operation not permitted
+W20261029 16:57:54.464097 1840427008 cpu_info.cc:239] IOError: sysctlbyname failed for 'hw.optional.neon'. Detail: [errno 1] Operation not permitted
+W20261029 16:57:54.464038 1833283584 cpu_info.cc:239] IOError: sysctlbyname failed for 'hw.l3cachesize'. Detail: [errno 1] Operation not permitted
+W20261029 16:57:54.464373 1833283584 cpu_info.cc:239] IOError: sysctlbyname failed for 'hw.optional.neon'. Detail: [errno 1] Operation not permitted
+WARNING: Logging before InitGoogleLogging() is written to STDERR
+W20261029 16:57:54.472824 1804365824 cpu_info.cc:239] IOError: sysctlbyname failed for 'hw.l1dcachesize'. Detail: [errno 1] Operation not permitted
+W20261029 16:57:54.473053 1804365824 cpu_info.cc:239] IOError: sysctlbyname failed for 'hw.l2cachesize'. Detail: [errno 1] Operation not permitted
+W20261029 16:57:54.473181 1804365824 cpu_info.cc:239] IOError: sysctlbyname failed for 'hw.l3cachesize'. Detail: [errno 1] Operation not permitted
+W20261029 16:57:54.473259 1804365824 cpu_info.cc:239] IOError: sysctlbyname failed for 'hw.optional.neon'. Detail: [errno 1] Operation not permitted
+{"cutoff": "2020-02-28", "candidate_n": 169332, "baseline_n": 29059, "matching_n": 206, "total_seconds": 22.10815837502014}
+{"cutoff": "2020-01-31", "candidate_n": 169332, "baseline_n": 34004, "matching_n": 206, "total_seconds": 22.171653333003633}
+{"cutoff": "2020-03-31", "candidate_n": 169332, "baseline_n": 24829, "matching_n": 206, "total_seconds": 25.460450708051212}
+{"cutoff": "2020-04-30", "candidate_n": 169332, "baseline_n": 29457, "matching_n": 206, "total_seconds": 25.64328570791986}
+{"cutoff": "2020-06-30", "candidate_n": 169332, "baseline_n": 30154, "matching_n": 206, "total_seconds": 24.047064375015907}
+{"cutoff": "2020-05-29", "candidate_n": 169332, "baseline_n": 29330, "matching_n": 206, "total_seconds": 24.272559582954273}
+{"cutoff": "2020-07-31", "candidate_n": 169332, "baseline_n": 27727, "matching_n": 206, "total_seconds": 24.04081541695632}
+{"cutoff": "2020-08-31", "candidate_n": 169332, "baseline_n": 28900, "matching_n": 206, "total_seconds": 24.068206583033316}
+{"cutoff": "2020-09-30", "candidate_n": 169332, "baseline_n": 29770, "matching_n": 206, "total_seconds": 23.757626749924384}
+{"cutoff": "2020-10-30", "candidate_n": 169332, "baseline_n": 27305, "matching_n": 206, "total_seconds": 23.759171250043437}
+{"cutoff": "2020-11-30", "candidate_n": 169332, "baseline_n": 27637, "matching_n": 206, "total_seconds": 23.952735416940413}
+{"cutoff": "2020-12-31", "candidate_n": 169332, "baseline_n": 28817, "matching_n": 206, "total_seconds": 24.087855458026752}
+{"cutoff": "2021-01-29", "candidate_n": 169332, "baseline_n": 28566, "matching_n": 206, "total_seconds": 25.444103249930777}
+{"cutoff": "2021-02-26", "candidate_n": 169332, "baseline_n": 26846, "matching_n": 206, "total_seconds": 25.47091104206629}
+{"cutoff": "2021-03-31", "candidate_n": 169332, "baseline_n": 30899, "matching_n": 206, "total_seconds": 25.79737095895689}
+{"cutoff": "2021-04-30", "candidate_n": 169332, "baseline_n": 29406, "matching_n": 206, "total_seconds": 25.87392749998253}
+{"cutoff": "2021-05-28", "candidate_n": 169332, "baseline_n": 28516, "matching_n": 206, "total_seconds": 26.097995957941748}
+{"cutoff": "2021-06-30", "candidate_n": 169332, "baseline_n": 32268, "matching_n": 206, "total_seconds": 25.97730995900929}
+{"cutoff": "2021-07-30", "candidate_n": 169332, "baseline_n": 29210, "matching_n": 206, "total_seconds": 26.089496542001143}
+{"cutoff": "2021-08-31", "candidate_n": 169332, "baseline_n": 28716, "matching_n": 206, "total_seconds": 26.06643637502566}
+{"cutoff": "2021-09-30", "candidate_n": 169332, "baseline_n": 33875, "matching_n": 206, "total_seconds": 24.621132166008465}
+{"cutoff": "2021-10-29", "candidate_n": 169332, "baseline_n": 31729, "matching_n": 206, "total_seconds": 24.709084582980722}
+{"cutoff": "2021-11-30", "candidate_n": 169332, "baseline_n": 34917, "matching_n": 206, "total_seconds": 24.696036624955013}
+{"cutoff": "2021-12-31", "candidate_n": 169332, "baseline_n": 49227, "matching_n": 206, "total_seconds": 25.062455332954414}
+{"cutoff": "2022-02-28", "candidate_n": 169332, "baseline_n": 61019, "matching_n": 206, "total_seconds": 25.52405762509443}
+{"cutoff": "2022-01-31", "candidate_n": 169332, "baseline_n": 61791, "matching_n": 206, "total_seconds": 25.965690541896038}
+{"cutoff": "2022-03-31", "candidate_n": 169332, "baseline_n": 49635, "matching_n": 206, "total_seconds": 22.727874125004746}
+{"cutoff": "2022-04-29", "candidate_n": 169332, "baseline_n": 34481, "matching_n": 206, "total_seconds": 21.960977167007513}
+{"cutoff": "2022-05-31", "candidate_n": 169332, "baseline_n": 30332, "matching_n": 206, "total_seconds": 23.77758062502835}
+{"cutoff": "2022-06-30", "candidate_n": 169332, "baseline_n": 30110, "matching_n": 206, "total_seconds": 23.851666000089608}
+{"cutoff": "2022-08-31", "candidate_n": 169332, "baseline_n": 28194, "matching_n": 206, "total_seconds": 23.759510166943073}
+{"cutoff": "2022-07-29", "candidate_n": 169332, "baseline_n": 30081, "matching_n": 206, "total_seconds": 23.987477832939476}
+{"cutoff": "2022-09-30", "candidate_n": 169332, "baseline_n": 34765, "matching_n": 206, "total_seconds": 23.50427087501157}
+{"cutoff": "2022-10-31", "candidate_n": 169332, "baseline_n": 51566, "matching_n": 206, "total_seconds": 24.19626616698224}
+{"cutoff": "2022-11-30", "candidate_n": 169332, "baseline_n": 30555, "matching_n": 206, "total_seconds": 23.670785416965373}
+{"cutoff": "2022-12-30", "candidate_n": 168510, "baseline_n": 37770, "matching_n": 205, "total_seconds": 24.616178833064623}
+{"cutoff": "2023-01-31", "candidate_n": 168510, "baseline_n": 44426, "matching_n": 205, "total_seconds": 24.642421833006665}
+{"cutoff": "2023-03-31", "candidate_n": 168510, "baseline_n": 35064, "matching_n": 205, "total_seconds": 24.642224584007636}
+{"cutoff": "2023-02-28", "candidate_n": 168510, "baseline_n": 41544, "matching_n": 205, "total_seconds": 24.948946374934167}
+{"cutoff": "2023-04-28", "candidate_n": 168510, "baseline_n": 32122, "matching_n": 205, "total_seconds": 24.102749041980132}
+{"cutoff": "2016-12-30", "candidate_n": 185330, "baseline_n": 30007, "matching_n": 215, "total_seconds": 26.371646417072043}
+{"cutoff": "2017-02-28", "candidate_n": 185330, "baseline_n": 24546, "matching_n": 215, "total_seconds": 26.476811999920756}
+{"cutoff": "2017-01-31", "candidate_n": 185330, "baseline_n": 32518, "matching_n": 215, "total_seconds": 26.877345415996388}
+{"cutoff": "2017-03-31", "candidate_n": 185330, "baseline_n": 26771, "matching_n": 215, "total_seconds": 26.288107124972157}
+{"cutoff": "2017-04-28", "candidate_n": 185330, "baseline_n": 27384, "matching_n": 215, "total_seconds": 25.60170266602654}
+{"cutoff": "2017-05-31", "candidate_n": 185330, "baseline_n": 28483, "matching_n": 215, "total_seconds": 25.90060412499588}
+{"cutoff": "2017-06-30", "candidate_n": 185330, "baseline_n": 35869, "matching_n": 215, "total_seconds": 26.351343083078973}
+{"cutoff": "2017-07-31", "candidate_n": 185330, "baseline_n": 33202, "matching_n": 215, "total_seconds": 26.73509075003676}
+{"cutoff": "2017-08-31", "candidate_n": 186192, "baseline_n": 33558, "matching_n": 216, "total_seconds": 24.848465125076473}
+{"cutoff": "2017-09-29", "candidate_n": 186192, "baseline_n": 35176, "matching_n": 216, "total_seconds": 25.406580708920956}
+{"cutoff": "2017-10-31", "candidate_n": 186192, "baseline_n": 29893, "matching_n": 216, "total_seconds": 25.389661874971353}
+{"cutoff": "2017-11-30", "candidate_n": 186192, "baseline_n": 36171, "matching_n": 216, "total_seconds": 25.838727708091028}
+{"cutoff": "2017-12-29", "candidate_n": 186192, "baseline_n": 40839, "matching_n": 216, "total_seconds": 25.15858766704332}
+{"cutoff": "2018-01-31", "candidate_n": 169332, "baseline_n": 34571, "matching_n": 206, "total_seconds": 23.2130439580651}
+{"cutoff": "2018-02-28", "candidate_n": 169332, "baseline_n": 31174, "matching_n": 206, "total_seconds": 23.12201187503524}
+{"cutoff": "2018-03-29", "candidate_n": 169332, "baseline_n": 30800, "matching_n": 206, "total_seconds": 22.66567324998323}
+{"cutoff": "2018-04-30", "candidate_n": 169332, "baseline_n": 27011, "matching_n": 206, "total_seconds": 23.523132290923968}
+{"cutoff": "2018-05-31", "candidate_n": 169332, "baseline_n": 23714, "matching_n": 206, "total_seconds": 23.340211540926248}
+{"cutoff": "2018-06-29", "candidate_n": 169332, "baseline_n": 28574, "matching_n": 206, "total_seconds": 23.385388124966994}
+{"cutoff": "2018-07-31", "candidate_n": 169332, "baseline_n": 30517, "matching_n": 206, "total_seconds": 23.372374000027776}
+{"cutoff": "2018-08-31", "candidate_n": 169332, "baseline_n": 25354, "matching_n": 206, "total_seconds": 23.194343207986094}
+{"cutoff": "2018-09-28", "candidate_n": 169332, "baseline_n": 31505, "matching_n": 206, "total_seconds": 23.20389308303129}
+{"cutoff": "2018-11-30", "candidate_n": 169332, "baseline_n": 26537, "matching_n": 206, "total_seconds": 23.122710875002667}
+{"cutoff": "2018-10-31", "candidate_n": 169332, "baseline_n": 36141, "matching_n": 206, "total_seconds": 24.091126749990508}
+{"cutoff": "2018-12-31", "candidate_n": 169332, "baseline_n": 23904, "matching_n": 206, "total_seconds": 23.31924279197119}
+{"cutoff": "2019-01-31", "candidate_n": 169332, "baseline_n": 28235, "matching_n": 206, "total_seconds": 23.439837708021514}
+{"cutoff": "2019-02-28", "candidate_n": 169332, "baseline_n": 25105, "matching_n": 206, "total_seconds": 23.29132754204329}
+{"cutoff": "2019-03-29", "candidate_n": 169332, "baseline_n": 23207, "matching_n": 206, "total_seconds": 23.040330499992706}
+{"cutoff": "2019-04-30", "candidate_n": 169332, "baseline_n": 20876, "matching_n": 206, "total_seconds": 22.74689083301928}
+{"cutoff": "2019-05-31", "candidate_n": 169332, "baseline_n": 21990, "matching_n": 206, "total_seconds": 22.919573207967915}
+{"cutoff": "2019-06-28", "candidate_n": 169332, "baseline_n": 22450, "matching_n": 206, "total_seconds": 23.314607208012603}
+{"cutoff": "2019-07-31", "candidate_n": 169332, "baseline_n": 21920, "matching_n": 206, "total_seconds": 23.520198166021146}
+{"cutoff": "2019-08-30", "candidate_n": 169332, "baseline_n": 29118, "matching_n": 206, "total_seconds": 23.21733358304482}
+{"cutoff": "2019-09-30", "candidate_n": 169332, "baseline_n": 30072, "matching_n": 206, "total_seconds": 23.21117791708093}
+{"cutoff": "2019-10-31", "candidate_n": 169332, "baseline_n": 33293, "matching_n": 206, "total_seconds": 22.74310212500859}
+{"cutoff": "2019-11-29", "candidate_n": 169332, "baseline_n": 29757, "matching_n": 206, "total_seconds": 22.469295124989003}
+{"cutoff": "2019-12-31", "candidate_n": 169332, "baseline_n": 31057, "matching_n": 206, "total_seconds": 12.352509708958678}

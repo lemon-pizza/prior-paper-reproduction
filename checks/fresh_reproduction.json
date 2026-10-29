@@ -1,0 +1,513 @@
+{
+  "passed": true,
+  "status": "completed",
+  "model_id": "author_code_aaac6d9_q_replay",
+  "completed_at": "2026-10-29T08:15:29.774775+00:00",
+  "source_commit": "aaac6d999d6b077304a887caff2aab514d7ea6a2",
+  "selection_months": 77,
+  "intervals": 77,
+  "monthly_strategy_paths": 154,
+  "source_files_verified": 11,
+  "price_sha256": "7605eab6525ddb5db66965d1559a56b48375f11a14cd1040eaa12318a545939c",
+  "fresh_selection": false,
+  "fresh_trading": false,
+  "preexisting_caches_copied": false,
+  "input_caches_and_output_hashes_verified": true,
+  "aggregate_csv_all_rows_match_verified_intervals": true,
+  "maximum_pnl_div_capital_error": 0.0,
+  "selection_reference_samples": 400,
+  "independent_selection_validation_passed": true,
+  "independent_trading_validation_passed": true,
+  "previous_reproduction_metric_comparison": [
+    {
+      "scope": "source_default",
+      "method": "MAX_WEIGHT",
+      "sharpe_difference": 0.0,
+      "cumulative_return_difference": -2.7755575615628914e-17
+    },
+    {
+      "scope": "source_default",
+      "method": "BASELINE",
+      "sharpe_difference": -5.551115123125783e-17,
+      "cumulative_return_difference": -2.7755575615628914e-17
+    },
+    {
+      "scope": "extended_2017",
+      "method": "MAX_WEIGHT",
+      "sharpe_difference": 0.0,
+      "cumulative_return_difference": 0.0
+    },
+    {
+      "scope": "extended_2017",
+      "method": "BASELINE",
+      "sharpe_difference": -5.551115123125783e-17,
+      "cumulative_return_difference": -8.326672684688674e-17
+    }
+  ],
+  "reference_note": "Four metric values transcribed from the earlier aaac6d9 conditional replay; old files were removed before this task. They are regression checks, not paper targets or parameter-tuning targets.",
+  "monthly_checks": [
+    {
+      "cutoff": "20161230",
+      "baseline_pairs": 30007,
+      "matching_pairs": 215,
+      "passed": true
+    },
+    {
+      "cutoff": "20170131",
+      "baseline_pairs": 32518,
+      "matching_pairs": 215,
+      "passed": true
+    },
+    {
+      "cutoff": "20170228",
+      "baseline_pairs": 24546,
+      "matching_pairs": 215,
+      "passed": true
+    },
+    {
+      "cutoff": "20170331",
+      "baseline_pairs": 26771,
+      "matching_pairs": 215,
+      "passed": true
+    },
+    {
+      "cutoff": "20170428",
+      "baseline_pairs": 27384,
+      "matching_pairs": 215,
+      "passed": true
+    },
+    {
+      "cutoff": "20170531",
+      "baseline_pairs": 28483,
+      "matching_pairs": 215,
+      "passed": true
+    },
+    {
+      "cutoff": "20170630",
+      "baseline_pairs": 35869,
+      "matching_pairs": 215,
+      "passed": true
+    },
+    {
+      "cutoff": "20170731",
+      "baseline_pairs": 33202,
+      "matching_pairs": 215,
+      "passed": true
+    },
+    {
+      "cutoff": "20170831",
+      "baseline_pairs": 33558,
+      "matching_pairs": 216,
+      "passed": true
+    },
+    {
+      "cutoff": "20170929",
+      "baseline_pairs": 35176,
+      "matching_pairs": 216,
+      "passed": true
+    },
+    {
+      "cutoff": "20171031",
+      "baseline_pairs": 29893,
+      "matching_pairs": 216,
+      "passed": true
+    },
+    {
+      "cutoff": "20171130",
+      "baseline_pairs": 36171,
+      "matching_pairs": 216,
+      "passed": true
+    },
+    {
+      "cutoff": "20171229",
+      "baseline_pairs": 40839,
+      "matching_pairs": 216,
+      "passed": true
+    },
+    {
+      "cutoff": "20180131",
+      "baseline_pairs": 34571,
+      "matching_pairs": 206,
+      "passed": true
+    },
+    {
+      "cutoff": "20180228",
+      "baseline_pairs": 31174,
+      "matching_pairs": 206,
+      "passed": true
+    },
+    {
+      "cutoff": "20180329",
+      "baseline_pairs": 30800,
+      "matching_pairs": 206,
+      "passed": true
+    },
+    {
+      "cutoff": "20180430",
+      "baseline_pairs": 27011,
+      "matching_pairs": 206,
+      "passed": true
+    },
+    {
+      "cutoff": "20180531",
+      "baseline_pairs": 23714,
+      "matching_pairs": 206,
+      "passed": true
+    },
+    {
+      "cutoff": "20180629",
+      "baseline_pairs": 28574,
+      "matching_pairs": 206,
+      "passed": true
+    },
+    {
+      "cutoff": "20180731",
+      "baseline_pairs": 30517,
+      "matching_pairs": 206,
+      "passed": true
+    },
+    {
+      "cutoff": "20180831",
+      "baseline_pairs": 25354,
+      "matching_pairs": 206,
+      "passed": true
+    },
+    {
+      "cutoff": "20180928",
+      "baseline_pairs": 31505,
+      "matching_pairs": 206,
+      "passed": true
+    },
+    {
+      "cutoff": "20181031",
+      "baseline_pairs": 36141,
+      "matching_pairs": 206,
+      "passed": true
+    },
+    {
+      "cutoff": "20181130",
+      "baseline_pairs": 26537,
+      "matching_pairs": 206,
+      "passed": true
+    },
+    {
+      "cutoff": "20181231",
+      "baseline_pairs": 23904,
+      "matching_pairs": 206,
+      "passed": true
+    },
+    {
+      "cutoff": "20190131",
+      "baseline_pairs": 28235,
+      "matching_pairs": 206,
+      "passed": true
+    },
+    {
+      "cutoff": "20190228",
+      "baseline_pairs": 25105,
+      "matching_pairs": 206,
+      "passed": true
+    },
+    {
+      "cutoff": "20190329",
+      "baseline_pairs": 23207,
+      "matching_pairs": 206,
+      "passed": true
+    },
+    {
+      "cutoff": "20190430",
+      "baseline_pairs": 20876,
+      "matching_pairs": 206,
+      "passed": true
+    },
+    {
+      "cutoff": "20190531",
+      "baseline_pairs": 21990,
+      "matching_pairs": 206,
+      "passed": true
+    },
+    {
+      "cutoff": "20190628",
+      "baseline_pairs": 22450,
+      "matching_pairs": 206,
+      "passed": true
+    },
+    {
+      "cutoff": "20190731",
+      "baseline_pairs": 21920,
+      "matching_pairs": 206,
+      "passed": true
+    },
+    {
+      "cutoff": "20190830",
+      "baseline_pairs": 29118,
+      "matching_pairs": 206,
+      "passed": true
+    },
+    {
+      "cutoff": "20190930",
+      "baseline_pairs": 30072,
+      "matching_pairs": 206,
+      "passed": true
+    },
+    {
+      "cutoff": "20191031",
+      "baseline_pairs": 33293,
+      "matching_pairs": 206,
+      "passed": true
+    },
+    {
+      "cutoff": "20191129",
+      "baseline_pairs": 29757,
+      "matching_pairs": 206,
+      "passed": true
+    },
+    {
+      "cutoff": "20191231",
+      "baseline_pairs": 31057,
+      "matching_pairs": 206,
+      "passed": true
+    },
+    {
+      "cutoff": "20200131",
+      "baseline_pairs": 34004,
+      "matching_pairs": 206,
+      "passed": true
+    },
+    {
+      "cutoff": "20200228",
+      "baseline_pairs": 29059,
+      "matching_pairs": 206,
+      "passed": true
+    },
+    {
+      "cutoff": "20200331",
+      "baseline_pairs": 24829,
+      "matching_pairs": 206,
+      "passed": true
+    },
+    {
+      "cutoff": "20200430",
+      "baseline_pairs": 29457,
+      "matching_pairs": 206,
+      "passed": true
+    },
+    {
+      "cutoff": "20200529",
+      "baseline_pairs": 29330,
+      "matching_pairs": 206,
+      "passed": true
+    },
+    {
+      "cutoff": "20200630",
+      "baseline_pairs": 30154,
+      "matching_pairs": 206,
+      "passed": true
+    },
+    {
+      "cutoff": "20200731",
+      "baseline_pairs": 27727,
+      "matching_pairs": 206,
+      "passed": true
+    },
+    {
+      "cutoff": "20200831",
+      "baseline_pairs": 28900,
+      "matching_pairs": 206,
+      "passed": true
+    },
+    {
+      "cutoff": "20200930",
+      "baseline_pairs": 29770,
+      "matching_pairs": 206,
+      "passed": true
+    },
+    {
+      "cutoff": "20201030",
+      "baseline_pairs": 27305,
+      "matching_pairs": 206,
+      "passed": true
+    },
+    {
+      "cutoff": "20201130",
+      "baseline_pairs": 27637,
+      "matching_pairs": 206,
+      "passed": true
+    },
+    {
+      "cutoff": "20201231",
+      "baseline_pairs": 28817,
+      "matching_pairs": 206,
+      "passed": true
+    },
+    {
+      "cutoff": "20210129",
+      "baseline_pairs": 28566,
+      "matching_pairs": 206,
+      "passed": true
+    },
+    {
+      "cutoff": "20210226",
+      "baseline_pairs": 26846,
+      "matching_pairs": 206,
+      "passed": true
+    },
+    {
+      "cutoff": "20210331",
+      "baseline_pairs": 30899,
+      "matching_pairs": 206,
+      "passed": true
+    },
+    {
+      "cutoff": "20210430",
+      "baseline_pairs": 29406,
+      "matching_pairs": 206,
+      "passed": true
+    },
+    {
+      "cutoff": "20210528",
+      "baseline_pairs": 28516,
+      "matching_pairs": 206,
+      "passed": true
+    },
+    {
+      "cutoff": "20210630",
+      "baseline_pairs": 32268,
+      "matching_pairs": 206,
+      "passed": true
+    },
+    {
+      "cutoff": "20210730",
+      "baseline_pairs": 29210,
+      "matching_pairs": 206,
+      "passed": true
+    },
+    {
+      "cutoff": "20210831",
+      "baseline_pairs": 28716,
+      "matching_pairs": 206,
+      "passed": true
+    },
+    {
+      "cutoff": "20210930",
+      "baseline_pairs": 33875,
+      "matching_pairs": 206,
+      "passed": true
+    },
+    {
+      "cutoff": "20211029",
+      "baseline_pairs": 31729,
+      "matching_pairs": 206,
+      "passed": true
+    },
+    {
+      "cutoff": "20211130",
+      "baseline_pairs": 34917,
+      "matching_pairs": 206,
+      "passed": true
+    },
+    {
+      "cutoff": "20211231",
+      "baseline_pairs": 49227,
+      "matching_pairs": 206,
+      "passed": true
+    },
+    {
+      "cutoff": "20220131",
+      "baseline_pairs": 61791,
+      "matching_pairs": 206,
+      "passed": true
+    },
+    {
+      "cutoff": "20220228",
+      "baseline_pairs": 61019,
+      "matching_pairs": 206,
+      "passed": true
+    },
+    {
+      "cutoff": "20220331",
+      "baseline_pairs": 49635,
+      "matching_pairs": 206,
+      "passed": true
+    },
+    {
+      "cutoff": "20220429",
+      "baseline_pairs": 34481,
+      "matching_pairs": 206,
+      "passed": true
+    },
+    {
+      "cutoff": "20220531",
+      "baseline_pairs": 30332,
+      "matching_pairs": 206,
+      "passed": true
+    },
+    {
+      "cutoff": "20220630",
+      "baseline_pairs": 30110,
+      "matching_pairs": 206,
+      "passed": true
+    },
+    {
+      "cutoff": "20220729",
+      "baseline_pairs": 30081,
+      "matching_pairs": 206,
+      "passed": true
+    },
+    {
+      "cutoff": "20220831",
+      "baseline_pairs": 28194,
+      "matching_pairs": 206,
+      "passed": true
+    },
+    {
+      "cutoff": "20220930",
+      "baseline_pairs": 34765,
+      "matching_pairs": 206,
+      "passed": true
+    },
+    {
+      "cutoff": "20221031",
+      "baseline_pairs": 51566,
+      "matching_pairs": 206,
+      "passed": true
+    },
+    {
+      "cutoff": "20221130",
+      "baseline_pairs": 30555,
+      "matching_pairs": 206,
+      "passed": true
+    },
+    {
+      "cutoff": "20221230",
+      "baseline_pairs": 37770,
+      "matching_pairs": 205,
+      "passed": true
+    },
+    {
+      "cutoff": "20230131",
+      "baseline_pairs": 44426,
+      "matching_pairs": 205,
+      "passed": true
+    },
+    {
+      "cutoff": "20230228",
+      "baseline_pairs": 41544,
+      "matching_pairs": 205,
+      "passed": true
+    },
+    {
+      "cutoff": "20230331",
+      "baseline_pairs": 35064,
+      "matching_pairs": 205,
+      "passed": true
+    },
+    {
+      "cutoff": "20230428",
+      "baseline_pairs": 32122,
+      "matching_pairs": 205,
+      "passed": true
+    }
+  ],
+  "scope": "Completed public-code arithmetic under declared missing daily-cache assumption; not exact reproduction of paper tables."
+}

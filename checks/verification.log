@@ -1,0 +1,54 @@
+WARNING: Logging before InitGoogleLogging() is written to STDERR
+W20261029 17:13:42.388412 1803563008 cpu_info.cc:239] IOError: sysctlbyname failed for 'hw.l1dcachesize'. Detail: [errno 1] Operation not permitted
+W20261029 17:13:42.388664 1803563008 cpu_info.cc:239] IOError: sysctlbyname failed for 'hw.l2cachesize'. Detail: [errno 1] Operation not permitted
+W20261029 17:13:42.388748 1803563008 cpu_info.cc:239] IOError: sysctlbyname failed for 'hw.l3cachesize'. Detail: [errno 1] Operation not permitted
+W20261029 17:13:42.388832 1803563008 cpu_info.cc:239] IOError: sysctlbyname failed for 'hw.optional.neon'. Detail: [errno 1] Operation not permitted
+{
+  "passed": true,
+  "status": "completed",
+  "model_id": "author_code_aaac6d9_q_replay",
+  "completed_at": "2026-10-29T08:13:43.785799+00:00",
+  "source_commit": "aaac6d999d6b077304a887caff2aab514d7ea6a2",
+  "selection_months": 77,
+  "intervals": 77,
+  "monthly_strategy_paths": 154,
+  "source_files_verified": 11,
+  "price_sha256": "7605eab6525ddb5db66965d1559a56b48375f11a14cd1040eaa12318a545939c",
+  "fresh_selection": true,
+  "fresh_trading": true,
+  "preexisting_caches_copied": false,
+  "input_caches_and_output_hashes_verified": true,
+  "aggregate_csv_all_rows_match_verified_intervals": true,
+  "maximum_pnl_div_capital_error": 0.0,
+  "selection_reference_samples": 400,
+  "independent_selection_validation_passed": true,
+  "independent_trading_validation_passed": true,
+  "previous_reproduction_metric_comparison": [
+    {
+      "scope": "source_default",
+      "method": "MAX_WEIGHT",
+      "sharpe_difference": 0.0,
+      "cumulative_return_difference": -2.7755575615628914e-17
+    },
+    {
+      "scope": "source_default",
+      "method": "BASELINE",
+      "sharpe_difference": -5.551115123125783e-17,
+      "cumulative_return_difference": -2.7755575615628914e-17
+    },
+    {
+      "scope": "extended_2017",
+      "method": "MAX_WEIGHT",
+      "sharpe_difference": 0.0,
+      "cumulative_return_difference": 0.0
+    },
+    {
+      "scope": "extended_2017",
+      "method": "BASELINE",
+      "sharpe_difference": -5.551115123125783e-17,
+      "cumulative_return_difference": -8.326672684688674e-17
+    }
+  ],
+  "reference_note": "Four metric values transcribed from the earlier aaac6d9 conditional replay; old files were removed before this task. They are regression checks, not paper targets or parameter-tuning targets.",
+  "scope": "Completed public-code arithmetic under declared missing daily-cache assumption; not exact reproduction of paper tables."
+}

@@ -1,319 +1,454 @@
-"""Monthly past-only, equal-count pair-selection comparison.
+"""Conditional replay of the public aaac6d9 pair-selection code.
 
-All directed ADF candidates are newly calculated from each 504-row raw-price
-window using the shared numerics module. No full-sample universe or p-value
-filter is applied.
+Preserves betas.py directed pairs and full-sample universe, default ADF/AIC,
+all p<=.05 baseline pairs, and matching.py's unweighted maximum cardinality.
+The author original environment/order is unavailable; this replay fixes hash seed 0.
 """
 from __future__ import annotations
 import argparse
+import ast
 from concurrent.futures import ProcessPoolExecutor, as_completed
 import hashlib
+import io
 import json
+import os
 import platform
-import time
 from pathlib import Path
-import networkx as nx
-import rustworkx as rx
+import time
 import numpy as np
 import pandas as pd
-import numerics as _numeric
+import networkx as nx
+import scipy
+from scipy.special import ndtr
+import sklearn
+import statsmodels
+from statsmodels.tsa import adfvalues
+from statsmodels.tsa.stattools import adfuller
 
 ROOT = Path(__file__).resolve().parents[1]
-DEFAULT_PRICES = ROOT/'data/prices.parquet.gz'
-ADF_SOURCE = ROOT/'src/numerics.py'
-EXPECTED_PRICE_SHA256 = '7605eab6525ddb5db66965d1559a56b48375f11a14cd1040eaa12318a545939c'
-NUMERIC_COLUMNS = ['BETA', 'ALPHA', 'T_STAT', 'P_VALUE', 'USEDLAG', 'AIC']
+DEFAULT_PRICES = ROOT / 'data/prices.parquet.gz'
+EXPECTED_SHA256 = '7605eab6525ddb5db66965d1559a56b48375f11a14cd1040eaa12318a545939c'
+SOURCE_COMMIT = 'aaac6d999d6b077304a887caff2aab514d7ea6a2'
 
 
-def boundaries(prices):
-    """Actual final trading dates at monthly boundaries, including end-only May."""
-    calendar = pd.date_range('2016-12-01', '2023-05-31', freq='BME')
-    return [prices.loc[:date].index[-1] for date in calendar]
+def adf_pvalues(t):
+    t = np.asarray(t)
+    small = np.polyval(adfvalues._tau_smallps['c'][0][::-1], t)
+    large = np.polyval(adfvalues._tau_largeps['c'][0][::-1], t)
+    out = ndtr(np.where(t <= adfvalues._tau_stars['c'][0], small, large))
+    return np.where(t > adfvalues._tau_maxs['c'][0], 1.,
+                    np.where(t < adfvalues._tau_mins['c'][0], 0., out))
 
 
-def collapse_directions(directed):
-    """Keep lower t; exact ties choose alphabetical explanatory/dependent names."""
-    data = directed.copy()
-    data['NODE_1'] = np.where(data.ASSET_1 < data.ASSET_2, data.ASSET_1, data.ASSET_2)
-    data['NODE_2'] = np.where(data.ASSET_1 < data.ASSET_2, data.ASSET_2, data.ASSET_1)
-    data = data.sort_values(['T_STAT', 'ASSET_1', 'ASSET_2'], kind='stable')
-    data = data.drop_duplicates(['NODE_1', 'NODE_2'], keep='first')
-    data['SCORE'] = -data.T_STAT
-    return data.sort_values(['NODE_1', 'NODE_2'], kind='stable').reset_index(drop=True)
+def _design(e, lag):
+    diff = np.diff(e, axis=1)
+    y = diff[:, lag:].copy()
+    cols = [e[:, lag:-1]]
+    cols.extend(diff[:, lag-j:-j] for j in range(1, lag+1))
+    x = np.stack(cols, axis=2)
+    # Frisch-Waugh elimination of the intercept retains the exact regressions.
+    y -= y.mean(axis=1, keepdims=True)
+    x -= x.mean(axis=1, keepdims=True)
+    return x, y
 
 
-def edge_digest(edges, directed=False):
+def adf_aic_batch(residuals):
+    """Default adfuller equivalent: common-sample AIC then selected-lag refit.
+
+    Cholesky of the full centered Gram matrix yields RSS for every nested
+    model. Ill-conditioned/near-tied/threshold-adjacent cases use statsmodels.
+    Returns t, p, usedlag, icbest, fallback count. No fixed lag substitution.
+    """
+    e = np.asarray(residuals, float)
+    if e.ndim != 2 or not np.isfinite(e).all():
+        raise ValueError('Expected complete residual rows')
+    nseries, n = e.shape
+    maxlag = min(int(np.ceil(12.0*(n/100.0)**.25)), n//2-2)
+    x, y = _design(e, maxlag)
+    gram = x.transpose(0, 2, 1) @ x
+    xy = np.einsum('bni,bn->bi', x, y)
+    yy = np.einsum('bn,bn->b', y, y)
+    fallback = np.zeros(nseries, dtype=bool)
+    # Batched Cholesky may fail if one series is singular. Isolate those rows.
+    chol = np.empty_like(gram)
+    try:
+        chol[:] = np.linalg.cholesky(gram)
+    except np.linalg.LinAlgError:
+        for i in range(nseries):
+            try:
+                chol[i] = np.linalg.cholesky(gram[i])
+            except np.linalg.LinAlgError:
+                fallback[i] = True
+                chol[i] = np.eye(maxlag+1)
+    whitened = np.linalg.solve(chol, xy[..., None])[..., 0]
+    rss = yy[:, None] - np.cumsum(whitened**2, axis=1)
+    ncommon = y.shape[1]
+    with np.errstate(divide='ignore', invalid='ignore'):
+        aic = ncommon*(np.log(2*np.pi)+1+np.log(rss/ncommon)) + 2*np.arange(2, maxlag+3)
+    fallback |= (~np.isfinite(aic)).any(axis=1)
+    order = np.argsort(aic, axis=1, kind='stable')
+    usedlag = order[:, 0].copy()
+    icbest = aic[np.arange(nseries), usedlag]
+    with np.errstate(invalid='ignore'):
+        gap = aic[np.arange(nseries), order[:, 1]] - icbest
+    fallback |= gap < 1e-8
+    # Diagonal-based warning is conservative; exact library fallback is cheap.
+    diagonals = np.diagonal(chol, axis1=1, axis2=2)
+    fallback |= diagonals.min(axis=1) < 1e-8*diagonals.max(axis=1)
+    t = np.full(nseries, np.nan)
+    for lag in np.unique(usedlag[~fallback]):
+        ii = np.flatnonzero((usedlag == lag) & ~fallback)
+        xx, dep = _design(e[ii], int(lag))
+        gg = xx.transpose(0, 2, 1) @ xx
+        gdep = np.einsum('bni,bn->bi', xx, dep)
+        rhs = np.zeros((len(ii), lag+1, 2))
+        rhs[:, :, 0] = gdep
+        rhs[:, 0, 1] = 1.
+        try:
+            solved = np.linalg.solve(gg, rhs)
+        except np.linalg.LinAlgError:
+            fallback[ii] = True
+            continue
+        beta = solved[:, :, 0]
+        errors = dep - np.einsum('bni,bi->bn', xx, beta)
+        ssr = np.einsum('bn,bn->b', errors, errors)
+        variance = ssr/(dep.shape[1]-(lag+2))
+        with np.errstate(divide='ignore', invalid='ignore'):
+            t[ii] = beta[:, 0]/np.sqrt(variance*solved[:, 0, 1])
+    p = adf_pvalues(t)
+    fallback |= ~np.isfinite(t) | (np.abs(p-.05) < 1e-8)
+    for i in np.flatnonzero(fallback):
+        try:
+            ans = adfuller(e[i])
+            t[i], p[i], usedlag[i], icbest[i] = ans[0], ans[1], ans[2], ans[5]
+        except (ValueError, np.linalg.LinAlgError):
+            # Source cache_spread catches failed/constant pair regressions.
+            t[i], p[i], usedlag[i], icbest[i] = np.nan, np.nan, -1, np.nan
+    return t, p, usedlag, icbest, int(fallback.sum())
+
+
+def calculate_edges(log_prices, directed=False, batch_size=256):
+    a = log_prices.to_numpy(float)
+    centered = a-a.mean(axis=0)
+    cov = centered.T@centered
     if directed:
-        ordered = edges.sort_values(['ASSET_1', 'ASSET_2'], kind='stable')
-        columns = ['ASSET_1', 'ASSET_2']+NUMERIC_COLUMNS
+        i, j = np.where(~np.eye(a.shape[1], dtype=bool))
     else:
-        ordered = edges.sort_values(['NODE_1', 'NODE_2'], kind='stable')
-        columns = ['NODE_1', 'NODE_2', 'ASSET_1', 'ASSET_2']+NUMERIC_COLUMNS
-    encoded = ordered[columns].to_csv(index=False, float_format='%.17g', lineterminator='\n').encode()
-    return hashlib.sha256(encoded).hexdigest()
+        i, j = np.triu_indices(a.shape[1], k=1)
+    beta = np.divide(cov[i, j], cov[i, i], out=np.zeros(len(i)), where=cov[i, i] != 0)
+    alpha = a.mean(axis=0)[j]-beta*a.mean(axis=0)[i]
+    t, p, usedlag, aic = (np.empty(len(i)) for _ in range(4))
+    fallback_count = 0
+    for start in range(0, len(i), batch_size):
+        stop = start+batch_size
+        e = (a[:, j[start:stop]] - beta[start:stop]*a[:, i[start:stop]] - alpha[start:stop]).T
+        tt, pp, ll, aa, ff = adf_aic_batch(e)
+        t[start:stop], p[start:stop], usedlag[start:stop], aic[start:stop] = tt, pp, ll, aa
+        fallback_count += ff
+    names = log_prices.columns.to_numpy()
+    frame = pd.DataFrame({'ASSET_1': names[i], 'ASSET_2': names[j],
+                          'BETA': beta, 'ALPHA': alpha, 'T_STAT': t,
+                          'P_VALUE': p, 'USEDLAG': usedlag.astype(int), 'AIC': aic})
+    # Resolve any floating-point-near sort tie with the public sklearn+ADF path.
+    # Graph insertion order can affect an unweighted matching, so ordering matters.
+    ordered = np.argsort(t, kind='stable')
+    close = np.flatnonzero(np.diff(t[ordered]) < 1e-9)
+    ambiguous = np.unique(np.r_[ordered[close], ordered[close+1]])
+    if len(ambiguous):
+        from sklearn.linear_model import LinearRegression
+        for row in ambiguous:
+            x, y = a[:, i[row]], a[:, j[row]]
+            fit = LinearRegression().fit(np.column_stack([x, np.ones(len(x))]), y)
+            residual = y-fit.coef_[0]*x-fit.intercept_
+            exact = adfuller(residual)
+            frame.loc[row, ['BETA', 'ALPHA', 'T_STAT', 'P_VALUE', 'USEDLAG', 'AIC']] = [
+                fit.coef_[0], fit.intercept_, exact[0], exact[1], exact[2], exact[5]]
+    failed = ~np.isfinite(frame.T_STAT) | ~np.isfinite(frame.P_VALUE)
+    skipped = int(failed.sum())
+    frame = frame.loc[~failed].copy()
+    frame.attrs['exact_sort_tie_refits'] = int(len(ambiguous))
+    frame.attrs['adf_failed_pairs_skipped'] = skipped
+    # Same sort as pairs.py / betas.py cache_spread, including default sort kind.
+    return frame.sort_values('P_VALUE').reset_index(drop=True), fallback_count
 
 
-def solve_graph(edges, eligible):
-    """M optimizes -t without cardinality priority; B/U are then limited to K."""
-    edges = edges.sort_values(['NODE_1', 'NODE_2'], kind='stable').reset_index(drop=True)
-    ratios = [float(w).as_integer_ratio() for w in edges.SCORE]
-    denominator = max((q for _, q in ratios), default=1)
-    weights = [p*(denominator//q) for p, q in ratios]
-    assert all(w*q == p*denominator for w, (p, q) in zip(weights, ratios))
+def sha256(path):
+    return hashlib.sha256(Path(path).read_bytes()).hexdigest()
+
+
+def environment():
+    return {'python': platform.python_version(), 'numpy': np.__version__,
+            'pandas': pd.__version__, 'scipy': scipy.__version__,
+            'sklearn': sklearn.__version__, 'statsmodels': statsmodels.__version__,
+            'networkx': nx.__version__, 'PYTHONHASHSEED': os.environ.get('PYTHONHASHSEED')}
+
+
+def source_universe(prices):
+    """Original betas.py full-sample padded pct_change missing-rate filter."""
+    if os.environ.get('PYTHONHASHSEED') != '0':
+        raise RuntimeError('Start a fresh interpreter with PYTHONHASHSEED=0')
+    returns = prices.ffill().pct_change(fill_method=None).iloc[1:]
+    missing_rate = returns.isnull().sum() / len(returns)
+    return list(set(missing_rate[missing_rate < .05].index))
+
+
+def selection_cutoffs(prices):
+    """Requested 2017 extension and original 202* scope share these boundaries.
+
+    The original business-month-end writer names files by the last actual
+    observation. The final boundary is end-only, not a holding-month selection.
+    """
+    ends = pd.date_range(prices.index[0], prices.index[-1], freq='BME')[24:]
+    return [prices.loc[:end].index[-1] for end in ends
+            if pd.Timestamp('2016-12-01') <= end <= pd.Timestamp('2023-05-31')]
+
+
+def literal_matching(edges):
+    data = edges.sort_values('T_STAT').copy()
+    data.T_STAT = data.T_STAT.round(2)
+    data['TUPLE'] = list(zip(data.ASSET_1, data.ASSET_2))
     graph = nx.Graph()
-    graph.add_nodes_from(sorted(eligible))
-    graph.add_weighted_edges_from((x, y, w) for x, y, w in zip(edges.NODE_1, edges.NODE_2, weights))
-    started = time.monotonic()
-    names = sorted(eligible)
-    lookup = {name:i for i,name in enumerate(names)}
-    assert max((abs(w).bit_length() for w in weights), default=0)+20 < 120
-    fast_graph = rx.PyGraph(multigraph=False)
-    fast_graph.add_nodes_from(names)
-    fast_graph.add_edges_from([(lookup[x],lookup[y],w) for x,y,w in zip(edges.NODE_1,edges.NODE_2,weights)])
-    result = rx.max_weight_matching(fast_graph, max_cardinality=False,
-                                    weight_fn=lambda w:w, verify_optimum=True)
-    m = {tuple(sorted((names[i],names[j]))) for i,j in result}
-    weighted_seconds = time.monotonic()-started
-    k = len(m)
-    bdata = edges.sort_values(['T_STAT', 'NODE_1', 'NODE_2'], kind='stable').head(k)
-    b = set(zip(bdata.NODE_1, bdata.NODE_2))
-    # Missing attribute is deliberately constant one. Stable alphabetical graph
-    # insertion order and truncation use no cointegration score.
-    started = time.monotonic()
-    u_full = sorted(tuple(sorted(pair)) for pair in nx.max_weight_matching(
-        graph, maxcardinality=True, weight='_unweighted_constant_one'))
-    if len(u_full) < k:
-        raise AssertionError('Maximum cardinality cannot be below M cardinality')
-    u = set(u_full[:k])
-    unweighted_seconds = time.monotonic()-started
-    memberships = {'M': m, 'B': b, 'U': u}
-    keys = list(zip(edges.NODE_1, edges.NODE_2))
-    for style, chosen in memberships.items():
-        edges['is_'+style] = [pair in chosen for pair in keys]
-    selected = edges.loc[edges[['is_M', 'is_B', 'is_U']].any(axis=1)].copy()
-    degree, objective = {}, {}
-    for style in memberships:
-        d = selected.loc[selected['is_'+style]]
-        deg = pd.concat([d.NODE_1, d.NODE_2]).value_counts()
-        degree[style] = {'max': int(deg.max()) if len(deg) else 0,
-                         'used_stocks': int(len(deg)),
-                         'histogram': {str(int(v)): int(n) for v, n in deg.value_counts().sort_index().items()}}
-        objective[style] = float(d.SCORE.sum())
-        assert len(d) == k
-        if style in ('M', 'U'):
-            assert len(deg) == 2*k and (deg <= 1).all()
-    info = {'K': k, 'unweighted_max_cardinality': len(u_full), 'U_lexicographic_truncation': len(u_full)-k,
-            'objective': objective, 'degree': degree,
-            'binary64_weight_scale_denominator': str(denominator),
-            'weighted_matching_seconds': weighted_seconds, 'unweighted_matching_seconds': unweighted_seconds,
-            'weighted_backend': 'rustworkx max_weight_matching; verify_optimum=True; binary64-exact integer weights',
-            'unweighted_backend': 'networkx max_weight_matching with missing weight attribute (constant1)'}
-    return selected, info
+    graph.add_nodes_from(data.ASSET_1.unique(), bipartite=0, label='ASSET_1')
+    graph.add_nodes_from(data.ASSET_2.unique(), bipartite=1, label='ASSET_2')
+    graph.add_edges_from((x, y, {'rating': float(t)})
+                         for x, y, t in data[['ASSET_1', 'ASSET_2', 'T_STAT']].itertuples(index=False, name=None))
+    # Source stores rating but omits weight='rating': preserve that exact behavior.
+    maximum = nx.max_weight_matching(graph, maxcardinality=1)
+    baseline = set(data.loc[data.P_VALUE <= .05, 'TUPLE'])
+    return baseline, maximum
+
+
+def cache_identity(cutoff, prices_path):
+    price_hash = sha256(prices_path)
+    if price_hash != EXPECTED_SHA256:
+        raise ValueError('Unexpected source price bytes')
+    if os.environ.get('PYTHONHASHSEED') != '0':
+        raise RuntimeError('Start a fresh interpreter with PYTHONHASHSEED=0')
+    return {'source_commit': SOURCE_COMMIT, 'price_sha256': price_hash,
+            'generator_sha256': sha256(__file__), 'environment': environment(),
+            'cutoff': str(pd.Timestamp(cutoff).date()),
+            'contract': 'directed_global_universe_default_ADF_unweighted_cardinality_v1'}
 
 
 def generate_month(cutoff, prices_path=DEFAULT_PRICES, output_dir=None, force=False):
-    import statsmodels
     started = time.monotonic()
     cutoff = pd.Timestamp(cutoff)
-    dest = Path(output_dir or ROOT/'data/selection')
-    dest.mkdir(parents=True, exist_ok=True)
+    cache = Path(output_dir or ROOT / 'data/selection')
+    cache.mkdir(parents=True, exist_ok=True)
     key = cutoff.strftime('%Y%m%d')
-    parquet, meta = dest/(key+'.parquet'), dest/(key+'.json')
-    if parquet.exists() and meta.exists() and not force:
-        return json.loads(meta.read_text())
-    prices_path = Path(prices_path)
-    source_hash = hashlib.sha256(prices_path.read_bytes()).hexdigest()
-    if source_hash != EXPECTED_PRICE_SHA256:
-        raise ValueError('Unexpected price input SHA256')
-    prices = pd.read_parquet(prices_path).sort_index()
-    if not prices.index.is_unique:
-        raise ValueError('Duplicate source price dates')
-    hist = prices.loc[:cutoff].tail(504)
+    output, meta_path = cache / (key + '.parquet'), cache / (key + '.json')
+    identity = cache_identity(cutoff, prices_path)
+    if output.exists() and meta_path.exists() and not force:
+        try:
+            meta = json.loads(meta_path.read_text())
+            if meta.get('cache_identity') == identity and meta.get('selection_sha256') == sha256(output):
+                return meta
+        except (ValueError, OSError):
+            pass
+    prices = pd.read_parquet(prices_path)
+    names = source_universe(prices)
+    hist = prices[names].loc[:cutoff].iloc[-504:]
     if len(hist) != 504 or hist.index[-1] != cutoff:
-        raise ValueError('Invalid formation endpoint/window')
-    eligible_mask = np.isfinite(hist.to_numpy()).all(axis=0) & (hist.to_numpy() > 0).all(axis=0)
-    hist = hist.loc[:, eligible_mask].sort_index(axis=1)
-    directed, fallbacks = _numeric.calculate_edges(np.log(hist), directed=True)
-    directed_hash = edge_digest(directed, directed=True)
-    graph_edges = collapse_directions(directed)
-    graph_hash = edge_digest(graph_edges)
-    adf_seconds = time.monotonic()-started
-    selected_main, graph_info = solve_graph(graph_edges, hist.columns)
-    excluded = {'SRE', 'CPRT'}
-    clean_edges = graph_edges.loc[~graph_edges.NODE_1.isin(excluded) & ~graph_edges.NODE_2.isin(excluded)].copy()
-    clean_eligible = [x for x in hist.columns if x not in excluded]
-    selected_clean, clean_info = solve_graph(clean_edges, clean_eligible)
-    selected = graph_edges.copy()
-    all_keys = list(zip(selected.NODE_1, selected.NODE_2))
-    for suffix, frame in [('', selected_main), ('_clean', selected_clean)]:
-        for style in ('M', 'B', 'U'):
-            d = frame.loc[frame['is_'+style]]
-            chosen = set(zip(d.NODE_1, d.NODE_2))
-            selected['is_'+style+suffix] = [pair in chosen for pair in all_keys]
-    flags = ['is_'+style+suffix for suffix in ('', '_clean') for style in ('M', 'B', 'U')]
-    selected = selected.loc[selected[flags].any(axis=1)].copy()
-    selected.insert(0, 'CUTOFF', cutoff)
-    selected.insert(1, 'WINDOW_START', hist.index[0])
-    selected['K'] = graph_info['K']
-    selected['Kclean'] = clean_info['K']
-    selected.to_parquet(parquet.with_suffix('.tmp.parquet'), index=False)
-    parquet.with_suffix('.tmp.parquet').replace(parquet)
-    info = {'schema': 1, 'cutoff': str(cutoff.date()), 'window_start': str(hist.index[0].date()),
-            'window_rows': 504, 'eligible_n': hist.shape[1], 'eligible': list(hist.columns),
-            'raw_columns': prices.shape[1], 'source_sha256': source_hash,
-            'numeric_adf_source': 'src/numerics.py',
-            'numeric_adf_source_sha256': hashlib.sha256(ADF_SOURCE.read_bytes()).hexdigest(),
-            'selection_algorithm_sha256': hashlib.sha256(Path(__file__).read_bytes()).hexdigest(),
-            'directed_candidates_attempted': hist.shape[1]*(hist.shape[1]-1),
-            'directed_finite_candidates': len(directed), 'undirected_edges': len(graph_edges),
-            'directed_edges_sha256': directed_hash, 'graph_edges_sha256': graph_hash,
-            'edge_hash_format': 'canonical sorted UTF-8 CSV; numeric float_format %.17g; LF; columns in edge_digest',
-            'lag_counts': {str(int(lag)): int(count) for lag, count in directed.USEDLAG.value_counts().sort_index().items()},
-            'failed_adf_pairs_skipped': int(directed.attrs.get('adf_failed_pairs_skipped', 0)),
-            'adf_fallbacks': fallbacks, 'exact_sort_tie_refits': int(directed.attrs.get('exact_sort_tie_refits', 0)),
-            'direction': 'minimum t across both directions; exact ties alphabetical ASSET_1 then ASSET_2',
-            'p_value_filter': None,
-            'M_rule': 'maximum total -t; maxcardinality=False; binary64-exact integer scaling',
-            'B_rule': 'top K by -t; canonical alphabetical exact-tie rule; K=M count',
-            'U_rule': 'alphabetical graph, unweighted maximum cardinality; alphabetical first K pairs if larger',
-            'selection_cache_read': False, 'full_sample_universe_used': False,
-            'selected_union_rows': len(selected), 'selection_file': parquet.name,
-            'clean_excluded_tickers': sorted(excluded), 'clean_eligible_n': len(clean_eligible),
-            'clean_graph_edges': len(clean_edges), 'clean_graph_edges_sha256': edge_digest(clean_edges),
-            'Kclean': clean_info['K'], 'clean': clean_info,
-            'clean_protocol': 'SRE/CPRT excluded for all dates; same candidate ADF values, predeclared before new performance outcomes',
+        raise ValueError(f'Invalid 504-row cutoff {cutoff}')
+    # Missing/invalid inputs cause source sklearn OLS to fail and the pair to
+    # be skipped. A complete-column filter is the equivalent efficient route.
+    complete = np.isfinite(hist.to_numpy()).all(axis=0) & (hist.to_numpy() > 0).all(axis=0)
+    hist = hist.loc[:, complete]
+    edges, fallback_count = calculate_edges(np.log(hist), directed=True)
+    exact_sort_refits = edges.attrs.get('exact_sort_tie_refits', 0)
+    failed_pairs = edges.attrs.get('adf_failed_pairs_skipped', 0)
+    adf_seconds = time.monotonic() - started
+    baseline, matching = literal_matching(edges)
+    index = edges.set_index(['ASSET_1', 'ASSET_2'])
+    records = []
+    for style, pairs in [('BASELINE', list(baseline)), ('MAX_WEIGHT', list(matching))]:
+        for position, (x, y) in enumerate(pairs):
+            record = index.loc[(x, y)].to_dict()
+            record.update(METHOD=style, POSITION=position, ASSET_1=x, ASSET_2=y,
+                          CUTOFF=cutoff, WINDOW_START=hist.index[0])
+            records.append(record)
+    selected = pd.DataFrame(records)
+    selected['USEDLAG'] = selected.USEDLAG.astype(int)
+    selected['T_STAT_ROUNDED'] = selected.T_STAT.round(2)
+    tmp = output.with_suffix('.tmp.parquet')
+    selected.to_parquet(tmp, index=False)
+    tmp.replace(output)
+    info = {'schema': 2, 'source_commit': SOURCE_COMMIT,
+            'source_sha256': identity['price_sha256'], 'cache_identity': identity,
+            'selection_sha256': sha256(output), 'cutoff': str(cutoff.date()),
+            'window_start': str(hist.index[0].date()), 'window_rows': len(hist),
+            'source_month': cutoff.strftime('%Y-%m'), 'source_cache_name': key + '.csv',
+            'global_universe_n': len(names), 'global_universe_order': names,
+            'eligible_n': hist.shape[1], 'eligible_order': list(hist.columns),
+            'candidate_n': len(edges), 'baseline_n': len(baseline), 'matching_n': len(matching),
+            'lag_counts': {str(k): int(v) for k, v in edges.USEDLAG.value_counts().sort_index().items()},
+            'fallback_count': fallback_count, 'exact_sort_tie_refits': exact_sort_refits,
+            'adf_failed_pairs_skipped': failed_pairs,
+            'incomplete_pairs_skipped': len(names)*(len(names)-1)-hist.shape[1]*(hist.shape[1]-1),
             'adf_seconds': adf_seconds, 'total_seconds': time.monotonic()-started,
-            'python': platform.python_version(), 'numpy': np.__version__, 'pandas': pd.__version__,
-            'statsmodels': statsmodels.__version__, 'networkx': nx.__version__, 'rustworkx':rx.__version__, **graph_info}
-    temporary_meta = meta.with_suffix('.tmp')
-    temporary_meta.write_text(json.dumps(info, indent=2))
-    temporary_meta.replace(meta)
+            **environment(),
+            'matching': 'rating=T_STAT.round(2); maxcardinality=1; default weight key; no p filter',
+            'baseline': 'all directed tuples with P_VALUE <= 0.05; no top-N cap',
+            'selection_file': output.name,
+            'limitations': ['The historical author hash/set and library environment is unknown.',
+                           'The entire-sample universe intentionally preserves source lookahead.',
+                           'These selection files do not recover the missing daily pair-cache generator.']}
+    meta_tmp = meta_path.with_suffix('.tmp.json')
+    meta_tmp.write_text(json.dumps(info, indent=2))
+    meta_tmp.replace(meta_path)
     return info
 
 
-def brute_matching_objective(nodes, weights):
-    """Enumerate every feasible matching independently of graph libraries."""
-    nodes = tuple(nodes)
-    def visit(remaining):
-        if not remaining:
-            return 0.
-        first, rest = remaining[0], remaining[1:]
-        best = visit(rest)
-        for position, partner in enumerate(rest):
-            edge = tuple(sorted((first, partner)))
-            if edge in weights:
-                best = max(best, weights[edge]+visit(rest[:position]+rest[position+1:]))
-        return best
-    return visit(nodes)
-
-
-def validate(prices_path=DEFAULT_PRICES, checks_dir=None):
-    from statsmodels.tsa.stattools import adfuller
-    checks = Path(checks_dir or ROOT/'checks')
-    checks.mkdir(parents=True, exist_ok=True)
-    rng = np.random.default_rng(20261029)
-    graph_checks = []
-    # First case requires preserving maxcardinality=False: weight10 alone beats
-    # the two-edge weight8 matching, and U must be shortened from two to one.
-    examples = [('abcd', {('a','b'):10., ('c','d'):-1., ('a','c'):4., ('b','d'):4.})]
-    for _ in range(8):
-        nodes = tuple('abcdefgh')
-        examples.append((nodes, {(nodes[i], nodes[j]): float(rng.integers(-40,81))/8
-                                for i in range(len(nodes)) for j in range(i+1,len(nodes))}))
-    for number, (nodes, weights) in enumerate(examples):
-        edges = pd.DataFrame([{'NODE_1':x,'NODE_2':y,'T_STAT':-w,'SCORE':w} for (x,y),w in weights.items()])
-        chosen, info = solve_graph(edges, nodes)
-        exact = brute_matching_objective(nodes, weights)
-        assert info['objective']['M'] == exact
-        if number == 0:
-            assert info['K'] == 1 and info['U_lexicographic_truncation'] == 1
-        graph_checks.append({'graph': number, 'nodes':len(nodes), 'edges':len(weights),
-                             'brute_force_optimum':exact, 'M_objective':info['objective']['M'],
-                             'K':info['K'], 'U_truncated':info['U_lexicographic_truncation']})
+def generate_all(prices_path=DEFAULT_PRICES, output_dir=None, cutoffs=None, workers=4, force=False):
+    if workers < 1:
+        raise ValueError('workers must be positive')
     prices = pd.read_parquet(prices_path)
-    adf_checks = []
-    # Include names absent from the earlier full-sample432 universe without
-    # reading any earlier selection or eligibility cache.
-    for cutoff in ['2016-12-30', '2020-01-31', '2023-04-28']:
-        hist = prices.loc[:cutoff].tail(504)
-        hist = hist.loc[:, np.isfinite(hist).all() & (hist>0).all()].sort_index(axis=1)
-        names = sorted(set(list(hist.columns[::max(1,hist.shape[1]//8)][:8]) +
-                           [x for x in ['ABBV','AMCR','ANET','CDW','COTY','ETSY','META','MRNA','VICI'] if x in hist.columns]))
-        small = np.log(hist[names])
-        fast, _ = _numeric.calculate_edges(small, directed=True)
-        sampled = fast.sample(n=min(56,len(fast)), random_state=44)
-        max_t, max_p, max_beta, mismatches = 0., 0., 0., 0
-        for row in sampled.itertuples():
-            x, y = small[row.ASSET_1].to_numpy(), small[row.ASSET_2].to_numpy()
-            alpha, beta = np.linalg.lstsq(np.column_stack([np.ones(len(x)),x]),y,rcond=None)[0]
-            t,p,lag,*_ = adfuller(y-alpha-beta*x)
-            max_t, max_p = max(max_t,abs(t-row.T_STAT)), max(max_p,abs(p-row.P_VALUE))
-            max_beta = max(max_beta,abs(beta-row.BETA));mismatches += int(lag != row.USEDLAG)
-        assert max_t < 1e-8 and max_p < 1e-8 and mismatches == 0
-        adf_checks.append({'cutoff':cutoff,'samples':len(sampled),'max_t_error':max_t,
-                           'max_p_error':max_p,'max_beta_error':max_beta,'lag_mismatches':mismatches,
-                           'subset_names':names})
-    # Ensure exact direction ties are alphabetical rather than hash-order based.
-    ties = pd.DataFrame([{'ASSET_1':'b','ASSET_2':'a','T_STAT':-3.,'P_VALUE':.02},
-                         {'ASSET_1':'a','ASSET_2':'b','T_STAT':-3.,'P_VALUE':.02}])
-    assert collapse_directions(ties).iloc[0].ASSET_1 == 'a'
-    result = {'passed':True,'small_graph_brute_force':graph_checks,'independent_OLS_ADF_samples':adf_checks,
-              'exact_direction_tie_alphabetical':True,'scope':'nine exhaustive small graphs; independent OLS+statsmodels for168 sampled directed pairs'}
-    (checks/'selection_validation.json').write_text(json.dumps(result,indent=2))
-    return result
-
-
-def generate_all(prices_path=DEFAULT_PRICES, output_dir=None, checks_dir=None, workers=2, force=False):
-    if workers < 1 or workers > 2:
-        raise ValueError('CPU limit: workers must be1 or2')
-    prices = pd.read_parquet(prices_path)
-    cutoffs = boundaries(prices)
-    destination = Path(output_dir or ROOT/'data/selection')
-    reused_cutoffs = [str(c.date()) for c in cutoffs[:-1] if not force
-                      and (destination/(c.strftime('%Y%m%d')+'.parquet')).exists()
-                      and (destination/(c.strftime('%Y%m%d')+'.json')).exists()]
+    boundaries = [pd.Timestamp(x) for x in (cutoffs if cutoffs is not None else selection_cutoffs(prices))]
+    cuts = sorted(boundaries[:-1], key=lambda x: (x < pd.Timestamp('2020-01-01'), x))
     results = []
     with ProcessPoolExecutor(max_workers=workers) as pool:
-        pending = {pool.submit(generate_month,c,prices_path,output_dir,force):c for c in cutoffs[:-1]}
-        for future in as_completed(pending):
-            info = future.result();results.append(info)
-            print(json.dumps({k:info[k] for k in ['cutoff','eligible_n','K','undirected_edges','adf_seconds','weighted_matching_seconds','total_seconds']}),flush=True)
-    results.sort(key=lambda x:x['cutoff'])
-    assert len(results)==77
-    manifest = {'passed':True,'selection_months':77,'first_cutoff':results[0]['cutoff'],
-                'last_selection_cutoff':results[-1]['cutoff'],'last_interval_endpoint':str(cutoffs[-1].date()),
-                'workers':workers,'prior_selection_cache_used':bool(reused_cutoffs),
-                'cached_months_reused':reused_cutoffs,'months':results,
-                'monthly_metadata_provenance': 'Month entries retain their creation-time source identifiers and hashes. Historical identifiers do not declare current runtime dependencies; arithmetic-preserving migration is recorded in checks/numeric_migration.json.',
-                'historical_source_months': [r['cutoff'] for r in results if r.get('numeric_adf_source') != 'src/numerics.py'],
-                'current_runtime_sources': {
-                    'prices': {'path':'data/prices.parquet.gz','sha256':hashlib.sha256(Path(prices_path).read_bytes()).hexdigest()},
-                    'selection': {'path':'src/selection.py','sha256':hashlib.sha256(Path(__file__).read_bytes()).hexdigest()},
-                    'numerics': {'path':'src/numerics.py','sha256':hashlib.sha256(ADF_SOURCE.read_bytes()).hexdigest()}}}
-    checks=Path(checks_dir or ROOT/'checks');checks.mkdir(parents=True,exist_ok=True)
-    (checks/'selection_manifest.json').write_text(json.dumps(manifest,indent=2))
+        futures = [pool.submit(generate_month, c, prices_path, output_dir, force) for c in cuts]
+        for future in as_completed(futures):
+            r = future.result()
+            results.append(r)
+            print(json.dumps({k: r[k] for k in ['cutoff', 'candidate_n', 'baseline_n', 'matching_n', 'total_seconds']}), flush=True)
+    manifest = {'cutoffs': [str(x.date()) for x in boundaries],
+                'selection_files': len(results), 'source_default_start': '2020-01-31',
+                'expanded_report_start': '2017-01-03', 'end': '2023-05-31',
+                'intervals': 'inclusive boundaries; the runner must retain duplicate boundary dates',
+                'results': sorted(results, key=lambda x: x['cutoff'])}
+    folder = Path(output_dir).parent if output_dir is not None else ROOT / 'data'
+    folder.mkdir(parents=True, exist_ok=True)
+    (folder / 'selection_manifest.json').write_text(json.dumps(manifest, indent=2))
     return manifest
 
 
+def _original_create_spread(source_path):
+    """Load only the unedited original function, avoiding its top-level I/O."""
+    from sklearn import linear_model
+    tree = ast.parse(Path(source_path).read_text())
+    function = next(n for n in tree.body if isinstance(n, ast.FunctionDef) and n.name == 'create_spread')
+    module = ast.Module(body=[function], type_ignores=[])
+    namespace = {'pd': pd, 'np': np, 'linear_model': linear_model}
+    exec(compile(module, str(source_path), 'exec'), namespace)
+    original = namespace['create_spread']
+    # New sklearn rejects the original mixed string/int feature labels. Clear
+    # Series names only; observations, values, index, and function are unchanged.
+    return lambda x, y: original(x.rename(None), y.rename(None))
+
+
+def validate(prices_path=DEFAULT_PRICES, samples=80, source_path=None):
+    """400 reference pairs at default samples, plus complete small graph checks."""
+    from itertools import permutations
+    from sklearn.linear_model import LinearRegression
+    source_path = Path(source_path or ROOT / 'source/betas.py')
+    create_spread = _original_create_spread(source_path)
+    prices = pd.read_parquet(prices_path)
+    if sha256(prices_path) != EXPECTED_SHA256:
+        raise ValueError('Unexpected source price bytes')
+    names = source_universe(prices)
+    rng = np.random.default_rng(8841)
+    records, graphs = [], []
+    cutoffs = ['2016-12-30', '2018-01-31', '2020-01-31', '2020-03-31', '2023-04-28']
+    for cutoff in cutoffs:
+        hist = prices[names].loc[:cutoff].tail(504)
+        hist = np.log(hist.loc[:, hist.notna().all() & (hist > 0).all()])
+        a = hist.to_numpy()
+        ii, jj = np.where(~np.eye(a.shape[1], dtype=bool))
+        chosen = rng.choice(len(ii), samples, replace=False)
+        residuals, selected_names = [], []
+        for k in chosen:
+            residuals.append(create_spread(hist.iloc[:, ii[k]], hist.iloc[:, jj[k]]).to_numpy())
+            selected_names.append([str(hist.columns[ii[k]]), str(hist.columns[jj[k]])])
+        residuals = np.asarray(residuals)
+        t, p, lag, aic, fallback = adf_aic_batch(residuals)
+        exact = [adfuller(e) for e in residuals]
+        result = {'cutoff': cutoff, 'samples': samples, 'directed_pairs': selected_names,
+                  'max_t_error': float(max(abs(t[i]-r[0]) for i, r in enumerate(exact))),
+                  'max_p_error': float(max(abs(p[i]-r[1]) for i, r in enumerate(exact))),
+                  'max_aic_error': float(max(abs(aic[i]-r[5]) for i, r in enumerate(exact))),
+                  'lag_mismatches': int(sum(lag[i] != r[2] for i, r in enumerate(exact))),
+                  'baseline_threshold_mismatches': int(sum((p[i] <= .05) != (r[1] <= .05) for i, r in enumerate(exact))),
+                  'fallback_count': fallback}
+        assert result['lag_mismatches'] == 0 and result['baseline_threshold_mismatches'] == 0, result
+        assert result['max_t_error'] < 1e-8 and result['max_aic_error'] < 1e-7, result
+        records.append(result)
+        if cutoff in ['2016-12-30', '2020-01-31', '2023-04-28']:
+            small = hist.iloc[:, :12]
+            reference = []
+            for xname, yname in permutations(small.columns, 2):
+                x, y = small[xname], small[yname]
+                fit = LinearRegression().fit(np.column_stack([x, np.ones(len(x))]), y)
+                e = create_spread(x, y)
+                r = adfuller(e)
+                reference.append({'ASSET_1': xname, 'ASSET_2': yname, 'BETA': fit.coef_[0],
+                                  'ALPHA': fit.intercept_, 'T_STAT': r[0], 'P_VALUE': r[1]})
+            source_edges = pd.DataFrame(reference).sort_values('P_VALUE').reset_index(drop=True)
+            fast_edges, _ = calculate_edges(small, directed=True)
+            b0, m0 = literal_matching(source_edges)
+            b1, m1 = literal_matching(fast_edges)
+            roundtrip = pd.read_csv(io.StringIO(fast_edges[['ASSET_1', 'ASSET_2', 'T_STAT', 'P_VALUE']].to_csv(index=False)))
+            b2, m2 = literal_matching(roundtrip)
+            left = source_edges.set_index(['ASSET_1', 'ASSET_2'])
+            right = fast_edges.set_index(['ASSET_1', 'ASSET_2']).loc[left.index]
+            check = {'cutoff': cutoff, 'full_directed_subgraph_edges': len(source_edges),
+                     'baseline_set_equal': b0 == b1, 'matching_oriented_tuple_set_equal': m0 == m1,
+                     'source_csv_roundtrip_baseline_equal': b1 == b2,
+                     'source_csv_roundtrip_matching_equal': m1 == m2,
+                     'max_beta_error': float((left.BETA-right.BETA).abs().max()),
+                     'max_alpha_error': float((left.ALPHA-right.ALPHA).abs().max()),
+                     'max_t_error': float((left.T_STAT-right.T_STAT).abs().max())}
+            assert all(check[k] for k in ['baseline_set_equal', 'matching_oriented_tuple_set_equal',
+                                          'source_csv_roundtrip_baseline_equal', 'source_csv_roundtrip_matching_equal']), check
+            assert check['max_t_error'] < 1e-8, check
+            graphs.append(check)
+    t, p, lag, _, _ = adf_aic_batch(np.stack([rng.normal(size=504), np.zeros(504)]))
+    assert np.isfinite(t[0]) and np.isnan(t[1]) and lag[1] == -1
+    rejected = False
+    try:
+        create_spread(pd.Series([0., np.nan, 2.]), pd.Series([0., 1., 2.]))
+    except ValueError:
+        rejected = True
+    assert rejected
+    return {'passed': True, 'source_commit': SOURCE_COMMIT,
+            'test': 'Unedited original betas.py create_spread + default statsmodels.adfuller versus accelerated calculation',
+            'price_sha256': sha256(prices_path), 'generator_sha256': sha256(__file__),
+            'source_betas_sha256': sha256(source_path), 'environment': environment(),
+            'reference_compatibility_shim': 'Clear input Series names only: modern sklearn rejects the original mixed string/int DataFrame feature labels. Original function AST and numerical inputs are unchanged.',
+            'source_universe_n': len(names), 'source_universe_order': names,
+            'samples': sum(r['samples'] for r in records), 'records': records,
+            'full_small_graph_checks': graphs, 'constant_residual_skip_matches_source': True,
+            'nan_OLS_skip_matches_source': True, 'tolerance_t': 1e-8, 'tolerance_aic': 1e-7,
+            'scope': 'Five cutoffs and three complete 132-edge subgraphs; not full historical author cache identity.',
+            'limitations': ['Unknown author hash/set order and historical package environment.',
+                           'Daily pair SPREAD/BETA generation is absent from public code and is not covered by this selection validation.',
+                           'The original entire-sample universe and missing graph weight are intentionally retained.']}
+
+
 def main():
-    parser=argparse.ArgumentParser()
-    parser.add_argument('--prices',type=Path,default=DEFAULT_PRICES)
-    parser.add_argument('--output-dir',type=Path)
-    parser.add_argument('--checks-dir',type=Path)
-    parser.add_argument('--validate',action='store_true')
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument('--prices', type=Path, default=DEFAULT_PRICES)
+    parser.add_argument('--output-dir', type=Path, default=ROOT / 'data/selection')
+    parser.add_argument('--all', action='store_true')
     parser.add_argument('--month')
-    parser.add_argument('--all',action='store_true')
-    parser.add_argument('--workers',type=int,default=2)
-    parser.add_argument('--force',action='store_true')
-    args=parser.parse_args()
+    parser.add_argument('--workers', type=int, default=4)
+    parser.add_argument('--force', action='store_true')
+    parser.add_argument('--validate', action='store_true')
+    parser.add_argument('--validation-output', type=Path, default=ROOT / 'checks/selection_validation.json')
+    args = parser.parse_args()
     if args.validate:
-        print(json.dumps(validate(args.prices,args.checks_dir),indent=2))
+        result = validate(args.prices)
+        args.validation_output.parent.mkdir(parents=True, exist_ok=True)
+        args.validation_output.write_text(json.dumps(result, indent=2))
+        print(json.dumps({'passed': result['passed'], 'samples': result['samples'],
+                          'graphs': result['full_small_graph_checks']}), flush=True)
     if args.month:
-        info=generate_month(args.month,args.prices,args.output_dir,args.force)
-        print(json.dumps({k:info[k] for k in ['cutoff','eligible_n','K','undirected_edges','adf_seconds','weighted_matching_seconds','total_seconds']},indent=2))
+        result = generate_month(args.month, args.prices, args.output_dir, args.force)
+        print(json.dumps({k: result[k] for k in ['cutoff', 'candidate_n', 'baseline_n', 'matching_n']}), flush=True)
     if args.all:
-        generate_all(args.prices,args.output_dir,args.checks_dir,args.workers,args.force)
+        generate_all(args.prices, args.output_dir, workers=args.workers, force=args.force)
 
 
-if __name__=='__main__':
+if __name__ == '__main__':
     main()
+

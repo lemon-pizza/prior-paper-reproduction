@@ -1,0 +1,198 @@
+{
+  "repository": "https://github.com/jingmouren/kai-trading-bot-pair",
+  "commit": "aaac6d999d6b077304a887caff2aab514d7ea6a2",
+  "evidence_type": "historical notebook saved output; no cells executed",
+  "comparability": "Exact input/cache/date range unknown; not verified as output of the visible Python source at this commit.",
+  "notebooks": {
+    "QSCORE.ipynb": {
+      "url": "https://github.com/jingmouren/kai-trading-bot-pair/blob/aaac6d999d6b077304a887caff2aab514d7ea6a2/QSCORE.ipynb",
+      "sha256": "68a4ed706b346e445536e4cc6d2dc718d9475e9ddd56fcabec6b912e6e6ee386",
+      "python_metadata": "3.9.13",
+      "cells_source": [
+        "# 2023-10-09\n\n__author__ = 'kqureshi'\n\n## Enhanced Signal\n\nSource code: https://github.com/kai-trading-bot/pair/blob/main/performance.py#L93",
+        "from performance import *",
+        "### Signal\n\nInstead of Z-Score we use an unbiased Q-score defined as follows\n\n$$Q[t] = \\frac{S[t] - \\tau_{50}\\left(S[t]\\right)}{\\tau_{75}\\left(S[t]\\right) - \\tau_{25}\\left(S[t]\\right)}$$\n\nwhere $S[t]$ is the value of the signal for a given pair at time $t$.\n\n### Position\n\nInstead of a binary position (+/-) we scale with the magnitude of the z-score. Specifically:\n\n$\\newcommand{\\sgn}{\\operatorname{sgn}}$\n\n$\\newcommand\\round[1]{\\left[#1\\right]}$\n\n$$P[t] = \\sgn{(Q[t])}\\round{|Q[t]|}$$\n\nwhere $[]$ indicates rounding. We only use the last 20 days (~1 trading month) to calculate today's score and apply a shift.\n",
+        "%matplotlib notebook\nreturns = Performance.run_history()\nPerformance.simple_report(returns)"
+      ],
+      "saved_statistics": {
+        "SHARPE": 1.408189,
+        "SORTINO": 2.264617,
+        "CUMULATIVE_RETURN": 0.410308,
+        "SIMPLE_RETURN": 0.353279
+      },
+      "saved_tables": [
+        [
+          [
+            "",
+            "PERFORMANCE"
+          ],
+          [
+            "SHARPE",
+            "1.408189"
+          ],
+          [
+            "SORTINO",
+            "2.264617"
+          ],
+          [
+            "CUMULATIVE_RETURN",
+            "0.410308"
+          ],
+          [
+            "SIMPLE_RETURN",
+            "0.353279"
+          ]
+        ]
+      ],
+      "date_extent": "Exact dates unknown. Saved plot ticks near 2020-01 to 2023-05."
+    },
+    "clean_zscore.ipynb": {
+      "url": "https://github.com/jingmouren/kai-trading-bot-pair/blob/aaac6d999d6b077304a887caff2aab514d7ea6a2/clean_zscore.ipynb",
+      "sha256": "b21ab98cd6036a4ba47b695cae52cbad1121cbc9f2bf9781d2c39d774f9c7c29",
+      "python_metadata": "3.9.13",
+      "cells_source": [
+        "%load_ext autoreload\n%autoreload 2\n\nfrom performance import *",
+        "##### Performance\n\nWe use an expanding z score by indexing upto the day before the \"start date\" of the trading signal. This is demonstrated here: https://github.com/kai-trading-bot/pair/blob/main/performance.py#L105",
+        "perf = Performance()\nclean_returns = perf.fetch_performance(style='MAX_WEIGHT', threshold=2)\nperf.simple_report(returns=clean_returns)"
+      ],
+      "saved_statistics": {
+        "SHARPE": 1.846576,
+        "SORTINO": 2.916737,
+        "CUMULATIVE_RETURN": 0.149135,
+        "SIMPLE_RETURN": 0.147777
+      },
+      "saved_tables": [
+        [
+          [
+            "",
+            "PERFORMANCE"
+          ],
+          [
+            "SHARPE",
+            "1.846576"
+          ],
+          [
+            "SORTINO",
+            "2.916737"
+          ],
+          [
+            "CUMULATIVE_RETURN",
+            "0.149135"
+          ],
+          [
+            "SIMPLE_RETURN",
+            "0.147777"
+          ]
+        ]
+      ],
+      "date_extent": "Not shown in saved output"
+    },
+    "report.ipynb": {
+      "url": "https://github.com/jingmouren/kai-trading-bot-pair/blob/aaac6d999d6b077304a887caff2aab514d7ea6a2/report.ipynb",
+      "sha256": "4d07347e4e9597461832efea90839f878bb55b5afd85b3c3b73a7be0921bb1e3",
+      "python_metadata": "3.9.13",
+      "cells_source": [
+        "from performance import *",
+        "# Run Performance\n\nSource code: https://github.com/kai-trading-bot/pair/blob/main/performance.py#L22",
+        "%matplotlib notebook\nPerformance.trade_report()"
+      ],
+      "saved_statistics": {},
+      "saved_tables": [
+        [
+          [
+            "",
+            "BASELINE",
+            "MAX_WEIGHT",
+            "MAXIMAL",
+            "APPROX_MAXIMAL"
+          ],
+          [
+            "mean",
+            "0.03",
+            "0.13",
+            "0.10",
+            "0.05"
+          ],
+          [
+            "std",
+            "0.89",
+            "1.14",
+            "1.23",
+            "1.24"
+          ],
+          [
+            "min",
+            "-5.55",
+            "-7.87",
+            "-7.11",
+            "-10.51"
+          ],
+          [
+            "25%",
+            "-0.40",
+            "-0.51",
+            "-0.54",
+            "-0.56"
+          ],
+          [
+            "50%",
+            "0.02",
+            "0.13",
+            "0.05",
+            "0.04"
+          ],
+          [
+            "75%",
+            "0.45",
+            "0.78",
+            "0.77",
+            "0.64"
+          ],
+          [
+            "max",
+            "3.58",
+            "4.65",
+            "5.74",
+            "5.53"
+          ],
+          [
+            "GEOMETRIC",
+            "24.81",
+            "166.66",
+            "104.07",
+            "33.26"
+          ],
+          [
+            "ARITHMETIC",
+            "25.49",
+            "103.25",
+            "76.89",
+            "34.66"
+          ],
+          [
+            "SHARPE",
+            "0.54",
+            "1.84",
+            "1.35",
+            "0.58"
+          ],
+          [
+            "SORTINO",
+            "0.70",
+            "2.44",
+            "1.96",
+            "0.74"
+          ]
+        ]
+      ],
+      "date_extent": "Exact dates unknown. Saved plot ticks near 2020-01 to 2023-05."
+    }
+  },
+  "incompatibilities_with_visible_source": [
+    "clean_zscore calls fetch_performance, absent from performance.py.",
+    "run_history references undefined run_trade/perf and does not return returns.",
+    "QSCORE contains a saved plot although current simple_report only returns a DataFrame.",
+    "QSCORE prose uses Q75-Q25; active Python code uses Q25-Q75.",
+    "report compares four selection styles, not paper MQ/MZ/BQ/BZ."
+  ]
+}

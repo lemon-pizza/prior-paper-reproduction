@@ -1,0 +1,176 @@
+WARNING: Logging before InitGoogleLogging() is written to STDERR
+W20261029 17:07:25.156553 1796075520 cpu_info.cc:239] IOError: sysctlbyname failed for 'hw.l1dcachesize'. Detail: [errno 1] Operation not permitted
+W20261029 17:07:25.156700 1796075520 cpu_info.cc:239] IOError: sysctlbyname failed for 'hw.l2cachesize'. Detail: [errno 1] Operation not permitted
+W20261029 17:07:25.156762 1796075520 cpu_info.cc:239] IOError: sysctlbyname failed for 'hw.l3cachesize'. Detail: [errno 1] Operation not permitted
+W20261029 17:07:25.156819 1796075520 cpu_info.cc:239] IOError: sysctlbyname failed for 'hw.optional.neon'. Detail: [errno 1] Operation not permitted
+WARNING: Logging before InitGoogleLogging() is written to STDERR
+W20261029 17:07:26.298198 1839067136 cpu_info.cc:239] IOError: sysctlbyname failed for 'hw.l1dcachesize'. Detail: [errno 1] Operation not permitted
+WARNING: Logging before InitGoogleLogging() is written to STDERR
+W20261029 17:07:26.298216 1873719296 cpu_info.cc:239] IOError: sysctlbyname failed for 'hw.l1dcachesize'. Detail: [errno 1] Operation not permitted
+W20261029 17:07:26.298317 1839067136 cpu_info.cc:239] IOError: sysctlbyname failed for 'hw.l2cachesize'. Detail: [errno 1] Operation not permitted
+W20261029 17:07:26.298326 1873719296 cpu_info.cc:239] IOError: sysctlbyname failed for 'hw.l2cachesize'. Detail: [errno 1] Operation not permitted
+W20261029 17:07:26.298384 1839067136 cpu_info.cc:239] IOError: sysctlbyname failed for 'hw.l3cachesize'. Detail: [errno 1] Operation not permitted
+W20261029 17:07:26.298388 1873719296 cpu_info.cc:239] IOError: sysctlbyname failed for 'hw.l3cachesize'. Detail: [errno 1] Operation not permitted
+W20261029 17:07:26.298446 1839067136 cpu_info.cc:239] IOError: sysctlbyname failed for 'hw.optional.neon'. Detail: [errno 1] Operation not permitted
+W20261029 17:07:26.298449 1873719296 cpu_info.cc:239] IOError: sysctlbyname failed for 'hw.optional.neon'. Detail: [errno 1] Operation not permitted
+{"stage": "trading", "completed": 1, "total": 77, "cutoff": "20161230", "verified_cache_reused": false}
+{"stage": "trading", "completed": 2, "total": 77, "cutoff": "20170131", "verified_cache_reused": false}
+{"stage": "trading", "completed": 3, "total": 77, "cutoff": "20170228", "verified_cache_reused": false}
+{"stage": "trading", "completed": 4, "total": 77, "cutoff": "20170331", "verified_cache_reused": false}
+{"stage": "trading", "completed": 5, "total": 77, "cutoff": "20170428", "verified_cache_reused": false}
+{"stage": "trading", "completed": 6, "total": 77, "cutoff": "20170531", "verified_cache_reused": false}
+{"stage": "trading", "completed": 7, "total": 77, "cutoff": "20170630", "verified_cache_reused": false}
+{"stage": "trading", "completed": 8, "total": 77, "cutoff": "20170731", "verified_cache_reused": false}
+{"stage": "trading", "completed": 9, "total": 77, "cutoff": "20170831", "verified_cache_reused": false}
+{"stage": "trading", "completed": 10, "total": 77, "cutoff": "20170929", "verified_cache_reused": false}
+{"stage": "trading", "completed": 11, "total": 77, "cutoff": "20171031", "verified_cache_reused": false}
+{"stage": "trading", "completed": 12, "total": 77, "cutoff": "20171130", "verified_cache_reused": false}
+{"stage": "trading", "completed": 13, "total": 77, "cutoff": "20171229", "verified_cache_reused": false}
+{"stage": "trading", "completed": 14, "total": 77, "cutoff": "20180131", "verified_cache_reused": false}
+{"stage": "trading", "completed": 15, "total": 77, "cutoff": "20180329", "verified_cache_reused": false}
+{"stage": "trading", "completed": 16, "total": 77, "cutoff": "20180228", "verified_cache_reused": false}
+{"stage": "trading", "completed": 17, "total": 77, "cutoff": "20180531", "verified_cache_reused": false}
+{"stage": "trading", "completed": 18, "total": 77, "cutoff": "20180430", "verified_cache_reused": false}
+{"stage": "trading", "completed": 19, "total": 77, "cutoff": "20180629", "verified_cache_reused": false}
+{"stage": "trading", "completed": 20, "total": 77, "cutoff": "20180731", "verified_cache_reused": false}
+{"stage": "trading", "completed": 21, "total": 77, "cutoff": "20180831", "verified_cache_reused": false}
+{"stage": "trading", "completed": 22, "total": 77, "cutoff": "20180928", "verified_cache_reused": false}
+{"stage": "trading", "completed": 23, "total": 77, "cutoff": "20181031", "verified_cache_reused": false}
+{"stage": "trading", "completed": 24, "total": 77, "cutoff": "20181130", "verified_cache_reused": false}
+{"stage": "trading", "completed": 25, "total": 77, "cutoff": "20181231", "verified_cache_reused": false}
+{"stage": "trading", "completed": 26, "total": 77, "cutoff": "20190131", "verified_cache_reused": false}
+{"stage": "trading", "completed": 27, "total": 77, "cutoff": "20190228", "verified_cache_reused": false}
+{"stage": "trading", "completed": 28, "total": 77, "cutoff": "20190329", "verified_cache_reused": false}
+{"stage": "trading", "completed": 29, "total": 77, "cutoff": "20190430", "verified_cache_reused": false}
+{"stage": "trading", "completed": 30, "total": 77, "cutoff": "20190531", "verified_cache_reused": false}
+{"stage": "trading", "completed": 31, "total": 77, "cutoff": "20190628", "verified_cache_reused": false}
+{"stage": "trading", "completed": 32, "total": 77, "cutoff": "20190731", "verified_cache_reused": false}
+{"stage": "trading", "completed": 33, "total": 77, "cutoff": "20190830", "verified_cache_reused": false}
+{"stage": "trading", "completed": 34, "total": 77, "cutoff": "20190930", "verified_cache_reused": false}
+{"stage": "trading", "completed": 35, "total": 77, "cutoff": "20191129", "verified_cache_reused": false}
+{"stage": "trading", "completed": 36, "total": 77, "cutoff": "20191031", "verified_cache_reused": false}
+{"stage": "trading", "completed": 37, "total": 77, "cutoff": "20191231", "verified_cache_reused": false}
+{"stage": "trading", "completed": 38, "total": 77, "cutoff": "20200131", "verified_cache_reused": false}
+{"stage": "trading", "completed": 39, "total": 77, "cutoff": "20200228", "verified_cache_reused": false}
+{"stage": "trading", "completed": 40, "total": 77, "cutoff": "20200331", "verified_cache_reused": false}
+{"stage": "trading", "completed": 41, "total": 77, "cutoff": "20200430", "verified_cache_reused": false}
+{"stage": "trading", "completed": 42, "total": 77, "cutoff": "20200529", "verified_cache_reused": false}
+{"stage": "trading", "completed": 43, "total": 77, "cutoff": "20200731", "verified_cache_reused": false}
+{"stage": "trading", "completed": 44, "total": 77, "cutoff": "20200630", "verified_cache_reused": false}
+{"stage": "trading", "completed": 45, "total": 77, "cutoff": "20200831", "verified_cache_reused": false}
+{"stage": "trading", "completed": 46, "total": 77, "cutoff": "20200930", "verified_cache_reused": false}
+{"stage": "trading", "completed": 47, "total": 77, "cutoff": "20201030", "verified_cache_reused": false}
+{"stage": "trading", "completed": 48, "total": 77, "cutoff": "20201130", "verified_cache_reused": false}
+{"stage": "trading", "completed": 49, "total": 77, "cutoff": "20201231", "verified_cache_reused": false}
+{"stage": "trading", "completed": 50, "total": 77, "cutoff": "20210129", "verified_cache_reused": false}
+{"stage": "trading", "completed": 51, "total": 77, "cutoff": "20210226", "verified_cache_reused": false}
+{"stage": "trading", "completed": 52, "total": 77, "cutoff": "20210331", "verified_cache_reused": false}
+{"stage": "trading", "completed": 53, "total": 77, "cutoff": "20210430", "verified_cache_reused": false}
+{"stage": "trading", "completed": 54, "total": 77, "cutoff": "20210528", "verified_cache_reused": false}
+{"stage": "trading", "completed": 55, "total": 77, "cutoff": "20210630", "verified_cache_reused": false}
+{"stage": "trading", "completed": 56, "total": 77, "cutoff": "20210730", "verified_cache_reused": false}
+{"stage": "trading", "completed": 57, "total": 77, "cutoff": "20210831", "verified_cache_reused": false}
+{"stage": "trading", "completed": 58, "total": 77, "cutoff": "20210930", "verified_cache_reused": false}
+{"stage": "trading", "completed": 59, "total": 77, "cutoff": "20211029", "verified_cache_reused": false}
+{"stage": "trading", "completed": 60, "total": 77, "cutoff": "20211130", "verified_cache_reused": false}
+{"stage": "trading", "completed": 61, "total": 77, "cutoff": "20211231", "verified_cache_reused": false}
+{"stage": "trading", "completed": 62, "total": 77, "cutoff": "20220131", "verified_cache_reused": false}
+{"stage": "trading", "completed": 63, "total": 77, "cutoff": "20220228", "verified_cache_reused": false}
+{"stage": "trading", "completed": 64, "total": 77, "cutoff": "20220331", "verified_cache_reused": false}
+{"stage": "trading", "completed": 65, "total": 77, "cutoff": "20220531", "verified_cache_reused": false}
+{"stage": "trading", "completed": 66, "total": 77, "cutoff": "20220429", "verified_cache_reused": false}
+{"stage": "trading", "completed": 67, "total": 77, "cutoff": "20220630", "verified_cache_reused": false}
+{"stage": "trading", "completed": 68, "total": 77, "cutoff": "20220729", "verified_cache_reused": false}
+{"stage": "trading", "completed": 69, "total": 77, "cutoff": "20220831", "verified_cache_reused": false}
+{"stage": "trading", "completed": 70, "total": 77, "cutoff": "20220930", "verified_cache_reused": false}
+{"stage": "trading", "completed": 71, "total": 77, "cutoff": "20221130", "verified_cache_reused": false}
+{"stage": "trading", "completed": 72, "total": 77, "cutoff": "20221031", "verified_cache_reused": false}
+{"stage": "trading", "completed": 73, "total": 77, "cutoff": "20221230", "verified_cache_reused": false}
+{"stage": "trading", "completed": 74, "total": 77, "cutoff": "20230131", "verified_cache_reused": false}
+{"stage": "trading", "completed": 75, "total": 77, "cutoff": "20230228", "verified_cache_reused": false}
+{"stage": "trading", "completed": 76, "total": 77, "cutoff": "20230331", "verified_cache_reused": false}
+{"stage": "trading", "completed": 77, "total": 77, "cutoff": "20230428", "verified_cache_reused": false}
+{
+  "model_id": "author_code_aaac6d9_q_replay",
+  "completed_at": "2026-10-29T08:09:10.258471+00:00",
+  "source_commit": "aaac6d999d6b077304a887caff2aab514d7ea6a2",
+  "input_sha256": "7605eab6525ddb5db66965d1559a56b48375f11a14cd1040eaa12318a545939c",
+  "intervals": 77,
+  "strategies": [
+    "MAX_WEIGHT",
+    "BASELINE"
+  ],
+  "signal": "Q only",
+  "recomputed_intervals": 77,
+  "verified_cached_intervals": 0,
+  "source_default": "202*.csv date filter, 2020-01-31 onward",
+  "extension": "Date range only extended to 2017; original duplicate endpoints retained",
+  "completion_assumption": "Absent daily SPREAD/BETA writer supplied with trailing504 log-OLS endpoints",
+  "net_costs": "Not computed; missing executable cost route in original source",
+  "metrics": [
+    {
+      "rows_including_duplicate_dates": 878,
+      "non_nan_rows": 878,
+      "sharpe": 0.7741785180404984,
+      "sortino": 1.1062256370601005,
+      "cumulative_return": 0.20112160396484624,
+      "simple_return": 0.19208626548260288,
+      "scope": "source_default",
+      "method": "MAX_WEIGHT",
+      "start": "2020-01-31",
+      "end": "2023-05-31",
+      "unique_dates": 839,
+      "duplicate_rows": 39,
+      "max_drawdown_supplement": -0.07725798671214645,
+      "finite_returns": true
+    },
+    {
+      "rows_including_duplicate_dates": 878,
+      "non_nan_rows": 878,
+      "sharpe": 0.32170907570191076,
+      "sortino": 0.4270845588030252,
+      "cumulative_return": 0.08104642870162193,
+      "simple_return": 0.08889648973319067,
+      "scope": "source_default",
+      "method": "BASELINE",
+      "start": "2020-01-31",
+      "end": "2023-05-31",
+      "unique_dates": 839,
+      "duplicate_rows": 39,
+      "max_drawdown_supplement": -0.12492509270234942,
+      "finite_returns": true
+    },
+    {
+      "rows_including_duplicate_dates": 1689,
+      "non_nan_rows": 1689,
+      "sharpe": 0.5982393540892392,
+      "sortino": 0.8469889322845767,
+      "cumulative_return": 0.2538646891106251,
+      "simple_return": 0.23803379817282777,
+      "scope": "extended_2017",
+      "method": "MAX_WEIGHT",
+      "start": "2017-01-03",
+      "end": "2023-05-31",
+      "unique_dates": 1613,
+      "duplicate_rows": 76,
+      "max_drawdown_supplement": -0.07937541772280177,
+      "finite_returns": true
+    },
+    {
+      "rows_including_duplicate_dates": 1689,
+      "non_nan_rows": 1689,
+      "sharpe": 0.29981357424436084,
+      "sortino": 0.3966342644222704,
+      "cumulative_return": 0.12384592698052588,
+      "simple_return": 0.13101121254077558,
+      "scope": "extended_2017",
+      "method": "BASELINE",
+      "start": "2017-01-03",
+      "end": "2023-05-31",
+      "unique_dates": 1613,
+      "duplicate_rows": 76,
+      "max_drawdown_supplement": -0.147116657858138,
+      "finite_returns": true
+    }
+  ]
+}

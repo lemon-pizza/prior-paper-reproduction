@@ -1,414 +1,84 @@
 {
-  "price_sha256": "7605eab6525ddb5db66965d1559a56b48375f11a14cd1040eaa12318a545939c",
-  "paths": [
-    {
-      "path": "stockgross_d0_M_c0",
-      "rows": 1613,
-      "unique_dates": true,
-      "max_cash_identity_error": 3.3306690738754696e-16,
-      "max_frozen_quantity_change": 0.0,
-      "max_gross": 1.0000000000000004,
-      "frozen_budget_overrun_days": 0
-    },
-    {
-      "path": "stockgross_d0_M_c5",
-      "rows": 1613,
-      "unique_dates": true,
-      "max_cash_identity_error": 2.220446049250313e-16,
-      "max_frozen_quantity_change": 0.0,
-      "max_gross": 1.0000000000000004,
-      "frozen_budget_overrun_days": 0
-    },
-    {
-      "path": "stockgross_d0_M_c10",
-      "rows": 1613,
-      "unique_dates": true,
-      "max_cash_identity_error": 2.220446049250313e-16,
-      "max_frozen_quantity_change": 0.0,
-      "max_gross": 1.0000000000000004,
-      "frozen_budget_overrun_days": 0
-    },
-    {
-      "path": "pairgross_d0_M_c0",
-      "rows": 1613,
-      "unique_dates": true,
-      "max_cash_identity_error": 3.3306690738754696e-16,
-      "max_frozen_quantity_change": 0.0,
-      "max_gross": 1.0000000000000004,
-      "frozen_budget_overrun_days": 0
-    },
-    {
-      "path": "pairgross_d0_M_c5",
-      "rows": 1613,
-      "unique_dates": true,
-      "max_cash_identity_error": 2.220446049250313e-16,
-      "max_frozen_quantity_change": 0.0,
-      "max_gross": 1.0000000000000004,
-      "frozen_budget_overrun_days": 0
-    },
-    {
-      "path": "pairgross_d0_M_c10",
-      "rows": 1613,
-      "unique_dates": true,
-      "max_cash_identity_error": 2.220446049250313e-16,
-      "max_frozen_quantity_change": 0.0,
-      "max_gross": 1.0000000000000004,
-      "frozen_budget_overrun_days": 0
-    },
-    {
-      "path": "stockgross_d0_B_c0",
-      "rows": 1613,
-      "unique_dates": true,
-      "max_cash_identity_error": 8.881784197001252e-16,
-      "max_frozen_quantity_change": 0.0,
-      "max_gross": 1.0000000000000004,
-      "frozen_budget_overrun_days": 0
-    },
-    {
-      "path": "stockgross_d0_B_c5",
-      "rows": 1613,
-      "unique_dates": true,
-      "max_cash_identity_error": 3.3306690738754696e-16,
-      "max_frozen_quantity_change": 0.0,
-      "max_gross": 1.0000000000000004,
-      "frozen_budget_overrun_days": 0
-    },
-    {
-      "path": "stockgross_d0_B_c10",
-      "rows": 1613,
-      "unique_dates": true,
-      "max_cash_identity_error": 3.3306690738754696e-16,
-      "max_frozen_quantity_change": 0.0,
-      "max_gross": 1.0000000000000004,
-      "frozen_budget_overrun_days": 0
-    },
-    {
-      "path": "pairgross_d0_B_c0",
-      "rows": 1613,
-      "unique_dates": true,
-      "max_cash_identity_error": 4.440892098500626e-16,
-      "max_frozen_quantity_change": 0.0,
-      "max_gross": 1.0,
-      "frozen_budget_overrun_days": 0
-    },
-    {
-      "path": "pairgross_d0_B_c5",
-      "rows": 1613,
-      "unique_dates": true,
-      "max_cash_identity_error": 4.440892098500626e-16,
-      "max_frozen_quantity_change": 0.0,
-      "max_gross": 1.0000000000000002,
-      "frozen_budget_overrun_days": 0
-    },
-    {
-      "path": "pairgross_d0_B_c10",
-      "rows": 1613,
-      "unique_dates": true,
-      "max_cash_identity_error": 3.3306690738754696e-16,
-      "max_frozen_quantity_change": 0.0,
-      "max_gross": 1.0000000000000004,
-      "frozen_budget_overrun_days": 0
-    },
-    {
-      "path": "stockgross_d0_U_c0",
-      "rows": 1613,
-      "unique_dates": true,
-      "max_cash_identity_error": 4.440892098500626e-16,
-      "max_frozen_quantity_change": 0.0,
-      "max_gross": 1.0000000000000004,
-      "frozen_budget_overrun_days": 0
-    },
-    {
-      "path": "stockgross_d0_U_c5",
-      "rows": 1613,
-      "unique_dates": true,
-      "max_cash_identity_error": 4.440892098500626e-16,
-      "max_frozen_quantity_change": 0.0,
-      "max_gross": 1.0000000000000004,
-      "frozen_budget_overrun_days": 0
-    },
-    {
-      "path": "stockgross_d0_U_c10",
-      "rows": 1613,
-      "unique_dates": true,
-      "max_cash_identity_error": 3.3306690738754696e-16,
-      "max_frozen_quantity_change": 0.0,
-      "max_gross": 1.0000000000000004,
-      "frozen_budget_overrun_days": 0
-    },
-    {
-      "path": "pairgross_d0_U_c0",
-      "rows": 1613,
-      "unique_dates": true,
-      "max_cash_identity_error": 4.440892098500626e-16,
-      "max_frozen_quantity_change": 0.0,
-      "max_gross": 1.0000000000000004,
-      "frozen_budget_overrun_days": 0
-    },
-    {
-      "path": "pairgross_d0_U_c5",
-      "rows": 1613,
-      "unique_dates": true,
-      "max_cash_identity_error": 4.440892098500626e-16,
-      "max_frozen_quantity_change": 0.0,
-      "max_gross": 1.0000000000000004,
-      "frozen_budget_overrun_days": 0
-    },
-    {
-      "path": "pairgross_d0_U_c10",
-      "rows": 1613,
-      "unique_dates": true,
-      "max_cash_identity_error": 3.3306690738754696e-16,
-      "max_frozen_quantity_change": 0.0,
-      "max_gross": 1.0000000000000004,
-      "frozen_budget_overrun_days": 0
-    },
-    {
-      "path": "stockgross_d1_M_c0",
-      "rows": 1613,
-      "unique_dates": true,
-      "max_cash_identity_error": 4.440892098500626e-16,
-      "max_frozen_quantity_change": 0.0,
-      "max_gross": 1.0000000000000004,
-      "frozen_budget_overrun_days": 0
-    },
-    {
-      "path": "stockgross_d1_M_c5",
-      "rows": 1613,
-      "unique_dates": true,
-      "max_cash_identity_error": 3.3306690738754696e-16,
-      "max_frozen_quantity_change": 0.0,
-      "max_gross": 1.0000000000000004,
-      "frozen_budget_overrun_days": 0
-    },
-    {
-      "path": "stockgross_d1_M_c10",
-      "rows": 1613,
-      "unique_dates": true,
-      "max_cash_identity_error": 3.3306690738754696e-16,
-      "max_frozen_quantity_change": 0.0,
-      "max_gross": 1.0000000000000004,
-      "frozen_budget_overrun_days": 0
-    },
-    {
-      "path": "pairgross_d1_M_c0",
-      "rows": 1613,
-      "unique_dates": true,
-      "max_cash_identity_error": 4.440892098500626e-16,
-      "max_frozen_quantity_change": 0.0,
-      "max_gross": 1.0000000000000004,
-      "frozen_budget_overrun_days": 0
-    },
-    {
-      "path": "pairgross_d1_M_c5",
-      "rows": 1613,
-      "unique_dates": true,
-      "max_cash_identity_error": 3.3306690738754696e-16,
-      "max_frozen_quantity_change": 0.0,
-      "max_gross": 1.0000000000000004,
-      "frozen_budget_overrun_days": 0
-    },
-    {
-      "path": "pairgross_d1_M_c10",
-      "rows": 1613,
-      "unique_dates": true,
-      "max_cash_identity_error": 3.3306690738754696e-16,
-      "max_frozen_quantity_change": 0.0,
-      "max_gross": 1.0000000000000004,
-      "frozen_budget_overrun_days": 0
-    },
-    {
-      "path": "stockgross_d1_B_c0",
-      "rows": 1613,
-      "unique_dates": true,
-      "max_cash_identity_error": 4.440892098500626e-16,
-      "max_frozen_quantity_change": 0.0,
-      "max_gross": 1.0000000000000004,
-      "frozen_budget_overrun_days": 0
-    },
-    {
-      "path": "stockgross_d1_B_c5",
-      "rows": 1613,
-      "unique_dates": true,
-      "max_cash_identity_error": 4.440892098500626e-16,
-      "max_frozen_quantity_change": 0.0,
-      "max_gross": 1.0000000000000004,
-      "frozen_budget_overrun_days": 0
-    },
-    {
-      "path": "stockgross_d1_B_c10",
-      "rows": 1613,
-      "unique_dates": true,
-      "max_cash_identity_error": 3.3306690738754696e-16,
-      "max_frozen_quantity_change": 0.0,
-      "max_gross": 1.0000000000000004,
-      "frozen_budget_overrun_days": 0
-    },
-    {
-      "path": "pairgross_d1_B_c0",
-      "rows": 1613,
-      "unique_dates": true,
-      "max_cash_identity_error": 4.440892098500626e-16,
-      "max_frozen_quantity_change": 0.0,
-      "max_gross": 1.0000000000000002,
-      "frozen_budget_overrun_days": 0
-    },
-    {
-      "path": "pairgross_d1_B_c5",
-      "rows": 1613,
-      "unique_dates": true,
-      "max_cash_identity_error": 4.440892098500626e-16,
-      "max_frozen_quantity_change": 0.0,
-      "max_gross": 1.0000000000000002,
-      "frozen_budget_overrun_days": 0
-    },
-    {
-      "path": "pairgross_d1_B_c10",
-      "rows": 1613,
-      "unique_dates": true,
-      "max_cash_identity_error": 3.3306690738754696e-16,
-      "max_frozen_quantity_change": 0.0,
-      "max_gross": 1.0000000000000002,
-      "frozen_budget_overrun_days": 0
-    },
-    {
-      "path": "stockgross_d1_U_c0",
-      "rows": 1613,
-      "unique_dates": true,
-      "max_cash_identity_error": 4.440892098500626e-16,
-      "max_frozen_quantity_change": 0.0,
-      "max_gross": 1.0000000000000004,
-      "frozen_budget_overrun_days": 0
-    },
-    {
-      "path": "stockgross_d1_U_c5",
-      "rows": 1613,
-      "unique_dates": true,
-      "max_cash_identity_error": 3.3306690738754696e-16,
-      "max_frozen_quantity_change": 0.0,
-      "max_gross": 1.0000000000000004,
-      "frozen_budget_overrun_days": 0
-    },
-    {
-      "path": "stockgross_d1_U_c10",
-      "rows": 1613,
-      "unique_dates": true,
-      "max_cash_identity_error": 3.3306690738754696e-16,
-      "max_frozen_quantity_change": 0.0,
-      "max_gross": 1.0000000000000004,
-      "frozen_budget_overrun_days": 0
-    },
-    {
-      "path": "pairgross_d1_U_c0",
-      "rows": 1613,
-      "unique_dates": true,
-      "max_cash_identity_error": 4.440892098500626e-16,
-      "max_frozen_quantity_change": 0.0,
-      "max_gross": 1.0000000000000004,
-      "frozen_budget_overrun_days": 0
-    },
-    {
-      "path": "pairgross_d1_U_c5",
-      "rows": 1613,
-      "unique_dates": true,
-      "max_cash_identity_error": 3.3306690738754696e-16,
-      "max_frozen_quantity_change": 0.0,
-      "max_gross": 1.0000000000000004,
-      "frozen_budget_overrun_days": 0
-    },
-    {
-      "path": "pairgross_d1_U_c10",
-      "rows": 1613,
-      "unique_dates": true,
-      "max_cash_identity_error": 3.3306690738754696e-16,
-      "max_frozen_quantity_change": 0.0,
-      "max_gross": 1.0000000000000004,
-      "frozen_budget_overrun_days": 0
-    },
-    {
-      "path": "clean_stockgross_d1_M_c0",
-      "rows": 1613,
-      "unique_dates": true,
-      "max_cash_identity_error": 4.440892098500626e-16,
-      "max_frozen_quantity_change": 0.0,
-      "max_gross": 1.0000000000000004,
-      "frozen_budget_overrun_days": 0
-    },
-    {
-      "path": "clean_stockgross_d1_M_c5",
-      "rows": 1613,
-      "unique_dates": true,
-      "max_cash_identity_error": 2.220446049250313e-16,
-      "max_frozen_quantity_change": 0.0,
-      "max_gross": 1.0000000000000004,
-      "frozen_budget_overrun_days": 0
-    },
-    {
-      "path": "clean_stockgross_d1_M_c10",
-      "rows": 1613,
-      "unique_dates": true,
-      "max_cash_identity_error": 2.220446049250313e-16,
-      "max_frozen_quantity_change": 0.0,
-      "max_gross": 1.0000000000000004,
-      "frozen_budget_overrun_days": 0
-    },
-    {
-      "path": "clean_stockgross_d1_B_c0",
-      "rows": 1613,
-      "unique_dates": true,
-      "max_cash_identity_error": 4.440892098500626e-16,
-      "max_frozen_quantity_change": 0.0,
-      "max_gross": 1.0000000000000004,
-      "frozen_budget_overrun_days": 0
-    },
-    {
-      "path": "clean_stockgross_d1_B_c5",
-      "rows": 1613,
-      "unique_dates": true,
-      "max_cash_identity_error": 4.440892098500626e-16,
-      "max_frozen_quantity_change": 0.0,
-      "max_gross": 1.0000000000000004,
-      "frozen_budget_overrun_days": 0
-    },
-    {
-      "path": "clean_stockgross_d1_B_c10",
-      "rows": 1613,
-      "unique_dates": true,
-      "max_cash_identity_error": 3.3306690738754696e-16,
-      "max_frozen_quantity_change": 0.0,
-      "max_gross": 1.0000000000000004,
-      "frozen_budget_overrun_days": 0
-    },
-    {
-      "path": "clean_stockgross_d1_U_c0",
-      "rows": 1613,
-      "unique_dates": true,
-      "max_cash_identity_error": 4.440892098500626e-16,
-      "max_frozen_quantity_change": 0.0,
-      "max_gross": 1.0000000000000004,
-      "frozen_budget_overrun_days": 0
-    },
-    {
-      "path": "clean_stockgross_d1_U_c5",
-      "rows": 1613,
-      "unique_dates": true,
-      "max_cash_identity_error": 2.220446049250313e-16,
-      "max_frozen_quantity_change": 0.0,
-      "max_gross": 1.0000000000000004,
-      "frozen_budget_overrun_days": 0
-    },
-    {
-      "path": "clean_stockgross_d1_U_c10",
-      "rows": 1613,
-      "unique_dates": true,
-      "max_cash_identity_error": 2.220446049250313e-16,
-      "max_frozen_quantity_change": 0.0,
-      "max_gross": 1.0000000000000004,
-      "frozen_budget_overrun_days": 0
-    }
+  "model_id": "author_code_aaac6d9_q_replay",
+  "completed_at": "2026-10-29T08:15:27.290426+00:00",
+  "source_commit": "aaac6d999d6b077304a887caff2aab514d7ea6a2",
+  "input_sha256": "7605eab6525ddb5db66965d1559a56b48375f11a14cd1040eaa12318a545939c",
+  "intervals": 77,
+  "strategies": [
+    "MAX_WEIGHT",
+    "BASELINE"
   ],
-  "all_dates_once": true,
-  "primary": "stockgross_d1; one full trading session between information and execution; fees reinvested",
-  "delayed_instruction": "Dollar weights computed at signal close are executed at next close; share ratios can therefore differ at execution.",
-  "selection_count": 77
+  "signal": "Q only",
+  "recomputed_intervals": 0,
+  "verified_cached_intervals": 77,
+  "source_default": "202*.csv date filter, 2020-01-31 onward",
+  "extension": "Date range only extended to 2017; original duplicate endpoints retained",
+  "completion_assumption": "Absent daily SPREAD/BETA writer supplied with trailing504 log-OLS endpoints",
+  "net_costs": "Not computed; missing executable cost route in original source",
+  "metrics": [
+    {
+      "rows_including_duplicate_dates": 878,
+      "non_nan_rows": 878,
+      "sharpe": 0.7741785180404984,
+      "sortino": 1.1062256370601005,
+      "cumulative_return": 0.20112160396484624,
+      "simple_return": 0.19208626548260288,
+      "scope": "source_default",
+      "method": "MAX_WEIGHT",
+      "start": "2020-01-31",
+      "end": "2023-05-31",
+      "unique_dates": 839,
+      "duplicate_rows": 39,
+      "max_drawdown_supplement": -0.07725798671214645,
+      "finite_returns": true
+    },
+    {
+      "rows_including_duplicate_dates": 878,
+      "non_nan_rows": 878,
+      "sharpe": 0.32170907570191076,
+      "sortino": 0.4270845588030252,
+      "cumulative_return": 0.08104642870162193,
+      "simple_return": 0.08889648973319067,
+      "scope": "source_default",
+      "method": "BASELINE",
+      "start": "2020-01-31",
+      "end": "2023-05-31",
+      "unique_dates": 839,
+      "duplicate_rows": 39,
+      "max_drawdown_supplement": -0.12492509270234942,
+      "finite_returns": true
+    },
+    {
+      "rows_including_duplicate_dates": 1689,
+      "non_nan_rows": 1689,
+      "sharpe": 0.5982393540892392,
+      "sortino": 0.8469889322845767,
+      "cumulative_return": 0.2538646891106251,
+      "simple_return": 0.23803379817282777,
+      "scope": "extended_2017",
+      "method": "MAX_WEIGHT",
+      "start": "2017-01-03",
+      "end": "2023-05-31",
+      "unique_dates": 1613,
+      "duplicate_rows": 76,
+      "max_drawdown_supplement": -0.07937541772280177,
+      "finite_returns": true
+    },
+    {
+      "rows_including_duplicate_dates": 1689,
+      "non_nan_rows": 1689,
+      "sharpe": 0.29981357424436084,
+      "sortino": 0.3966342644222704,
+      "cumulative_return": 0.12384592698052588,
+      "simple_return": 0.13101121254077558,
+      "scope": "extended_2017",
+      "method": "BASELINE",
+      "start": "2017-01-03",
+      "end": "2023-05-31",
+      "unique_dates": 1613,
+      "duplicate_rows": 76,
+      "max_drawdown_supplement": -0.147116657858138,
+      "finite_returns": true
+    }
+  ]
 }

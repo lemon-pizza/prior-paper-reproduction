@@ -1,0 +1,63 @@
+{
+  "cutoff": "2017-10-31",
+  "end": "2017-11-30",
+  "cache_identity": {
+    "start": "2017-10-31",
+    "end": "2017-11-30",
+    "price_sha256": "7605eab6525ddb5db66965d1559a56b48375f11a14cd1040eaa12318a545939c",
+    "selection_sha256": "5fa0f5bdbc4cea0539f68ceeeffbeebe802b666f5da4f67ab487d7c22d7fa98b",
+    "run_sha256": "7ee9a3ebb21bea7d32f0649a9a79be8f6646b69a8985792c3234ed1950ffa181",
+    "trading_sha256": "cd5cd9c749f6ef2fce0f4f29017495ffedb9be6e5139e69f5e0bdab1afd9ee83",
+    "source_performance_sha256": "1ec5807f13b9c0944833b79cf3aa1ae36700ef3c801dd9c024a44c00e08e07a3",
+    "environment": {
+      "python": "3.13.9",
+      "numpy": "2.3.5",
+      "pandas": "2.3.3",
+      "scipy": "1.16.3",
+      "sklearn": "1.7.2",
+      "statsmodels": "0.14.5",
+      "networkx": "3.5",
+      "PYTHONHASHSEED": "0"
+    }
+  },
+  "created_at": "2026-10-29T08:07:39.115146+00:00",
+  "methods": {
+    "MAX_WEIGHT": {
+      "start": "2017-10-31",
+      "end": "2017-11-30",
+      "pairs": 216,
+      "rows": 22,
+      "nan_returns": 0,
+      "infinite_returns": 0,
+      "exp_beta_overflow_elements": 0,
+      "infinite_pair_pnl_elements": 0,
+      "infinite_pair_capital_elements": 0,
+      "inclusive_endpoints": true,
+      "signal": "Q20 only; denominator Q25-Q75; round; shift1",
+      "allocation": "same-day beta shares versus one share; same-day gross capital denominator",
+      "missing_cache_completion": "Missing per-pair CSV generator supplied as 504-observation rolling log-OLS endpoint SPREAD/BETA; this is a reconstruction assumption, not recovered author code.",
+      "batch_size": 128
+    },
+    "BASELINE": {
+      "start": "2017-10-31",
+      "end": "2017-11-30",
+      "pairs": 29893,
+      "rows": 22,
+      "nan_returns": 0,
+      "infinite_returns": 0,
+      "exp_beta_overflow_elements": 0,
+      "infinite_pair_pnl_elements": 0,
+      "infinite_pair_capital_elements": 0,
+      "inclusive_endpoints": true,
+      "signal": "Q20 only; denominator Q25-Q75; round; shift1",
+      "allocation": "same-day beta shares versus one share; same-day gross capital denominator",
+      "missing_cache_completion": "Missing per-pair CSV generator supplied as 504-observation rolling log-OLS endpoint SPREAD/BETA; this is a reconstruction assumption, not recovered author code.",
+      "batch_size": 128
+    }
+  },
+  "output_sha256": {
+    "MAX_WEIGHT": "602b525e21c56005db722c630621d01c1e269fbf3257d00e63b84dc0bd9d4ef0",
+    "BASELINE": "5417baaf29455e59aaca2ed0c0ccb22f3be9ce894928ec11997c9c6d77f255cb"
+  },
+  "seconds": 2.5079340420197695
+}
